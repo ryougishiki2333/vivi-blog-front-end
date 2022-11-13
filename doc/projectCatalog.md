@@ -1,19 +1,26 @@
 |-- app
-    |-- _api
-    |-- _pages
+    |-- api
+    |-- pages
         |-- mainPage
-            |-- welcomeContainer
-            |-- toolbarContainer
-            |-- contentContainer
         |-- articlePage
         |-- filterPage
         |-- tagPage
-    |-- _components
-        |-- infoComponents
+        |-- visitorPage
+        |-- viviManagePage
+    |-- components
+        |-- globalFloator
+            |-- inviteLogInFloator
+            |-- publicChatFloator
+        |-- globalContainer
+            |-- welcomeContainer
+            |-- toolbarContainer
+            |-- contentContainer
+        |-- commomComponents
             |-- personInfoCompo
             |-- pictureTitleCompo
             |-- catalogItemCompo
             |-- buttonCompo
+            |-- operateTableCompo
         |-- navigationToper
             |-- searchInputNav
             |-- searchModalNav
@@ -24,6 +31,8 @@
             |-- otherLinkBar
             |-- catalogBar
             |-- subscribeBar
+            |-- switchManageButton
+            |-- chooseArticleBar
         |-- zoneRighter
             |-- neatMapZone
             |-- overviewZone
@@ -31,3 +40,11 @@
             |-- scoreZone
             |-- shareZone
             |-- commentZone
+                |-- replyAddictionalZone
+            |-- logInZone
+            |-- resignerZone
+            |-- infoManagementZone
+            |-- collectManagementZone
+            |-- infoManagementZone
+            |-- articleEditZone
+            |-- tagEditZone
