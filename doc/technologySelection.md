@@ -4,3 +4,5 @@ Webpack 5
 React
 TypeScript
 Less
+Babel
+ESlint
