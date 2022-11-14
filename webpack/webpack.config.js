@@ -1,9 +1,10 @@
 "use strict";
 
-const path = request("path");
+const path = require("path");
 
 // 相对路径转绝对路径
 const resolvePath = (_path) => path.resolve(__dirname, _path);
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: resolvePath("../src/index.tsx"),
@@ -60,4 +61,29 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolvePath('../public/index.html'),
+    }),
+  ],
+
+  resolve: {
+    alias: {
+      '@': resolvePath('../src')
+    },
+    extensions: [".js", ".ts", ".jsx", ".tsx"]
+  },
+  
+  mode: 'development',
+  
+  devtool: 'cheap-module-source-map',
+
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    open: true,
+    hot: true,
+  },
+
 };
