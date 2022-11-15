@@ -1,4 +1,4 @@
-|-- app
+|-- src
     |-- api
     |-- pages
         |-- mainPage
@@ -6,7 +6,7 @@
         |-- filterPage
         |-- tagPage
         |-- visitorPage
-        |-- viviManagePage
+        |-- ownerPage
     |-- components
         |-- globalFloator
             |-- inviteLogInFloator
