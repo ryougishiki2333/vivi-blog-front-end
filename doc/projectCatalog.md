@@ -11,6 +11,9 @@
         |-- globalFloator
             |-- inviteLogInFloator
             |-- publicChatFloator
+            |-- navigationFloator
+                |-- searchInputNav
+                |-- searchModalNav
         |-- globalContainer
             |-- welcomeContainer
             |-- toolbarContainer
@@ -21,9 +24,6 @@
             |-- catalogItemCompo
             |-- buttonCompo
             |-- operateTableCompo
-        |-- navigationToper
-            |-- searchInputNav
-            |-- searchModalNav
         |-- barLefter
             |-- dataInfoBar
             |-- accouncerBar
