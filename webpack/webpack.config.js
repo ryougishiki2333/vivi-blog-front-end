@@ -5,6 +5,7 @@ const path = require("path");
 // 相对路径转绝对路径
 const resolvePath = (_path) => path.resolve(__dirname, _path);
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = {
   entry: resolvePath("../src/index.tsx"),
@@ -59,6 +60,17 @@ module.exports = {
           cacheCompression: false,
         },
       },
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true
+            }
+          }
+        ]
+      }
     ],
   },
 
@@ -66,6 +78,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolvePath('../public/index.html'),
     }),
+    new ForkTsCheckerWebpackPlugin()
   ],
 
   resolve: {
