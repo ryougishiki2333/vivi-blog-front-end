@@ -8,6 +8,8 @@
         "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.js"
     },
     "dependencies": {
+        "@emotion/react": "^11.10.5",
+        "@emotion/styled": "^11.10.5",
         "@mui/material": "^5.10.14",
         "@mui/styled-engine-sc": "^5.10.14",
         "@types/styled-components": "^5.1.26",

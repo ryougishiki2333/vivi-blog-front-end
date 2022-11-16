@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const Computer: React.FC = () => {
-  const Title = styled.h1`
+  const Title = styled.div`
     font-size: 1.5em;
     text-align: center;
     color: palevioletred;
   `;
-  const Wrapper = styled.section`
-    padding: 4em;
+  const Wrapper = styled.div`
     background: papayawhip;
   `;
 
