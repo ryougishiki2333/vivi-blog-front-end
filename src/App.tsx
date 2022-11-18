@@ -1,13 +1,8 @@
 import React, { Suspense, lazy } from "react";
-import { Link, Routes, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
+import WelcomePage from "./pages/WelcomePage";
 
 const App: React.FC = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<MainPage />}></Route>
-    </Routes>
-  );
+  return <div>123</div>;
 };
 
 export default App;

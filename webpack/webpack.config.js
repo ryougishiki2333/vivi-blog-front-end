@@ -6,6 +6,7 @@ const path = require("path");
 const resolvePath = (_path) => path.resolve(__dirname, _path);
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   entry: resolvePath("../src/index.tsx"),
@@ -14,6 +15,7 @@ module.exports = {
     path: resolvePath("../dist"),
     clean: true,
     filename: "scripts/[name].js",
+    publicPath: "/"
   },
 
   module: {
@@ -58,6 +60,9 @@ module.exports = {
           cacheDirectory: true,
           // 关闭缓存压缩
           cacheCompression: false,
+          plugins: [
+            'react-refresh/babel'
+          ]
         },
       },
       {
@@ -78,7 +83,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolvePath('../public/index.html'),
     }),
-    new ForkTsCheckerWebpackPlugin()
+    new ForkTsCheckerWebpackPlugin(),
+    new ReactRefreshWebpackPlugin()
   ],
 
   resolve: {
@@ -93,10 +99,12 @@ module.exports = {
   devtool: 'cheap-module-source-map',
 
   devServer: {
+    static: resolvePath("../dist"),
     host: 'localhost',
     port: 8080,
     open: true,
     hot: true,
+    historyApiFallback: true,
   },
 
 };
