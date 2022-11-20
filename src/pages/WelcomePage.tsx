@@ -1,7 +1,7 @@
-import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Computer: React.FC = () => {
+const WelcomePage: React.FC = () => {
   const Title = styled.div`
     font-size: 1.5em;
     text-align: center;
@@ -15,10 +15,12 @@ const Computer: React.FC = () => {
   `;
 
   return (
-    <Wrapper>
-      <Title>Vivi小站</Title>
-    </Wrapper>
+    <Link to={"mainPage"}>
+      <Wrapper>
+        <Title>Vivi小站（欢迎页）</Title>
+      </Wrapper>
+    </Link>
   );
 };
 
-export default Computer;
+export default WelcomePage;

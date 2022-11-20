@@ -1,23 +1,22 @@
 import styled from "styled-components";
 
-const ContentContainer: React.FC = () => {
+const NavigationFloator: React.FC = () => {
   const Title = styled.div`
     font-size: 1.5em;
     text-align: center;
-    color: palevioletred;
-    line-height: 200px;
   `;
   const Wrapper = styled.div`
-    background: yellow;
-    height: 200px;
+    background: white;
+    height: 40px;
     width: 100%;
+    position: absolute;
   `;
 
   return (
     <Wrapper>
-      <Title>内容栏</Title>
+      <Title>导航栏</Title>
     </Wrapper>
   );
 };
 
-export default ContentContainer;
+export default NavigationFloator;

@@ -24,7 +24,7 @@
             |-- catalogItemCompo
             |-- buttonCompo
             |-- operateTableCompo
-        |-- barLefter
+        |-- LefterBar
             |-- dataInfoBar
             |-- accouncerBar
             |-- otherFrameBar
@@ -33,7 +33,7 @@
             |-- subscribeBar
             |-- switchManageButton
             |-- chooseArticleBar
-        |-- zoneRighter
+        |-- RighterZone
             |-- neatMapZone
             |-- overviewZone
             |-- articleReadZone

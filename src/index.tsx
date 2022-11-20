@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
-import App from "./App";
 import CssBaseline from "@mui/material/CssBaseline";
 import Root from "./router/root";
-import ErrorPage from "./ErrorPage";
+import WelcomePage from "./pages/WelcomePage";
+import ErrorPage from "./pages/ErrorPage";
+import MainPage from "./pages/MainPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,15 +14,11 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/123",
-        element: <ErrorPage />,
-        errorElement: <ErrorPage />,
-      },
-    ],
+    element: <WelcomePage />,
+  },
+  {
+    path: "/mainPage",
+    element: <MainPage />,
   },
 ]);
 
