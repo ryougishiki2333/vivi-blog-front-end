@@ -4,7 +4,6 @@ const WelcomeContainer: React.FC = () => {
   const Title = styled.div`
     font-size: 1.5em;
     text-align: center;
-    color: palevioletred;
     line-height: 200px;
   `;
   const Wrapper = styled.div`

@@ -21,13 +21,13 @@ const MainPage: React.FC = () => {
   return (
     <>
       <NavigationFloator></NavigationFloator>
-      <WelcomeContainer></WelcomeContainer>
+      <WelcomeContainer />
       <FlexBox>
         <Lefter>
-          <ToolbarContainer></ToolbarContainer>
+          <ToolbarContainer />
         </Lefter>
         <Righter>
-          <ContentContainer></ContentContainer>
+          <ContentContainer />
         </Righter>
       </FlexBox>
     </>

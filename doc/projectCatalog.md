@@ -18,12 +18,12 @@
             |-- welcomeContainer
             |-- toolbarContainer
             |-- contentContainer
-        |-- commomComponents
-            |-- personInfoCompo
-            |-- pictureTitleCompo
-            |-- catalogItemCompo
-            |-- buttonCompo
-            |-- operateTableCompo
+        |-- commenComponents
+            |-- personInfoCompo 用于个人资料
+            |-- pictureTitleCompo 用于文章列表渲染
+            |-- catalogItemCompo 用于目录渲染
+            |-- buttonCompo 用于按钮渲染  
+            |-- operateTableCompo 用于表格渲染
         |-- LefterBar
             |-- dataInfoBar
             |-- accouncerBar

@@ -4,20 +4,15 @@ const ContentContainer: React.FC = () => {
   const Title = styled.div`
     font-size: 1.5em;
     text-align: center;
-    color: palevioletred;
     line-height: 200px;
   `;
   const Wrapper = styled.div`
-    background: yellow;
+    background: #d6aefb;
     height: 200px;
     width: 100%;
   `;
 
-  return (
-    <Wrapper>
-      <Title>内容栏</Title>
-    </Wrapper>
-  );
+  return <Wrapper></Wrapper>;
 };
 
 export default ContentContainer;
