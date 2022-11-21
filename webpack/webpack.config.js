@@ -89,7 +89,8 @@ module.exports = {
 
   resolve: {
     alias: {
-      '@': resolvePath('../src')
+      '@': resolvePath('../src'),
+      router: resolvePath('../src/router')
     },
     extensions: [".js", ".ts", ".jsx", ".tsx"]
   },

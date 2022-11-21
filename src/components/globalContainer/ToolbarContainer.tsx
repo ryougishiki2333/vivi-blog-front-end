@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { route } from "router/LefterBarConfig";
+
+const router = createBrowserRouter(route);
 
 const ToolbarContainer: React.FC = () => {
   const Title = styled.div`
@@ -12,7 +16,11 @@ const ToolbarContainer: React.FC = () => {
     width: 100%;
   `;
 
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <RouterProvider router={router} />
+    </Wrapper>
+  );
 };
 
 export default ToolbarContainer;
