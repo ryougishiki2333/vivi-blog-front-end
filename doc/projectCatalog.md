@@ -25,14 +25,17 @@
             |-- buttonCompo 用于按钮渲染  
             |-- operateTableCompo 用于表格渲染
         |-- LefterBar
-            |-- dataInfoBar
-            |-- accouncerBar
-            |-- otherFrameBar
-            |-- otherLinkBar
-            |-- catalogBar
-            |-- subscribeBar
-            |-- switchManageButton
-            |-- chooseArticleBar
+            |-- infoBar 个人资料
+            |-- AnnounceBar 小喇叭
+            |-- otherFrameBar iframe
+            |-- otherLinkBar  友情链接
+            |-- dataBar  数据
+            |-- otherLinkBar  友情链接
+            |-- catalogBar  目录
+            |-- ClassificationBar  分类
+            |-- subscribeBar 订阅
+            |-- switchManageButton ?
+            |-- chooseArticleBar 选择文章工具栏
         |-- RighterZone
             |-- neatMapZone
             |-- overviewZone
