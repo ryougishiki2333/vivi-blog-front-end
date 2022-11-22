@@ -1,16 +1,12 @@
 import styled from "styled-components";
+import { barStyleTitle, barStyleWrapper } from "./barStyle";
 
 const WelcomeContainer: React.FC = () => {
   const Title = styled.div`
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 150px;
+    ${barStyleTitle}
   `;
   const Wrapper = styled.div`
-    background: papayawhip;
-    height: 150px;
-    width: 70%;
-    margin: 20px;
+    ${barStyleWrapper}
   `;
 
   return (

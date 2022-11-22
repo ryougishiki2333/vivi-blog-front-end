@@ -10,7 +10,7 @@ const WelcomeContainer: React.FC = () => {
     background: papayawhip;
     height: 150px;
     width: 70%;
-    margin: 20px;
+    margin: 10px;
   `;
 
   return (

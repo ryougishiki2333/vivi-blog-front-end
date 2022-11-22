@@ -7,11 +7,31 @@ export const route = [
     element: <WelcomePage />,
   },
   {
-    path: "/mainPage",
+    path: "/main",
     element: <MainPage />,
     children: [
       {
-        path: "/mainPage",
+        path: "/main/mainPage",
+        element: <LefterMainPage />,
+      },
+      {
+        path: "/main/filterPage",
+        element: <LefterMainPage />,
+      },
+      {
+        path: "/main/articlePage",
+        element: <LefterMainPage />,
+      },
+      {
+        path: "/main/ownerPage",
+        element: <LefterMainPage />,
+      },
+      {
+        path: "/main/tagPage",
+        element: <LefterMainPage />,
+      },
+      {
+        path: "/main/tagPage",
         element: <LefterMainPage />,
       },
     ],

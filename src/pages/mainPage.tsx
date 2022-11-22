@@ -3,6 +3,7 @@ import NavigationFloator from "../components/globalFloator/NavigationFloator";
 import WelcomeContainer from "../components/globalContainer/WelcomeContainer";
 import ToolbarContainer from "../components/globalContainer/ToolbarContainer";
 import ContentContainer from "../components/globalContainer/ContentContainer";
+import { Outlet } from "react-router-dom";
 
 const MainPage: React.FC = () => {
   const FlexBox = styled.div`
@@ -21,15 +22,7 @@ const MainPage: React.FC = () => {
   return (
     <>
       <NavigationFloator></NavigationFloator>
-      <WelcomeContainer />
-      <FlexBox>
-        <Lefter>
-          <ToolbarContainer />
-        </Lefter>
-        <Righter>
-          <ContentContainer />
-        </Righter>
-      </FlexBox>
+      <Outlet></Outlet>
     </>
   );
 };

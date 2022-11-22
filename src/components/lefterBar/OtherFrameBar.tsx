@@ -4,18 +4,18 @@ const WelcomeContainer: React.FC = () => {
   const Title = styled.div`
     font-size: 1.5em;
     text-align: center;
-    line-height: 100%;
+    line-height: 150px;
   `;
   const Wrapper = styled.div`
     background: papayawhip;
-    height: 500px;
-    width: 100%;
-    padding: 20px;
+    height: 150px;
+    width: 70%;
+    margin: 10px;
   `;
 
   return (
     <Wrapper>
-      <Title>个人信息</Title>
+      <Title>其它网站</Title>
     </Wrapper>
   );
 };
