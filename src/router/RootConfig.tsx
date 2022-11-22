@@ -1,5 +1,5 @@
 import WelcomePage from "../pages/WelcomePage";
-import LefterMainPage from "../components/diffPageDetail/LefterMainPage";
+import MainPageDetail from "../components/diffPageDetail/MainPageDetail";
 import MainPage from "../pages/MainPage";
 export const route = [
   {
@@ -12,28 +12,28 @@ export const route = [
     children: [
       {
         path: "/main/mainPage",
-        element: <LefterMainPage />,
+        element: <MainPageDetail />,
       },
-      {
-        path: "/main/filterPage",
-        element: <LefterMainPage />,
-      },
-      {
-        path: "/main/articlePage",
-        element: <LefterMainPage />,
-      },
-      {
-        path: "/main/ownerPage",
-        element: <LefterMainPage />,
-      },
-      {
-        path: "/main/tagPage",
-        element: <LefterMainPage />,
-      },
-      {
-        path: "/main/tagPage",
-        element: <LefterMainPage />,
-      },
+      // {
+      //   path: "/main/filterPage",
+      //   element: <LefterMainPage />,
+      // },
+      // {
+      //   path: "/main/articlePage",
+      //   element: <LefterMainPage />,
+      // },
+      // {
+      //   path: "/main/ownerPage",
+      //   element: <LefterMainPage />,
+      // },
+      // {
+      //   path: "/main/tagPage",
+      //   element: <LefterMainPage />,
+      // },
+      // {
+      //   path: "/main/tagPage",
+      //   element: <LefterMainPage />,
+      // },
     ],
   },
   {

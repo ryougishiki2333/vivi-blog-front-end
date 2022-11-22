@@ -7,11 +7,12 @@ const NavigationFloator: React.FC = () => {
     line-height: 40px;
   `;
   const Wrapper = styled.div`
-    background: white;
+    background: #d6aefb;
     height: 40px;
     width: 100%;
     position: sticky;
     top: 0px;
+    border: solid;
   `;
 
   return (
