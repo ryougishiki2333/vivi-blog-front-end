@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { barStyleTitle, barStyleWrapper } from "./barStyle";
 
-const WelcomeContainer: React.FC = () => {
+const AnnounceBar: React.FC = () => {
   const Title = styled.div`
     ${barStyleTitle}
   `;
@@ -16,4 +16,4 @@ const WelcomeContainer: React.FC = () => {
   );
 };
 
-export default WelcomeContainer;
+export default AnnounceBar;
