@@ -6,7 +6,7 @@ import ClassificationBar from "../lefterBar/ClassificationBar";
 import OtherFrameBar from "../lefterBar/OtherFrameBar";
 import OtherLinkBar from "../lefterBar/OtherLinkBar";
 import NeatMapZone from "../righterZone/NeatMapZone";
-import FilterResultZone from "../righterZone/FilterResultZone;
+import OverviewZone from "../righterZone/OverviewZone";
 
 const MainPageDetail: React.FC = () => {
   const WelcomeWrapper = styled.div`
@@ -56,7 +56,7 @@ const MainPageDetail: React.FC = () => {
           <OtherLinkBar />
         </LefterWrapper>
         <RighterWrapper>
-          <FilterResultZone></FilterResultZone>
+          <OverviewZone></OverviewZone>
         </RighterWrapper>
       </ContentWrapper>
     </>
