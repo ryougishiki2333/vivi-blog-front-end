@@ -6,22 +6,10 @@ import ClassificationBar from "../lefterBar/ClassificationBar";
 import OtherFrameBar from "../lefterBar/OtherFrameBar";
 import OtherLinkBar from "../lefterBar/OtherLinkBar";
 import NeatMapZone from "../righterZone/NeatMapZone";
-import FilterResultZone from "../righterZone/FilterResultZone;
+import OverviewZone from "../righterZone/OverviewZone";
+import WelcomeWrapper from "../globalWrapper/WelcomeWrapper";
 
 const MainPageDetail: React.FC = () => {
-  const WelcomeWrapper = styled.div`
-    background: #f9b3e4;
-    width: 100%;
-    height: 300px;
-    padding: 10px;
-    border: solid;
-  `;
-
-  const Title = styled.div`
-    font-size: 1.5em;
-    text-align: center;
-  `;
-
   const ContentWrapper = styled.div`
     width: 100%;
     display: flex;
@@ -43,9 +31,7 @@ const MainPageDetail: React.FC = () => {
 
   return (
     <>
-      <WelcomeWrapper>
-        <Title>欢迎页</Title>
-      </WelcomeWrapper>
+      <WelcomeWrapper />
       <ContentWrapper>
         <LefterWrapper>
           <InfoBar />
@@ -56,7 +42,8 @@ const MainPageDetail: React.FC = () => {
           <OtherLinkBar />
         </LefterWrapper>
         <RighterWrapper>
-          <FilterResultZone></FilterResultZone>
+          <NeatMapZone></NeatMapZone>
+          <OverviewZone></OverviewZone>
         </RighterWrapper>
       </ContentWrapper>
     </>

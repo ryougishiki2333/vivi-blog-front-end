@@ -8,7 +8,7 @@ import OtherLinkBar from "../lefterBar/OtherLinkBar";
 import FilterResultZone from "../righterZone/FilterResultZone";
 import WelcomeWrapper from "../globalWrapper/WelcomeWrapper";
 
-const MainPageDetail: React.FC = () => {
+const ArticlePageDetail: React.FC = () => {
   const ContentWrapper = styled.div`
     width: 100%;
     display: flex;
@@ -48,4 +48,4 @@ const MainPageDetail: React.FC = () => {
   );
 };
 
-export default MainPageDetail;
+export default ArticlePageDetail;
