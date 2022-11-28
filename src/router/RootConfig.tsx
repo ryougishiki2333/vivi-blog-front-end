@@ -1,6 +1,7 @@
 import WelcomePage from "../pages/WelcomePage";
 import MainPageDetail from "../components/diffPageDetail/MainPageDetail";
 import FilterPageDetail from "../components/diffPageDetail/FilterPageDetail";
+import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
 import MainPage from "../pages/MainPage";
 export const route = [
   {
@@ -19,10 +20,10 @@ export const route = [
         path: "/main/filterPage",
         element: <FilterPageDetail />,
       },
-      // {
-      //   path: "/main/ownerPage",
-      //   element: <LefterMainPage />,
-      // },
+      {
+        path: "/main/articlePage",
+        element: <ArticlePageDetail />,
+      },
       // {
       //   path: "/main/tagPage",
       //   element: <LefterMainPage />,

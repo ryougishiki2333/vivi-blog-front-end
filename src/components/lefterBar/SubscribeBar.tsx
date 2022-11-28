@@ -1,23 +1,19 @@
 import styled from "styled-components";
+import { barStyleTitle, barStyleWrapper } from "./barStyle";
 
-const WelcomeContainer: React.FC = () => {
+const SubscribeBar: React.FC = () => {
   const Title = styled.div`
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 100%;
+    ${barStyleTitle}
   `;
   const Wrapper = styled.div`
-    background: papayawhip;
-    height: 500px;
-    width: 100%;
-    padding: 20px;
+    ${barStyleWrapper}
   `;
 
   return (
     <Wrapper>
-      <Title>个人信息</Title>
+      <Title>友情链接</Title>
     </Wrapper>
   );
 };
 
-export default WelcomeContainer;
+export default SubscribeBar;
