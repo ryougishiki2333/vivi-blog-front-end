@@ -15,7 +15,7 @@ const ContentContainer: React.FC = () => {
   `;
 
   return (
-    <Link to={"/"}>
+    <Link to={"/main/articlePage"}>
       <Wrapper>
         <Title>文章概览</Title>
       </Wrapper>

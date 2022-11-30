@@ -1,20 +1,19 @@
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 
-const ArticleZone: React.FC = () => {
+const ScoreZone: React.FC = () => {
   const Title = styled.div`
     ${zoneStyleTitle}
   `;
   const Wrapper = styled.div`
     ${zoneStyleWrapper}
-    height: 600px;
   `;
 
   return (
     <Wrapper>
-      <Title>文章显示组件</Title>
+      <Title>打分显示组件</Title>
     </Wrapper>
   );
 };
 
-export default ArticleZone;
+export default ScoreZone;

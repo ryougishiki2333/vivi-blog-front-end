@@ -11,7 +11,7 @@ const SubscribeBar: React.FC = () => {
 
   return (
     <Wrapper>
-      <Title>友情链接</Title>
+      <Title>订阅渠道</Title>
     </Wrapper>
   );
 };

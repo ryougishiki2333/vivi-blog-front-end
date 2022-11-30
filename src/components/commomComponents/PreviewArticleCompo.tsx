@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ContentContainer: React.FC = () => {
   const Title = styled.div`
@@ -14,9 +15,11 @@ const ContentContainer: React.FC = () => {
   `;
 
   return (
-    <Wrapper>
-      <Title>预览组件</Title>
-    </Wrapper>
+    <Link to={"/main/articlePage"}>
+      <Wrapper>
+        <Title>预览组件</Title>
+      </Wrapper>
+    </Link>
   );
 };
 

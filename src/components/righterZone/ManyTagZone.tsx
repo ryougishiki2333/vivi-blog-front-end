@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 
-const ArticleZone: React.FC = () => {
+const ManyTagZone: React.FC = () => {
   const Title = styled.div`
     ${zoneStyleTitle}
   `;
@@ -12,9 +12,9 @@ const ArticleZone: React.FC = () => {
 
   return (
     <Wrapper>
-      <Title>文章显示组件</Title>
+      <Title>标签显示组件</Title>
     </Wrapper>
   );
 };
 
-export default ArticleZone;
+export default ManyTagZone;
