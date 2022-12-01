@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { barStyleTitle, barStyleWrapper } from "./barStyle";
 
@@ -10,9 +11,11 @@ const InfoBar: React.FC = () => {
   `;
 
   return (
-    <Wrapper>
-      <Title>个人信息</Title>
-    </Wrapper>
+    <Link to={"/main/tagPage"}>
+      <Wrapper>
+        <Title>个人信息</Title>
+      </Wrapper>
+    </Link>
   );
 };
 

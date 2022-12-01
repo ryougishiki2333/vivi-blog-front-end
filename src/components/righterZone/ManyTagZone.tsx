@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 
@@ -11,9 +12,11 @@ const ManyTagZone: React.FC = () => {
   `;
 
   return (
-    <Wrapper>
-      <Title>标签显示组件</Title>
-    </Wrapper>
+    <Link to={"/main/filterPage"}>
+      <Wrapper>
+        <Title>标签显示组件</Title>
+      </Wrapper>
+    </Link>
   );
 };
 
