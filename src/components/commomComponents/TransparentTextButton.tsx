@@ -3,12 +3,10 @@ import { INavButton } from "../../types/reactType";
 import { useNavigate } from "react-router-dom";
 
 const TransparentTextButton: React.FC<INavButton> = (props) => {
-  const linkToPage = (to: string) => {
-    const navigate = useNavigate();
-    to ? navigate(to) : console.log(to);
-  };
+  const navigate = useNavigate();
+
   return (
-    <Button variant="text" onClick={() => linkToPage(props.to)}>
+    <Button variant="text" onClick={() => navigate(props.to)}>
       {props.text ? props.text : "暂时为空"}
     </Button>
   );

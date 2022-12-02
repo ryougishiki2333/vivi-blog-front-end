@@ -1,11 +1,8 @@
 import styled from "styled-components";
+import TransparentTextButton from "../commomComponents/TransparentTextButton";
+import Stack from "@mui/material/Stack";
 
 const NavigationFloator: React.FC = () => {
-  const Title = styled.div`
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 40px;
-  `;
   const Wrapper = styled.div`
     background: #d6aefb;
     height: 40px;
@@ -17,7 +14,12 @@ const NavigationFloator: React.FC = () => {
 
   return (
     <Wrapper>
-      <Title>导航栏</Title>
+      <Stack direction="row" spacing={2}>
+        <TransparentTextButton to={"/main/mainPage"} text={"Vivi"} />
+        <TransparentTextButton to={"/main/articlePage"} text={"随机"} />
+        <TransparentTextButton to={"/main/filterPage"} text={"目录"} />
+        <TransparentTextButton to={"/main/aboutPage"} text={"打赏"} />
+      </Stack>
     </Wrapper>
   );
 };

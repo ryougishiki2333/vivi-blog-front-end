@@ -3,6 +3,7 @@ import MainPageDetail from "../components/diffPageDetail/MainPageDetail";
 import FilterPageDetail from "../components/diffPageDetail/FilterPageDetail";
 import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
 import ManyTagPageDetail from "../components/diffPageDetail/ManyTagPageDetail";
+import AboutPageDetail from "../components/diffPageDetail/AboutPageDetail";
 import MainPage from "../pages/MainPage";
 export const route = [
   {
@@ -29,10 +30,10 @@ export const route = [
         path: "/main/tagPage",
         element: <ManyTagPageDetail />,
       },
-      // {
-      //   path: "/main/tagPage",
-      //   element: <LefterMainPage />,
-      // },
+      {
+        path: "/main/aboutPage",
+        element: <AboutPageDetail />,
+      },
     ],
   },
   {
