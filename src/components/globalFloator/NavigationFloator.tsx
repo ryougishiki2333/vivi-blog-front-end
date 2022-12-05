@@ -16,7 +16,7 @@ const NavigationFloator: React.FC = () => {
     <Wrapper>
       <Stack direction="row" spacing={2}>
         <TransparentTextButtonCompo to={"/main/mainPage"} text={"Vivi"} />
-        <TransparentTextButtonCompo to={"/main/articlePage"} text={"随机"} />
+        <TransparentTextButtonCompo to={"/article"} text={"随机"} />
         <TransparentTextButtonCompo to={"/main/filterPage"} text={"目录"} />
         <TransparentTextButtonCompo to={"/main/aboutPage"} text={"打赏"} />
       </Stack>

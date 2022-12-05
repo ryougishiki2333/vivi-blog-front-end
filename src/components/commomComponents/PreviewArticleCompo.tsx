@@ -15,7 +15,7 @@ const PreviewArticleCompo: React.FC = () => {
   `;
 
   return (
-    <Link to={"/main/articlePage"}>
+    <Link to={"/article"}>
       <Wrapper>
         <Title>预览组件</Title>
       </Wrapper>

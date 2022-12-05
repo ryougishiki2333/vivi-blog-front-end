@@ -1,7 +1,7 @@
 import WelcomePage from "../pages/WelcomePage";
 import MainPageDetail from "../components/diffPageDetail/MainPageDetail";
 import FilterPageDetail from "../components/diffPageDetail/FilterPageDetail";
-import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
+import ArticlePage from "../pages/ArticlePage";
 import ManyTagPageDetail from "../components/diffPageDetail/ManyTagPageDetail";
 import AboutPageDetail from "../components/diffPageDetail/AboutPageDetail";
 import MainPage from "../pages/MainPage";
@@ -23,10 +23,6 @@ export const route = [
         element: <FilterPageDetail />,
       },
       {
-        path: "/main/articlePage",
-        element: <ArticlePageDetail />,
-      },
-      {
         path: "/main/tagPage",
         element: <ManyTagPageDetail />,
       },
@@ -37,8 +33,7 @@ export const route = [
     ],
   },
   {
-    path: "/filterPage",
-    element: <MainPage />,
-    children: [],
+    path: "/article",
+    element: <ArticlePage />,
   },
 ];

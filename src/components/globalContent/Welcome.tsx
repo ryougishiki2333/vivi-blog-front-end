@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const WelcomeWrapper: React.FC = () => {
+const Welcome: React.FC = () => {
   const Title = styled.div`
     font-size: 1.5em;
     text-align: center;
@@ -23,4 +23,4 @@ const WelcomeWrapper: React.FC = () => {
   );
 };
 
-export default WelcomeWrapper;
+export default Welcome;

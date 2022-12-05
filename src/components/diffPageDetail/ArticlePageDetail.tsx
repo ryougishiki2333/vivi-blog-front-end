@@ -1,8 +1,6 @@
-import CatalogBar from "../lefterBar/CatalogBar";
-import SubscribeBar from "../lefterBar/SubscribeBar";
-import OtherLinkBar from "../lefterBar/OtherLinkBar";
+import ArticleLeft from "../globalContent/MainLeft";
 import ArticleZone from "../righterZone/ArticleZone";
-import WelcomeWrapper from "../globalWrapper/WelcomeWrapper";
+import WelcomeWrapper from "../globalContent/Welcome";
 import ContentWrapper from "../globalWrapper/ContentWrapper";
 import LefterWrapper from "../globalWrapper/LefterWrapper";
 import RighterWrapper from "../globalWrapper/RighterWrapper";
@@ -17,9 +15,7 @@ const ArticlePageDetail: React.FC = () => {
       <WelcomeWrapper />
       <ContentWrapper>
         <LefterWrapper>
-          <CatalogBar />
-          <OtherLinkBar />
-          <SubscribeBar />
+          <ArticleLeft />
         </LefterWrapper>
         <RighterWrapper>
           <ArticleZone></ArticleZone>

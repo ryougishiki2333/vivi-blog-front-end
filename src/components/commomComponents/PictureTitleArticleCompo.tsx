@@ -15,7 +15,7 @@ const PictureTitleArticleCompo: React.FC = () => {
   `;
 
   return (
-    <Link to={"/main/articlePage"}>
+    <Link to={"/article"}>
       <Wrapper>
         <Title>文章概览</Title>
       </Wrapper>
