@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import { INavButton } from "../../types/reactType";
 import { useNavigate } from "react-router-dom";
 
-const TransparentTextButton: React.FC<INavButton> = (props) => {
+const TransparentTextButtonCompo: React.FC<INavButton> = (props) => {
   const navigate = useNavigate();
 
   return (
@@ -12,4 +12,4 @@ const TransparentTextButton: React.FC<INavButton> = (props) => {
   );
 };
 
-export default TransparentTextButton;
+export default TransparentTextButtonCompo;

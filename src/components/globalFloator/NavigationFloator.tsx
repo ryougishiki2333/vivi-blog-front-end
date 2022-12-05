@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TransparentTextButton from "../commomComponents/TransparentTextButton";
+import TransparentTextButtonCompo from "../commomComponents/TransparentTextButtonCompo";
 import Stack from "@mui/material/Stack";
 
 const NavigationFloator: React.FC = () => {
@@ -15,10 +15,10 @@ const NavigationFloator: React.FC = () => {
   return (
     <Wrapper>
       <Stack direction="row" spacing={2}>
-        <TransparentTextButton to={"/main/mainPage"} text={"Vivi"} />
-        <TransparentTextButton to={"/main/articlePage"} text={"随机"} />
-        <TransparentTextButton to={"/main/filterPage"} text={"目录"} />
-        <TransparentTextButton to={"/main/aboutPage"} text={"打赏"} />
+        <TransparentTextButtonCompo to={"/main/mainPage"} text={"Vivi"} />
+        <TransparentTextButtonCompo to={"/main/articlePage"} text={"随机"} />
+        <TransparentTextButtonCompo to={"/main/filterPage"} text={"目录"} />
+        <TransparentTextButtonCompo to={"/main/aboutPage"} text={"打赏"} />
       </Stack>
     </Wrapper>
   );
