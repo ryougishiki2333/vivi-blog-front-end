@@ -4,6 +4,7 @@ import FilterPageDetail from "../components/diffPageDetail/FilterPageDetail";
 import ArticlePage from "../pages/ArticlePage";
 import ManyTagPageDetail from "../components/diffPageDetail/ManyTagPageDetail";
 import AboutPageDetail from "../components/diffPageDetail/AboutPageDetail";
+import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
 import MainPage from "../pages/MainPage";
 export const route = [
   {
@@ -35,5 +36,11 @@ export const route = [
   {
     path: "/article",
     element: <ArticlePage />,
+    children: [
+      {
+        path: "/article",
+        element: <ArticlePageDetail />,
+      },
+    ],
   },
 ];

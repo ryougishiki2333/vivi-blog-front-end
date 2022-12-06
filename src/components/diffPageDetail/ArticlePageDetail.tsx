@@ -1,4 +1,4 @@
-import ArticleLeft from "../globalContent/MainLeft";
+import ArticleLeft from "../globalContent/ArticleLeft";
 import ArticleZone from "../righterZone/ArticleZone";
 import WelcomeWrapper from "../globalContent/Welcome";
 import ContentWrapper from "../globalWrapper/ContentWrapper";
