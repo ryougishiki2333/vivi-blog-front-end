@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import MainLeft from "../globalContent/MainLeft";
 import NeatMapZone from "../righterZone/NeatMapZone";
 import OverviewZone from "../righterZone/OverviewZone";

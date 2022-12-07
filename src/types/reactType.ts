@@ -10,6 +10,6 @@ export type INavButton = {
 }
 
 export type IAvatar = {
-    to: string
+    // to: string
     text: string
 }

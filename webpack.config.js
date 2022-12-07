@@ -4,18 +4,19 @@ const path = require("path");
 
 // 相对路径转绝对路径
 const resolvePath = (_path) => path.resolve(__dirname, _path);
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const isDevelopment = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  entry: resolvePath("../src/index.tsx"),
+  entry: resolvePath("./src/index.tsx"),
 
   output: {
-    path: resolvePath("../dist"),
+    path: resolvePath("./dist"),
     clean: true,
     filename: "scripts/[name].js",
-    publicPath: "/"
+    publicPath: "/",
   },
 
   module: {
@@ -32,18 +33,10 @@ module.exports = {
         test: /\.s[ac]ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      // 加载图片
       {
-        // 处理图片
-        test: /\.(jpe?g|png|gif|webp|svg)$/,
-        type: "asset",
-        generator: {
-          filename: "assets/img/[hash:10][ext]",
-        },
-        parser: {
-          dataUrlCondition: {
-            maxSize: 60 * 1024,
-          },
-        },
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
       {
         // 处理字体资源
@@ -53,7 +46,7 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         // 只处理 src 下的文件，排除其他如 node_modules 的处理
-        include: resolvePath("../src"),
+        include: resolvePath("./src"),
         loader: "babel-loader",
         options: {
           // 开启 babel 缓存
@@ -61,51 +54,39 @@ module.exports = {
           // 关闭缓存压缩
           cacheCompression: false,
           plugins: [
-            'react-refresh/babel'
-          ]
+            isDevelopment && require.resolve("react-refresh/babel"),
+          ].filter(Boolean),
         },
       },
-      // {
-      //   test: /\.tsx?$/,
-      //   use: [
-      //     {
-      //       loader: 'ts-loader',
-      //       options: {
-      //         transpileOnly: true
-      //       }
-      //     }
-      //   ]
-      // }
     ],
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolvePath('../public/index.html'),
+      template: resolvePath("./public/index.html"),
     }),
     new ForkTsCheckerWebpackPlugin(),
-    new ReactRefreshWebpackPlugin()
-  ],
+    isDevelopment && new ReactRefreshWebpackPlugin(),
+  ].filter(Boolean),
 
   resolve: {
     alias: {
-      '@': resolvePath('../src'),
-      router: resolvePath('../src/router')
+      "@": resolvePath("./src"),
+      router: resolvePath("./src/router"),
     },
-    extensions: [".js", ".ts", ".jsx", ".tsx"]
+    extensions: [".js", ".ts", ".jsx", ".tsx"],
   },
-  
-  mode: 'development',
-  
-  devtool: 'cheap-module-source-map',
+
+  mode: isDevelopment ? "development" : "production",
+
+  devtool: isDevelopment ? "cheap-module-source-map" : false,
 
   devServer: {
-    static: resolvePath("../dist"),
-    host: 'localhost',
+    static: resolvePath("./dist"),
+    host: "localhost",
     port: 8080,
     open: true,
     hot: true,
     historyApiFallback: true,
   },
-
 };

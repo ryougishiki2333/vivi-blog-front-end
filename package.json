@@ -5,7 +5,8 @@
     "version": "1.0.0",
     "main": "pathToMain",
     "scripts": {
-        "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.js"
+        "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js",
+        "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js"
     },
     "dependencies": {
         "@emotion/react": "^11.10.5",
