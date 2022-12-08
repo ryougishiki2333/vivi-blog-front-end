@@ -1,27 +1,23 @@
 import styled from "styled-components";
-import TransparentTextButtonCompo from "../commomComponents/TransparentTextButtonCompo";
-import Stack from "@mui/material/Stack";
-import AvatarCompo from "../commomComponents/AvatarCompo";
-import img from "../../assets/img/img.jpg";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   background: #fa9ab1;
+  position: absolute;
   height: 40px;
   width: 100%;
-  padding: 20 0 20 0;
+  top: 50px;
+  text-align: center;
+  line-height: 40px;
 `;
 
 const InviteSignUpFloator: React.FC = () => {
   return (
-    <Wrapper>
-      <Stack direction="row" spacing={2}>
-        <TransparentTextButtonCompo to={"/main/mainPage"} text={"Vivi"} />
-        <TransparentTextButtonCompo to={"/article"} text={"随机"} />
-        <TransparentTextButtonCompo to={"/main/filterPage"} text={"目录"} />
-        <TransparentTextButtonCompo to={"/main/aboutPage"} text={"打赏"} />
-        <AvatarCompo text={"CS"} sx={undefined} img={img} />
-      </Stack>
-    </Wrapper>
+    <Link to={"/visitor/signUp"}>
+      <Wrapper>
+        游客114514您好！注册登录后可使用自定义头像等功能，快去尝试看看吧！
+      </Wrapper>
+    </Link>
   );
 };
 

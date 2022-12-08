@@ -6,11 +6,13 @@ import Welcome from "../components/globalContent/Welcome";
 import ContentWrapper from "../components/globalWrapper/ContentWrapper";
 import LefterWrapper from "../components/globalWrapper/LefterWrapper";
 import RighterWrapper from "../components/globalWrapper/RighterWrapper";
+import InviteSignUpFloator from "../components/globalFloator/InviteSignUpFloator";
 
 const MainPage: React.FC = () => {
   return (
     <>
       <NavigationFloator />
+      <InviteSignUpFloator />
       <Welcome />
       <ContentWrapper>
         <LefterWrapper>
