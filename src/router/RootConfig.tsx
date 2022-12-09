@@ -7,6 +7,7 @@ import ManyTagPageDetail from "../components/diffPageDetail/ManyTagPageDetail";
 import AboutPageDetail from "../components/diffPageDetail/AboutPageDetail";
 import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
 import SignUpPageDetail from "../components/diffPageDetail/SignUpPageDetail";
+import InnerPageDetail from "../components/diffPageDetail/InnerPageDetail";
 import MainPage from "../pages/MainPage";
 export const route = [
   {
@@ -55,7 +56,7 @@ export const route = [
       },
       {
         path: "/visitor/inner",
-        element: <SignUpPageDetail />,
+        element: <InnerPageDetail />,
       },
     ],
   },
