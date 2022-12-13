@@ -8,8 +8,8 @@ import AboutPageDetail from "../components/diffPageDetail/AboutPageDetail";
 import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
 import SignUpPageDetail from "../components/diffPageDetail/SignUpPageDetail";
 import InnerPageDetail from "../components/diffPageDetail/InnerPageDetail";
+import ManageMainDetail from "../components/diffPageDetail/ManageMainDetail";
 import MainPage from "../pages/MainPage";
-import OwnerPage from "../pages/OwnerPage";
 import ManagePage from "../pages/ManagePage";
 
 export const route = [
@@ -63,17 +63,17 @@ export const route = [
       },
     ],
   },
-  {
-    path: "/owner",
-    element: <OwnerPage />,
-  },
+  // {
+  //   path: "/manage/article",
+  //   element: <WritePage />,
+  // },
   {
     path: "/manage",
     element: <ManagePage />,
     children: [
       {
-        path: "/manage/article",
-        element: <SignUpPageDetail />,
+        path: "/manage/main",
+        element: <ManageMainDetail />,
       },
       {
         path: "/manage/visitor",
@@ -92,7 +92,7 @@ export const route = [
         element: <InnerPageDetail />,
       },
       {
-        path: "/manage/tag",
+        path: "/manage/list",
         element: <InnerPageDetail />,
       },
     ],

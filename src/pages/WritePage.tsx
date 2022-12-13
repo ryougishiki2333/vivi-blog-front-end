@@ -6,7 +6,7 @@ import ContentWrapper from "../components/globalWrapper/ContentWrapper";
 import LefterWrapper from "../components/globalWrapper/LefterWrapper";
 import RighterWrapper from "../components/globalWrapper/RighterWrapper";
 
-const OwnerPage: React.FC = () => {
+const WritePage: React.FC = () => {
   return (
     <>
       <BackToHomePageFloator />
@@ -15,4 +15,4 @@ const OwnerPage: React.FC = () => {
   );
 };
 
-export default OwnerPage;
+export default WritePage;
