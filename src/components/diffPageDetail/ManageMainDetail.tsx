@@ -1,11 +1,9 @@
-import DataSumZone from "../righterZone/DataSumZone";
-import NeatMapZone from "../righterZone/NeatMapZone";
+import TableZoneCompo from "../commomComponents/TableZoneCompo";
 
 const ManageMainDetail: React.FC = () => {
   return (
     <>
-      <DataSumZone></DataSumZone>
-      <NeatMapZone></NeatMapZone>
+      <TableZoneCompo />
     </>
   );
 };

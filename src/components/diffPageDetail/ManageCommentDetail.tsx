@@ -1,6 +1,6 @@
 import TableZoneCompo from "../commomComponents/TableZoneCompo";
 
-const ManageVisitorDetail: React.FC = () => {
+const ManageCommentDetail: React.FC = () => {
   return (
     <>
       <TableZoneCompo />
@@ -8,4 +8,4 @@ const ManageVisitorDetail: React.FC = () => {
   );
 };
 
-export default ManageVisitorDetail;
+export default ManageCommentDetail;

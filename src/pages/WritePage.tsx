@@ -1,15 +1,24 @@
-import BackToHomePageFloator from "../components/globalFloator/BackToHomePageFloator";
 import { Outlet } from "react-router-dom";
 import { ScrollRestoration } from "react-router-dom";
-import MainLeft from "../components/globalContent/MainLeft";
+import WriteLeft from "../components/globalContent/WriteLeft";
+import WriteRight from "../components/globalContent/WriteRight";
 import ContentWrapper from "../components/globalWrapper/ContentWrapper";
 import LefterWrapper from "../components/globalWrapper/LefterWrapper";
 import RighterWrapper from "../components/globalWrapper/RighterWrapper";
+import BackToManagePageFloator from "../components/globalFloator/BackToManagePageFloator";
 
 const WritePage: React.FC = () => {
   return (
     <>
-      <BackToHomePageFloator />
+      <BackToManagePageFloator />
+      <ContentWrapper>
+        <LefterWrapper>
+          <WriteLeft />
+        </LefterWrapper>
+        <RighterWrapper>
+          <WriteRight />
+        </RighterWrapper>
+      </ContentWrapper>
       <ScrollRestoration />
     </>
   );

@@ -1,11 +1,9 @@
-import SignInZone from "../righterZone/SignInZone";
-import SignUpZone from "../righterZone/SignUpZone";
+import TableZoneCompo from "../commomComponents/TableZoneCompo";
 
 const MainPageDetail: React.FC = () => {
   return (
     <>
-      <SignInZone></SignInZone>
-      <SignUpZone></SignUpZone>
+      <TableZoneCompo />
     </>
   );
 };

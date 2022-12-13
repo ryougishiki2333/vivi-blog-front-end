@@ -1,16 +1,22 @@
+import MainPage from "../pages/MainPage";
+import ManagePage from "../pages/ManagePage";
 import WelcomePage from "../pages/WelcomePage";
-import MainPageDetail from "../components/diffPageDetail/MainPageDetail";
-import FilterPageDetail from "../components/diffPageDetail/FilterPageDetail";
 import ArticlePage from "../pages/ArticlePage";
 import SignUpPage from "../pages/SignUpPage";
+import WritePage from "../pages/WritePage";
+import MainPageDetail from "../components/diffPageDetail/MainPageDetail";
+import FilterPageDetail from "../components/diffPageDetail/FilterPageDetail";
 import ManyTagPageDetail from "../components/diffPageDetail/ManyTagPageDetail";
 import AboutPageDetail from "../components/diffPageDetail/AboutPageDetail";
 import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
 import SignUpPageDetail from "../components/diffPageDetail/SignUpPageDetail";
 import InnerPageDetail from "../components/diffPageDetail/InnerPageDetail";
 import ManageMainDetail from "../components/diffPageDetail/ManageMainDetail";
-import MainPage from "../pages/MainPage";
-import ManagePage from "../pages/ManagePage";
+import ManageArticleDetail from "../components/diffPageDetail/ManageArticleDetail";
+import ManageCommentDetail from "../components/diffPageDetail/ManageCommentDetail";
+import ManagePageDetail from "../components/diffPageDetail/ManagePageDetail";
+import ManageTagDetail from "../components/diffPageDetail/ManageTagDetail";
+import ManageVisitorDetail from "../components/diffPageDetail/ManageVisitorDetail";
 
 export const route = [
   {
@@ -63,10 +69,10 @@ export const route = [
       },
     ],
   },
-  // {
-  //   path: "/manage/article",
-  //   element: <WritePage />,
-  // },
+  {
+    path: "/manage/article",
+    element: <WritePage />,
+  },
   {
     path: "/manage",
     element: <ManagePage />,
@@ -77,23 +83,23 @@ export const route = [
       },
       {
         path: "/manage/visitor",
-        element: <InnerPageDetail />,
+        element: <ManageVisitorDetail />,
       },
       {
         path: "/manage/page",
-        element: <SignUpPageDetail />,
+        element: <ManagePageDetail />,
       },
       {
         path: "/manage/tag",
-        element: <InnerPageDetail />,
+        element: <ManageTagDetail />,
       },
       {
         path: "/manage/comment",
-        element: <InnerPageDetail />,
+        element: <ManageCommentDetail />,
       },
       {
         path: "/manage/list",
-        element: <InnerPageDetail />,
+        element: <ManageArticleDetail />,
       },
     ],
   },
