@@ -9,6 +9,9 @@ import ArticlePageDetail from "../components/diffPageDetail/ArticlePageDetail";
 import SignUpPageDetail from "../components/diffPageDetail/SignUpPageDetail";
 import InnerPageDetail from "../components/diffPageDetail/InnerPageDetail";
 import MainPage from "../pages/MainPage";
+import OwnerPage from "../pages/OwnerPage";
+import ManagePage from "../pages/ManagePage";
+
 export const route = [
   {
     path: "/",
@@ -56,6 +59,40 @@ export const route = [
       },
       {
         path: "/visitor/inner",
+        element: <InnerPageDetail />,
+      },
+    ],
+  },
+  {
+    path: "/owner",
+    element: <OwnerPage />,
+  },
+  {
+    path: "/manage",
+    element: <ManagePage />,
+    children: [
+      {
+        path: "/manage/article",
+        element: <SignUpPageDetail />,
+      },
+      {
+        path: "/manage/visitor",
+        element: <InnerPageDetail />,
+      },
+      {
+        path: "/manage/page",
+        element: <SignUpPageDetail />,
+      },
+      {
+        path: "/manage/tag",
+        element: <InnerPageDetail />,
+      },
+      {
+        path: "/manage/comment",
+        element: <InnerPageDetail />,
+      },
+      {
+        path: "/manage/tag",
         element: <InnerPageDetail />,
       },
     ],

@@ -11,7 +11,9 @@ const ArticlePage: React.FC = () => {
     <>
       <NavigationFloator />
       <ContentWrapper>
-        <LefterWrapper>{/* <MainLeft /> */}</LefterWrapper>
+        <LefterWrapper>
+          <MainLeft />
+        </LefterWrapper>
         <RighterWrapper>
           <Outlet />
         </RighterWrapper>
