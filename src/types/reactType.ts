@@ -4,10 +4,12 @@ export type IWrapper = {
     children: React.ReactNode
 }
 
-export type INavButton = {
-    to: string
+export type IViviButton = {
+    to?: string
     text: string
     fontSize?: number
+    color?:string
+    backgroundColor?:string
 }
 
 export type IAvatar = {

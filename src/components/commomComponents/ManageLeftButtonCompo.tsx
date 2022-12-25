@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { INavButton } from "../../types/reactType";
+import { IViviButton } from "../../types/reactType";
 import { Link } from "react-router-dom";
 
 const barStyleTitle = `
@@ -22,9 +22,9 @@ const Wrapper = styled.div`
   ${barStyleWrapper}
 `;
 
-const ManageLeftButtonCompo: React.FC<INavButton> = (props) => {
+const ManageLeftButtonCompo: React.FC<IViviButton> = (props) => {
   return (
-    <Link to={props.to}>
+    <Link to={props.to ? props.to : ""}>
       <Wrapper>
         <Title>{props.text}</Title>
       </Wrapper>
