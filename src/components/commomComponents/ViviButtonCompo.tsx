@@ -3,7 +3,7 @@ import { IViviButton } from "../../types/reactType";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 
-const TransparentTextButtonCompo: React.FC<IViviButton> = (props) => {
+const ViviButtonCompo: React.FC<IViviButton> = (props) => {
   const TextButton = styled(Button)({
     color: props.color ? props.color : "#ffffff",
     backgroundColor: props.backgroundColor ? props.backgroundColor : "",
@@ -20,4 +20,4 @@ const TransparentTextButtonCompo: React.FC<IViviButton> = (props) => {
   );
 };
 
-export default TransparentTextButtonCompo;
+export default ViviButtonCompo;

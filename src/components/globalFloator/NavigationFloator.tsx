@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TransparentTextButtonCompo from "../commomComponents/TransparentTextButtonCompo";
+import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import Stack from "@mui/material/Stack";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/img.jpg";
@@ -36,7 +36,7 @@ const NavigationFloator: React.FC = () => {
     <Wrapper>
       <LeftWrapper>
         <Stack direction="row" spacing={2}>
-          <TransparentTextButtonCompo
+          <ViviButtonCompo
             fontSize={18}
             to={"/main/mainPage"}
             text={"Vivi的小站"}
@@ -45,15 +45,9 @@ const NavigationFloator: React.FC = () => {
       </LeftWrapper>
       <RightWrapper>
         <Stack direction="row" spacing={2}>
-          <TransparentTextButtonCompo to={"/article"} text={"随机 | Random"} />
-          <TransparentTextButtonCompo
-            to={"/main/filterPage"}
-            text={"目录 | Category"}
-          />
-          <TransparentTextButtonCompo
-            to={"/main/aboutPage"}
-            text={"打赏 | Support"}
-          />
+          <ViviButtonCompo to={"/article"} text={"随机 | Random"} />
+          <ViviButtonCompo to={"/main/filterPage"} text={"目录 | Category"} />
+          <ViviButtonCompo to={"/main/aboutPage"} text={"打赏 | Support"} />
           <AvatarCompo text={"CS"} sx={undefined} img={img} />
         </Stack>
       </RightWrapper>

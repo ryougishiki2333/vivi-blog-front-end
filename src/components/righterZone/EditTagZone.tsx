@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
-import ManageLeftButtonCompo from "../commomComponents/TransparentTextButtonCompo";
+import ManageLeftButtonCompo from "../commomComponents/ViviButtonCompo";
 
 const EditTagZone: React.FC = () => {
   const Wrapper = styled.div`
