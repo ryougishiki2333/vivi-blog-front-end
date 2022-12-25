@@ -15,3 +15,7 @@ export type IAvatar = {
     text: string
     sx: any
 }
+
+export type ITitle = {
+    text: string
+}

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
+import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
 const EditTagZone: React.FC = () => {
   const Title = styled.div`
@@ -11,7 +12,7 @@ const EditTagZone: React.FC = () => {
 
   return (
     <Wrapper>
-      <Title>标签编辑</Title>
+      <SvgTitleCompo text="Tag" />
     </Wrapper>
   );
 };
