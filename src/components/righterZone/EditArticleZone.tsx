@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
+import WangEditor from "../commomComponents/WangEditor";
+
+const Wrapper = styled.div`
+  ${zoneStyleWrapper}
+`;
 
 const EditArticleZone: React.FC = () => {
-  const Title = styled.div`
-    ${zoneStyleTitle}
-  `;
-  const Wrapper = styled.div`
-    ${zoneStyleWrapper}
-  `;
-
   return (
     <Wrapper>
-      <Title>文章编辑</Title>
+      <WangEditor />
     </Wrapper>
   );
 };

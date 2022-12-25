@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   background: #fa9ab1;
-  position: absolute;
   height: 40px;
   width: 100%;
-  top: 50px;
   text-align: center;
   line-height: 40px;
 `;

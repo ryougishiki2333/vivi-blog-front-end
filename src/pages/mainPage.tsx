@@ -12,13 +12,13 @@ const MainPage: React.FC = () => {
   return (
     <>
       <NavigationFloator />
-      <InviteSignUpFloator />
       <Welcome />
       <ContentWrapper>
         <LefterWrapper>
           <MainLeft />
         </LefterWrapper>
         <RighterWrapper>
+          <InviteSignUpFloator />
           <Outlet />
         </RighterWrapper>
       </ContentWrapper>

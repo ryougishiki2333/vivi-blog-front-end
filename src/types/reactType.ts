@@ -7,6 +7,7 @@ export type IWrapper = {
 export type INavButton = {
     to: string
     text: string
+    fontSize?: number
 }
 
 export type IAvatar = {
