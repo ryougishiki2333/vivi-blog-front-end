@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import { ITag } from "../types/dataType"
+import { ITag } from "../types/dataType"
 
 export const tagReducer = createSlice({
   name: 'counter',
@@ -7,7 +7,7 @@ export const tagReducer = createSlice({
     value: [
         {name: "miaomiaomiao", check:true},
         {name: "gugugu", check:false}
-    ]
+    ] as ITag[]
   },
   reducers: {
     addTag: state => {
@@ -16,12 +16,14 @@ export const tagReducer = createSlice({
     deleteTag: state => {
     //   state.value -= 1
     },
-    changeArticleTag: (state, action) => {
-    //   state.value += action.payload
+    changeTagCheck: (state, action) => {
+      state.value.forEach((tag)=>{if (tag.name === action.payload) {
+        tag.check = !tag.check
+      }})
     }
   }
 })
 
-export const { addTag, deleteTag, changeArticleTag } = tagReducer.actions
+export const { addTag, deleteTag, changeTagCheck } = tagReducer.actions
 
 export default tagReducer.reducer

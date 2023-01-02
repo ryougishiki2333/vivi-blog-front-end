@@ -13,8 +13,13 @@ const ViviButtonCompo: React.FC<IViviButton> = (props) => {
   });
   const navigate = useNavigate();
 
+  const handleOnClick = () => {
+    props.to && navigate(props.to);
+    props.onClick && props.onClick();
+  };
+
   return (
-    <TextButton variant="text" onClick={() => props.to && navigate(props.to)}>
+    <TextButton variant="text" onClick={handleOnClick}>
       {props.text ? props.text : "暂时为空"}
     </TextButton>
   );

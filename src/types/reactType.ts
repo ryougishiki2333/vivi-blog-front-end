@@ -10,6 +10,7 @@ export type IViviButton = {
     fontSize?: number
     color?:string
     backgroundColor?:string
+    onClick?:Function
 }
 
 export type IAvatar = {
