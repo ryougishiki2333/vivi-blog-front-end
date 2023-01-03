@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
-import PictureTitleArticleCompo from "../commomComponents/PictureTitleArticleCompo";
 import PreviewArticleCompo from "../commomComponents/PreviewArticleCompo";
 
 const Title = styled.div`
@@ -14,8 +13,6 @@ const OverviewZone: React.FC = () => {
   return (
     <Wrapper>
       <PreviewArticleCompo />
-      <PictureTitleArticleCompo />
-      <PictureTitleArticleCompo />
     </Wrapper>
   );
 };

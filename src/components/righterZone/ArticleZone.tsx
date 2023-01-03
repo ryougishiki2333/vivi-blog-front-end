@@ -8,16 +8,20 @@ const Title = styled.div`
 `;
 const Wrapper = styled.div`
   ${zoneStyleWrapper}
-  height: 600px;
 `;
 
 const ArticleZone: React.FC = () => {
   const articleItem = useAppSelector((state) => state.article.value);
   const { id } = useParams();
-  console.log(id);
+  const articleItemFilter = articleItem.filter((article) => article.id === id);
+  console.log(articleItemFilter);
+
   return (
     <Wrapper>
-      <Title>文章显示组件</Title>
+      <Title>{articleItemFilter[0].title}</Title>
+      <div
+        dangerouslySetInnerHTML={{ __html: articleItemFilter[0].content }}
+      ></div>
     </Wrapper>
   );
 };

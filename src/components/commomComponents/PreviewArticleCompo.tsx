@@ -6,7 +6,7 @@ import { IArticleState } from "../../types/dataType";
 const Wrapper = styled.div`
   background: #d6aefb;
   margin: 20px;
-  height: 300px;
+  height: 200px;
 `;
 
 const PreviewArticleCompo: React.FC = () => {
