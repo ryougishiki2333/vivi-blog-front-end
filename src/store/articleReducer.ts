@@ -12,20 +12,31 @@ export const articleReducer = createSlice({
           { name: "miaomiaomiao", check: true },
           { name: "gugugu", check: false },
         ],
-        articleState:0
+        articleState:0,
+        id:'123123'
+      },
+      {
+        title: "test2",
+        content: "<p>test2</p>",
+        tag: [
+          { name: "miaomiaomiao", check: true },
+          { name: "gugugu", check: false },
+        ],
+        articleState:1,
+        id:'12341231123'
       },
     ] as IArticle[],
   },
   reducers: {
-    addTag: (state) => {
+    saveArticle: (state) => {
       //   state.value += 1
     },
-    deleteTag: (state) => {
+    deleteArticle: (state) => {
       //   state.value -= 1
     },
   },
 });
 
-export const { addTag, deleteTag } = articleReducer.actions;
+export const { } = articleReducer.actions;
 
 export default articleReducer.reducer;

@@ -3,14 +3,14 @@ import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 import PictureTitleArticleCompo from "../commomComponents/PictureTitleArticleCompo";
 import PreviewArticleCompo from "../commomComponents/PreviewArticleCompo";
 
-const OverviewZone: React.FC = () => {
-  const Title = styled.div`
-    ${zoneStyleTitle}
-  `;
-  const Wrapper = styled.div`
-    ${zoneStyleWrapper}
-  `;
+const Title = styled.div`
+  ${zoneStyleTitle}
+`;
+const Wrapper = styled.div`
+  ${zoneStyleWrapper}
+`;
 
+const OverviewZone: React.FC = () => {
   return (
     <Wrapper>
       <PreviewArticleCompo />

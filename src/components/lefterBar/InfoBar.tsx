@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { barStyleTitle, barStyleWrapper } from "./barStyle";
 
-const InfoBar: React.FC = () => {
-  const Title = styled.div`
-    ${barStyleTitle}
-  `;
-  const Wrapper = styled.div`
-    ${barStyleWrapper}
-  `;
+const Title = styled.div`
+  ${barStyleTitle}
+`;
+const Wrapper = styled.div`
+  ${barStyleWrapper}
+`;
 
+const InfoBar: React.FC = () => {
   return (
     <Link to={"/main/tagPage"}>
       <Wrapper>

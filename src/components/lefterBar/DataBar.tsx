@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { barStyleTitle, barStyleWrapper } from "./barStyle";
 
-const DataBar: React.FC = () => {
-  const Title = styled.div`
-    ${barStyleTitle}
-  `;
-  const Wrapper = styled.div`
-    ${barStyleWrapper}
-  `;
+const Title = styled.div`
+  ${barStyleTitle}
+`;
+const Wrapper = styled.div`
+  ${barStyleWrapper}
+`;
 
+const DataBar: React.FC = () => {
   return (
     <Wrapper>
       <Title>数据信息</Title>

@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { IWrapper } from "../../types/reactType";
 
-const ContentWrapper: React.FC<IWrapper> = (props) => {
-  const ContentWrapper = styled.div`
-    width: 100%;
-    display: flex;
-  `;
+const ContentWrapperInner = styled.div`
+  width: 100%;
+  display: flex;
+`;
 
-  return <ContentWrapper>{props.children}</ContentWrapper>;
+const ContentWrapper: React.FC<IWrapper> = (props) => {
+  return <ContentWrapperInner>{props.children}</ContentWrapperInner>;
 };
 
 export default ContentWrapper;

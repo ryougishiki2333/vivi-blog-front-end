@@ -3,6 +3,7 @@ export type IArticle = {
     content: string
     tag:Array<ITag>
     articleState:IArticleState
+    id:string
 }
 
 export type ITag = {
@@ -10,7 +11,7 @@ export type ITag = {
     check:boolean
 }
 
-enum IArticleState {
+export enum IArticleState {
   draft = 0,
   publish = 1,
   delete = 2,

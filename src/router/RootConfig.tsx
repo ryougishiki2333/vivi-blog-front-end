@@ -50,7 +50,7 @@ export const route = [
     element: <ArticlePage />,
     children: [
       {
-        path: "/article",
+        path: "/article/:id",
         element: <ArticlePageDetail />,
       },
     ],

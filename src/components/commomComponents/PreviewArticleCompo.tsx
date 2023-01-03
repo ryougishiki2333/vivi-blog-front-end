@@ -1,26 +1,26 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../store/hooks";
+import { IArticleState } from "../../types/dataType";
+
+const Wrapper = styled.div`
+  background: #d6aefb;
+  margin: 20px;
+  height: 300px;
+`;
 
 const PreviewArticleCompo: React.FC = () => {
-  const Title = styled.div`
-    font-size: 1.5em;
-    text-align: center;
-  `;
-  const Wrapper = styled.div`
-    background: #d6aefb;
-    height: 500px;
-    width: 70%;
-    margin: 20px;
-    display: inline-block;
-  `;
-
-  return (
-    <Link to={"/article"}>
-      <Wrapper>
-        <Title>预览组件</Title>
-      </Wrapper>
-    </Link>
+  const articleItem = useAppSelector((state) => state.article.value);
+  const articleItemPublish = articleItem.filter(
+    (article) => article.articleState === 1
   );
+  const articleItemPublishRender = articleItemPublish.map((article) => (
+    <Link key={article.id} to={"/article/" + article.id}>
+      <Wrapper>{article.title}</Wrapper>
+    </Link>
+  ));
+
+  return <>{articleItemPublishRender}</>;
 };
 
 export default PreviewArticleCompo;
