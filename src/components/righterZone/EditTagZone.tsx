@@ -45,7 +45,7 @@ const EditTagZone: React.FC = () => {
 
   const tagItem = useAppSelector((state) => state.tag.value);
   const tagItemRender = tagItem.map((tag) => (
-    <TagBox>
+    <TagBox key={tag.name}>
       <Switch checked={tag.check} onChange={handleChange} name={tag.name} />
       <div>{tag.name}</div>
     </TagBox>

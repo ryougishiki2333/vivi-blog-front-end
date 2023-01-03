@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { ITag } from "../types/dataType"
 
 export const tagReducer = createSlice({
-  name: 'counter',
+  name: 'tag',
   initialState: {
     value: [
         {name: "miaomiaomiao", check:true},
