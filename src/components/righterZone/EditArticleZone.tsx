@@ -21,7 +21,6 @@ import { ITag } from "src/types/dataType";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-const selectArticle = (state: RootState) => state.article.value;
 const selectTag = (state: RootState) => state.tag.value;
 
 const TagBox = styled.div`
@@ -71,24 +70,11 @@ const EditArticleZone: React.FC = () => {
   };
 
   // 关于初始数据的逻辑
-  const article = useAppSelector(selectArticle);
   const tag = useAppSelector(selectTag);
 
-  const draftArticleData = article.filter(
-    (article) => article.articleState === 0
-  );
-
-  const [title, setTitle] = useState(() =>
-    draftArticleData && draftArticleData.length ? draftArticleData[0].title : ""
-  );
-  const [content, setContent] = useState(() =>
-    draftArticleData && draftArticleData.length
-      ? draftArticleData[0].content
-      : ""
-  );
-  const [articleTag, setArticleTag] = useState(() =>
-    draftArticleData && draftArticleData.length ? draftArticleData[0].tag : []
-  );
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [articleTag, setArticleTag] = useState<Array<string>>([]);
 
   // 关于onChange
   const handleEditorChange = (editor: IDomEditor) => {
@@ -160,20 +146,20 @@ const EditArticleZone: React.FC = () => {
             color="#000000"
           />
         </ButtonBox>
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>修改Tag</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              To subscribe to this website, please enter your email address
+              here. We will send updates occasionally.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>取消</Button>
+            <Button onClick={handleClose}>提交</Button>
+          </DialogActions>
+        </Dialog>
       </Wrapper>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>修改Tag</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>取消</Button>
-          <Button onClick={handleClose}>提交</Button>
-        </DialogActions>
-      </Dialog>
 
       <Wrapper>
         <SvgTitleCompo text="Controling" />

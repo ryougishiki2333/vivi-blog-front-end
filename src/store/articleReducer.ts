@@ -6,8 +6,8 @@ export const articleReducer = createSlice({
   initialState: {
     value: [
       {
-        title: "test1",
-        content: "<p>test1</p>",
+        title: "test0",
+        content: "<p>test0</p>",
         tag: [
           "miaomiaomiao","gugugu"
         ],
@@ -15,22 +15,48 @@ export const articleReducer = createSlice({
         id:'123123'
       },
       {
-        title: "test2",
-        content: "<p>test2</p>",
+        title: "test1",
+        content: "<p>test1</p>",
         tag: [
           "miaomiaomiao","gugugu"
         ],
         articleState:1,
         id:'12341231123'
       },
+      {
+        title: "test2",
+        content: "<p>test2</p>",
+        tag: [
+          "miaomiaomiao","gugugu"
+        ],
+        articleState:2,
+        id:'1234123112311'
+      },
+      {
+        title: "test3",
+        content: "<p>test3</p>",
+        tag: [
+          "miaomiaomiao","gugugu"
+        ],
+        articleState:3,
+        id:'12341231123123'
+      },
     ] as IArticle[],
   },
   reducers: {
-    saveArticle: (state) => {
-      //   state.value += 1
-    },
     deleteArticle: (state) => {
-      //   state.value -= 1
+      // 改state,草稿不显示
+    },
+    publishArticle: (state) => {
+      // 如果是草稿,则在发布区新增
+      // 如果已经有id,则直接替换同id内容,并改state
+    },
+    archiveArticle: (state)=>{
+      // 改state,草稿不显示
+    },
+    saveArticle: (state) => {
+      // 如果是草稿,则在草稿箱新增
+      // 如果已经有id,则直接替换同id内容
     },
   },
 });
