@@ -6,10 +6,7 @@ export type IArticle = {
     id:string
 }
 
-export type ITag = {
-    name:string
-    check:boolean
-}
+export type ITag = string
 
 export enum IArticleState {
   draft = 0,

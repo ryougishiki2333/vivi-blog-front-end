@@ -9,8 +9,7 @@ export const articleReducer = createSlice({
         title: "test1",
         content: "<p>test1</p>",
         tag: [
-          { name: "miaomiaomiao", check: true },
-          { name: "gugugu", check: false },
+          "miaomiaomiao","gugugu"
         ],
         articleState:0,
         id:'123123'
@@ -19,8 +18,7 @@ export const articleReducer = createSlice({
         title: "test2",
         content: "<p>test2</p>",
         tag: [
-          { name: "miaomiaomiao", check: true },
-          { name: "gugugu", check: false },
+          "miaomiaomiao","gugugu"
         ],
         articleState:1,
         id:'12341231123'

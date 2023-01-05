@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import { ScrollRestoration } from "react-router-dom";
-import WriteLeft from "../components/globalContent/WriteLeft";
-import WriteRight from "../components/globalContent/WriteRight";
 import ContentWrapper from "../components/globalWrapper/ContentWrapper";
 import LefterWrapper from "../components/globalWrapper/LefterWrapper";
 import RighterWrapper from "../components/globalWrapper/RighterWrapper";
 import BackToManagePageFloator from "../components/globalFloator/BackToManagePageFloator";
+import EditArticleZone from "../components/righterZone/EditArticleZone";
+import EditArticleBar from "../components/lefterBar/EditArticleBar";
 
 const WritePage: React.FC = () => {
   return (
@@ -13,10 +13,10 @@ const WritePage: React.FC = () => {
       <BackToManagePageFloator />
       <ContentWrapper>
         <LefterWrapper>
-          <WriteLeft />
+          <EditArticleBar />
         </LefterWrapper>
         <RighterWrapper>
-          <WriteRight />
+          <EditArticleZone />
         </RighterWrapper>
       </ContentWrapper>
       <ScrollRestoration />

@@ -18,11 +18,15 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { RootState } from "../../store/store";
 import { ITag } from "src/types/dataType";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 const selectArticle = (state: RootState) => state.article.value;
+const selectTag = (state: RootState) => state.tag.value;
 
 const TagBox = styled.div`
   display: flex;
+  margin-right: 10px;
 `;
 
 const Wrapper = styled.div`
@@ -66,8 +70,10 @@ const EditArticleZone: React.FC = () => {
     setOpen(false);
   };
 
-  // 关于数据的逻辑
+  // 关于初始数据的逻辑
   const article = useAppSelector(selectArticle);
+  const tag = useAppSelector(selectTag);
+
   const draftArticleData = article.filter(
     (article) => article.articleState === 0
   );
@@ -80,12 +86,11 @@ const EditArticleZone: React.FC = () => {
       ? draftArticleData[0].content
       : ""
   );
-  const [tag, setTag] = useState(() =>
+  const [articleTag, setArticleTag] = useState(() =>
     draftArticleData && draftArticleData.length ? draftArticleData[0].tag : []
   );
 
-  const dispatch = useAppDispatch();
-
+  // 关于onChange
   const handleEditorChange = (editor: IDomEditor) => {
     setContent(editor.getHtml());
   };
@@ -95,28 +100,13 @@ const EditArticleZone: React.FC = () => {
   };
 
   const handleTagChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    name: string
+    event: React.SyntheticEvent,
+    value: Array<string>
   ) => {
-    const copyTag = JSON.parse(JSON.stringify(tag));
-    copyTag.forEach((item: ITag) => {
-      if (item.name === name) {
-        item.check = !item.check;
-      }
-    });
-    setTag(copyTag);
+    setArticleTag(value);
   };
 
-  const tagItemRender = tag.map((tag) => (
-    <TagBox key={tag.name}>
-      <Switch
-        checked={tag.check}
-        onChange={(event) => handleTagChange(event, tag.name)}
-        name={tag.name}
-      />
-      <div>{tag.name}</div>
-    </TagBox>
-  ));
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -150,7 +140,19 @@ const EditArticleZone: React.FC = () => {
 
       <Wrapper>
         <SvgTitleCompo text="Tag" />
-        <TagBox>{tagItemRender}</TagBox>
+        <Autocomplete
+          multiple
+          limitTags={2}
+          id="multiple-limit-tags"
+          options={tag}
+          value={[...articleTag]}
+          getOptionLabel={(option) => option}
+          renderInput={(params) => (
+            <TextField {...params} label="limitTags" placeholder="Favorites" />
+          )}
+          onChange={handleTagChange}
+        />
+
         <ButtonBox>
           <ManageLeftButtonCompo
             onClick={handleClickOpen}

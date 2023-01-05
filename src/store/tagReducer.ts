@@ -5,8 +5,7 @@ export const tagReducer = createSlice({
   name: 'tag',
   initialState: {
     value: [
-        {name: "miaomiaomiao", check:true},
-        {name: "gugugu", check:false}
+        "miaomiaomiao","gugugu"
     ] as ITag[]
   },
   reducers: {
@@ -16,14 +15,14 @@ export const tagReducer = createSlice({
     deleteTag: state => {
     //   state.value -= 1
     },
-    changeTagCheck: (state, action) => {
-      state.value.forEach((tag)=>{if (tag.name === action.payload) {
-        tag.check = !tag.check
-      }})
-    }
+    // changeTagCheck: (state, action) => {
+    //   state.value.forEach((tag)=>{if (tag.name === action.payload) {
+    //     tag.check = !tag.check
+    //   }})
+    // }
   }
 })
 
-export const { addTag, deleteTag, changeTagCheck } = tagReducer.actions
+export const { addTag, deleteTag } = tagReducer.actions
 
 export default tagReducer.reducer
