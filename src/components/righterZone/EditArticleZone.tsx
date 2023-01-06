@@ -21,8 +21,6 @@ import { ITag } from "src/types/dataType";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-const selectTag = (state: RootState) => state.tag.value;
-
 const TagBox = styled.div`
   display: flex;
   margin-right: 10px;
@@ -37,7 +35,17 @@ const ButtonBox = styled.div`
   justify-content: right;
 `;
 
-const EditArticleZone: React.FC = () => {
+interface IEditArticleZoneProp {
+  id: string;
+  content: string;
+  title: string;
+  articleTag: Array<string>;
+  handleTitleChange: (title: string) => void;
+  handleContentChange: (content: string) => void;
+  handleTagChange: (tag: Array<string>) => void;
+}
+
+const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null); // TS 语法
 
@@ -59,38 +67,32 @@ const EditArticleZone: React.FC = () => {
   }, [editor]);
 
   // 关于modal开合逻辑
-  const [open, setOpen] = React.useState(false);
+  const [editTagOpen, setEditTagOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleEditTag = () => {
+    setEditTagOpen(!editTagOpen);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  // 关于初始数据的逻辑
+  // 初始数据的逻辑
+  const selectTag = (state: RootState) => state.tag.value;
+  const selectArticle = (state: RootState) => state.article.value;
+  const article = useAppSelector(selectArticle);
   const tag = useAppSelector(selectTag);
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [articleTag, setArticleTag] = useState<Array<string>>([]);
-
-  // 关于onChange
-  const handleEditorChange = (editor: IDomEditor) => {
-    setContent(editor.getHtml());
-  };
-
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-  };
-
-  const handleTagChange = (
-    event: React.SyntheticEvent,
-    value: Array<string>
-  ) => {
-    setArticleTag(value);
-  };
+  useEffect(() => {
+    if (props.id) {
+      const chooseArticle = article.filter((item) => {
+        return item.id === props.id;
+      });
+      props.handleTitleChange(chooseArticle[0].title);
+      props.handleContentChange(chooseArticle[0].content);
+      props.handleTagChange(chooseArticle[0].tag);
+    } else {
+      props.handleTitleChange("");
+      props.handleContentChange("");
+      props.handleTagChange([]);
+    }
+  }, [props.id]);
 
   const dispatch = useAppDispatch();
 
@@ -100,8 +102,8 @@ const EditArticleZone: React.FC = () => {
         <SvgTitleCompo text="Editing" />
         <div>文章标题</div>
         <Input
-          value={title}
-          onChange={handleTitleChange}
+          value={props.title}
+          onChange={(event) => props.handleTitleChange(event.target.value)}
           placeholder={"请输入内容..."}
         />
         <div>文章正文</div>
@@ -114,14 +116,14 @@ const EditArticleZone: React.FC = () => {
           />
           <Editor
             defaultConfig={editorConfig}
-            value={content}
+            value={props.content}
             onCreated={setEditor}
-            onChange={handleEditorChange}
+            onChange={(editor) => props.handleContentChange(editor.getHtml())}
             mode="default"
             style={{ height: "500px", overflowY: "hidden" }}
           />
         </div>
-        <div style={{ marginTop: "15px" }}>{content}</div>
+        <div style={{ marginTop: "15px" }}>{props.content}</div>
       </Wrapper>
 
       <Wrapper>
@@ -131,34 +133,19 @@ const EditArticleZone: React.FC = () => {
           limitTags={2}
           id="multiple-limit-tags"
           options={tag}
-          value={[...articleTag]}
+          value={[...props.articleTag]}
           getOptionLabel={(option) => option}
-          renderInput={(params) => (
-            <TextField {...params} label="limitTags" placeholder="Favorites" />
-          )}
-          onChange={handleTagChange}
+          renderInput={(params) => <TextField {...params} />}
+          onChange={(event, value) => props.handleTagChange(value)}
         />
 
         <ButtonBox>
           <ManageLeftButtonCompo
-            onClick={handleClickOpen}
+            onClick={handleEditTag}
             text="编辑"
             color="#000000"
           />
         </ButtonBox>
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>修改Tag</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>取消</Button>
-            <Button onClick={handleClose}>提交</Button>
-          </DialogActions>
-        </Dialog>
       </Wrapper>
 
       <Wrapper>
@@ -169,6 +156,17 @@ const EditArticleZone: React.FC = () => {
           <ViviButtonCompo text="发布" color="#000000" />
         </ButtonBox>
       </Wrapper>
+
+      <Dialog open={editTagOpen} onClose={handleEditTag}>
+        <DialogTitle>修改Tag</DialogTitle>
+        <DialogContent>
+          <DialogContentText>待补充</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleEditTag}>取消</Button>
+          <Button onClick={handleEditTag}>提交</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

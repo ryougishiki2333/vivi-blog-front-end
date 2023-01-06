@@ -47,7 +47,8 @@ export const articleReducer = createSlice({
     deleteArticle: (state) => {
       // 改state,草稿不显示
     },
-    publishArticle: (state) => {
+    publishArticle: (state, action) => {
+      console.log(action.payload);
       // 如果是草稿,则在发布区新增
       // 如果已经有id,则直接替换同id内容,并改state
     },

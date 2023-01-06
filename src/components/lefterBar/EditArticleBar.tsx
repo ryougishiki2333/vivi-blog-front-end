@@ -9,6 +9,7 @@ import { RootState } from "../../store/store";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { IArticle, IArticleState } from "src/types/dataType";
 import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
 
 const Title = styled.div`
   ${barStyleTitle}
@@ -16,6 +17,10 @@ const Title = styled.div`
 const Wrapper = styled.div`
   ${barStyleWrapper}
 `;
+
+interface IEditArticleBarProp {
+  handleIdChange: (id: string) => void;
+}
 
 const selectArticle = (state: RootState) => state.article.value;
 
@@ -25,7 +30,7 @@ const filterArticle = (article: Array<IArticle>, state: IArticleState) => {
   });
 };
 
-const EditArticleBar: React.FC = () => {
+const EditArticleBar: React.FC<IEditArticleBarProp> = (props) => {
   const article = useAppSelector(selectArticle);
 
   const renderArticle = (article: Array<IArticle>) => {
@@ -35,7 +40,10 @@ const EditArticleBar: React.FC = () => {
         disableGutters
         secondaryAction={
           <>
-            <IconButton aria-label="comment">
+            <IconButton
+              onClick={() => props.handleIdChange(item.id)}
+              aria-label="comment"
+            >
               <EditIcon />
             </IconButton>
           </>
@@ -48,6 +56,11 @@ const EditArticleBar: React.FC = () => {
 
   return (
     <>
+      <Wrapper>
+        <Button variant="text" onClick={() => props.handleIdChange("")}>
+          新建文章
+        </Button>
+      </Wrapper>
       <Wrapper>
         <Title>草稿箱</Title>
         <List>{renderArticle(filterArticle(article, 0))}</List>
