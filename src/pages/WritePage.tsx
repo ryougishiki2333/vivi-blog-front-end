@@ -13,26 +13,36 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 
 const WritePage: React.FC = () => {
+  const [checkSaveOpen, setCheckSaveOpen] = useState(false);
   const [id, setId] = useState("");
   const [tempId, setTempId] = useState("");
   const handleIdChange = (idClickValue: string) => {
     openCheckSave();
     setTempId(idClickValue);
   };
-
-  const [checkSaveOpen, setCheckSaveOpen] = useState(false);
   const openCheckSave = () => {
     setCheckSaveOpen(true);
   };
+
+  const dispatch = useAppDispatch();
+
+  const postDispatch = (action: string) => {
+    dispatch({
+      type: `article/${action}A`,
+      payload: { title: title, content: content, tag: tag, id: id },
+    });
+  };
+
   const closeCheckSave = (state: number) => {
+    if (state === 1) {
+      postDispatch("save");
+    }
     if (state !== 0) {
       setId(tempId);
-    }
-    if (state === 1) {
-      // 触发保存
     }
     setTempId("");
     setCheckSaveOpen(false);
@@ -47,11 +57,7 @@ const WritePage: React.FC = () => {
   const handleContentChange = (value: string) => {
     setContent(value);
   };
-  // editor: IDomEditor
-  // editor.getHtml()
 
-  // event: React.ChangeEvent<HTMLInputElement>
-  // event.target.value
   const handleTitleChange = (value: string) => {
     setTitle(value);
   };
@@ -75,6 +81,7 @@ const WritePage: React.FC = () => {
             handleContentChange={handleContentChange}
             handleTagChange={handleTagChange}
             handleTitleChange={handleTitleChange}
+            postDispatch={postDispatch}
           />
         </RighterWrapper>
       </ContentWrapper>

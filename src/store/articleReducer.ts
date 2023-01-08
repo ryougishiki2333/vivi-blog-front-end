@@ -44,24 +44,27 @@ export const articleReducer = createSlice({
     ] as IArticle[],
   },
   reducers: {
-    deleteArticle: (state) => {
+    deleteA: (state, action) => {
       // 改state,草稿不显示
+      console.log(action.payload);
     },
-    publishArticle: (state, action) => {
+    publishA: (state, action) => {
       console.log(action.payload);
       // 如果是草稿,则在发布区新增
       // 如果已经有id,则直接替换同id内容,并改state
     },
-    archiveArticle: (state)=>{
-      // 改state,草稿不显示
+    archiveA: (state, action)=>{
+      // 改state,草稿不显示 
+      console.log(action.payload);
     },
-    saveArticle: (state) => {
+    saveA: (state, action) => {
       // 如果是草稿,则在草稿箱新增
       // 如果已经有id,则直接替换同id内容
+      console.log(action.payload);
     },
   },
 });
 
-export const { } = articleReducer.actions;
+export const { deleteA,publishA,archiveA,saveA } = articleReducer.actions
 
 export default articleReducer.reducer;

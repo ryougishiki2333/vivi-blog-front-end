@@ -43,6 +43,7 @@ interface IEditArticleZoneProp {
   handleTitleChange: (title: string) => void;
   handleContentChange: (content: string) => void;
   handleTagChange: (tag: Array<string>) => void;
+  postDispatch: (action: string) => void;
 }
 
 const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
@@ -79,22 +80,28 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
   const article = useAppSelector(selectArticle);
   const tag = useAppSelector(selectTag);
 
+  const chooseArticle = (id: string) => {
+    return id
+      ? article.filter((item) => {
+          return item.id === id;
+        })
+      : [];
+  };
+
   useEffect(() => {
     if (props.id) {
-      const chooseArticle = article.filter((item) => {
-        return item.id === props.id;
-      });
-      props.handleTitleChange(chooseArticle[0].title);
-      props.handleContentChange(chooseArticle[0].content);
-      props.handleTagChange(chooseArticle[0].tag);
+      // const chooseArticle = article.filter((item) => {
+      //   return item.id === props.id;
+      // });
+      props.handleTitleChange(chooseArticle(props.id)[0].title);
+      props.handleContentChange(chooseArticle(props.id)[0].content);
+      props.handleTagChange(chooseArticle(props.id)[0].tag);
     } else {
       props.handleTitleChange("");
       props.handleContentChange("");
       props.handleTagChange([]);
     }
   }, [props.id]);
-
-  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -151,9 +158,33 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
       <Wrapper>
         <SvgTitleCompo text="Controling" />
         <ButtonBox>
-          <ViviButtonCompo text="保存" color="#000000" />
-          <ViviButtonCompo text="删除" color="#000000" />
-          <ViviButtonCompo text="发布" color="#000000" />
+          <ViviButtonCompo
+            text="保存"
+            color="#000000"
+            onClick={() => props.postDispatch("save")}
+          />
+          {props.id && chooseArticle(props.id)[0].articleState === 1 && (
+            <ViviButtonCompo
+              text="删除"
+              color="#000000"
+              onClick={() => props.postDispatch("delete")}
+            />
+          )}
+          {props.id && chooseArticle(props.id)[0].articleState === 1 && (
+            <ViviButtonCompo
+              text="归档"
+              color="#000000"
+              onClick={() => props.postDispatch("archive")}
+            />
+          )}
+          {((props.id && chooseArticle(props.id)[0].articleState !== 1) ||
+            !props.id) && (
+            <ViviButtonCompo
+              text="发布"
+              color="#000000"
+              onClick={() => props.postDispatch("publish")}
+            />
+          )}
         </ButtonBox>
       </Wrapper>
 
