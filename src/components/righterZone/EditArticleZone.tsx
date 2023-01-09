@@ -17,7 +17,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { RootState } from "../../store/store";
-import { ITag } from "src/types/dataType";
+import { IChangeState, ITag } from "src/types/dataType";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
@@ -40,9 +40,9 @@ interface IEditArticleZoneProp {
   content: string;
   title: string;
   articleTag: Array<string>;
-  handleTitleChange: (title: string) => void;
-  handleContentChange: (content: string) => void;
-  handleTagChange: (tag: Array<string>) => void;
+  handleTitleChange: (title: string, state: IChangeState) => void;
+  handleContentChange: (content: string, state: IChangeState) => void;
+  handleTagChange: (tag: Array<string>, state: IChangeState) => void;
   postDispatch: (action: string) => void;
 }
 
@@ -90,16 +90,13 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
 
   useEffect(() => {
     if (props.id) {
-      // const chooseArticle = article.filter((item) => {
-      //   return item.id === props.id;
-      // });
-      props.handleTitleChange(chooseArticle(props.id)[0].title);
-      props.handleContentChange(chooseArticle(props.id)[0].content);
-      props.handleTagChange(chooseArticle(props.id)[0].tag);
+      props.handleTitleChange(chooseArticle(props.id)[0].title, 0);
+      props.handleContentChange(chooseArticle(props.id)[0].content, 0);
+      props.handleTagChange(chooseArticle(props.id)[0].tag, 0);
     } else {
-      props.handleTitleChange("");
-      props.handleContentChange("");
-      props.handleTagChange([]);
+      props.handleTitleChange("", 0);
+      props.handleContentChange("", 0);
+      props.handleTagChange([], 0);
     }
   }, [props.id]);
 
@@ -107,10 +104,12 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
     <>
       <Wrapper>
         <SvgTitleCompo text="Editing" />
+        <div>文章id</div>
+        <div>{props.id}</div>
         <div>文章标题</div>
         <Input
           value={props.title}
-          onChange={(event) => props.handleTitleChange(event.target.value)}
+          onChange={(event) => props.handleTitleChange(event.target.value, 1)}
           placeholder={"请输入内容..."}
         />
         <div>文章正文</div>
@@ -125,7 +124,9 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
             defaultConfig={editorConfig}
             value={props.content}
             onCreated={setEditor}
-            onChange={(editor) => props.handleContentChange(editor.getHtml())}
+            onChange={(editor) =>
+              props.handleContentChange(editor.getHtml(), 1)
+            }
             mode="default"
             style={{ height: "500px", overflowY: "hidden" }}
           />
@@ -143,7 +144,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
           value={[...props.articleTag]}
           getOptionLabel={(option) => option}
           renderInput={(params) => <TextField {...params} />}
-          onChange={(event, value) => props.handleTagChange(value)}
+          onChange={(event, value) => props.handleTagChange(value, 1)}
         />
 
         <ButtonBox>

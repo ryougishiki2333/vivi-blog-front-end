@@ -18,3 +18,10 @@ export enum IArticleState {
   archive = 3,
   // 只有保存、发布
 }
+
+export enum IChangeState {
+    // 0代表下传id
+    down = 0,
+    // 1代表上传回调
+    up = 1,
+  }

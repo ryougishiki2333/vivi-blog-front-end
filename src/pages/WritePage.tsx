@@ -15,28 +15,35 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
+import { RootState } from "../store/store";
+import { IChangeState } from "../types/dataType";
 
 const WritePage: React.FC = () => {
+  // 数据保存
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [tag, setTag] = useState<Array<string>>([]);
   const [checkSaveOpen, setCheckSaveOpen] = useState(false);
   const [id, setId] = useState("");
   const [tempId, setTempId] = useState("");
+
+  // 保存后临时token
+  // const [checkIfSave, setCheckIfSave] = useState(true);
+
+  // id改变则出现弹窗
   const handleIdChange = (idClickValue: string) => {
-    openCheckSave();
     setTempId(idClickValue);
-  };
-  const openCheckSave = () => {
+    // setId(tempId);
+    // if (checkIfSave) {
+    //   setId(tempId);
+    //   setTempId("");
+    // } else {
+    //   setCheckSaveOpen(true);
+    // }
     setCheckSaveOpen(true);
   };
 
-  const dispatch = useAppDispatch();
-
-  const postDispatch = (action: string) => {
-    dispatch({
-      type: `article/${action}A`,
-      payload: { title: title, content: content, tag: tag, id: id },
-    });
-  };
-
+  // 保存
   const closeCheckSave = (state: number) => {
     if (state === 1) {
       postDispatch("save");
@@ -48,23 +55,50 @@ const WritePage: React.FC = () => {
     setCheckSaveOpen(false);
   };
 
-  // 数据保存
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [tag, setTag] = useState<Array<string>>([]);
+  // 控制是否回调
+  const [checkIfCallback, setCheckIfCallback] = useState(false);
+
+  // 保存后回调
+  const selectArticle = (state: RootState) => state.article.value;
+  const article = useAppSelector(selectArticle);
+  useEffect(() => {
+    checkIfCallback && setId(article[article.length - 1].id);
+  }, [article.length]);
+
+  // 改变store数据
+  const dispatch = useAppDispatch();
+
+  const postDispatch = (action: string) => {
+    setCheckIfCallback(true);
+    // setCheckIfSave(true);
+    content &&
+      dispatch({
+        type: `article/${action}A`,
+        payload: {
+          title: title ? title : "未命名文章",
+          content: content,
+          tag: tag,
+          id: id,
+        },
+      });
+  };
 
   // onChange
-  const handleContentChange = (value: string) => {
+  const handleContentChange = (value: string, state: IChangeState) => {
     setContent(value);
+    // setCheckIfSave(!state);
   };
 
-  const handleTitleChange = (value: string) => {
+  const handleTitleChange = (value: string, state: IChangeState) => {
     setTitle(value);
+    // setCheckIfSave(!state);
   };
 
-  const handleTagChange = (value: Array<string>) => {
+  const handleTagChange = (value: Array<string>, state: IChangeState) => {
     setTag(value);
+    // setCheckIfSave(!state);
   };
+
   return (
     <>
       <BackToManagePageFloator />
@@ -87,7 +121,7 @@ const WritePage: React.FC = () => {
       </ContentWrapper>
       <ScrollRestoration />
 
-      <Dialog open={checkSaveOpen} onClose={closeCheckSave}>
+      <Dialog open={checkSaveOpen} onClose={() => closeCheckSave(0)}>
         <DialogTitle>当前文章尚未保存</DialogTitle>
         <DialogContent>
           <DialogContentText>如果不保存文章将丢失</DialogContentText>
