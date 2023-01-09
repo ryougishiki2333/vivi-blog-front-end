@@ -16,7 +16,6 @@ import Button from "@mui/material/Button";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 import { RootState } from "../store/store";
-import { IChangeState } from "../types/dataType";
 
 const WritePage: React.FC = () => {
   // 数据保存
@@ -27,26 +26,19 @@ const WritePage: React.FC = () => {
   const [id, setId] = useState("");
   const [tempId, setTempId] = useState("");
 
-  // 保存后临时token
-  // const [checkIfSave, setCheckIfSave] = useState(true);
+  // 是否属于文章切换时保存
+  const [checkIfChangeArticle, setCheckIfChangeArticle] = useState(true);
 
   // id改变则出现弹窗
   const handleIdChange = (idClickValue: string) => {
     setTempId(idClickValue);
-    // setId(tempId);
-    // if (checkIfSave) {
-    //   setId(tempId);
-    //   setTempId("");
-    // } else {
-    //   setCheckSaveOpen(true);
-    // }
     setCheckSaveOpen(true);
   };
 
   // 保存
   const closeCheckSave = (state: number) => {
     if (state === 1) {
-      postDispatch("save");
+      postDispatch("save", true);
     }
     if (state !== 0) {
       setId(tempId);
@@ -56,22 +48,26 @@ const WritePage: React.FC = () => {
   };
 
   // 控制是否回调
-  const [checkIfCallback, setCheckIfCallback] = useState(false);
+  const [checkIfInitial, setCheckIfInitial] = useState(false);
 
   // 保存后回调
   const selectArticle = (state: RootState) => state.article.value;
   const article = useAppSelector(selectArticle);
   useEffect(() => {
-    checkIfCallback && setId(article[article.length - 1].id);
+    if (checkIfChangeArticle) {
+      setCheckIfChangeArticle(false);
+    } else {
+      checkIfInitial && setId(article[article.length - 1].id);
+    }
   }, [article.length]);
 
   // 改变store数据
   const dispatch = useAppDispatch();
 
-  const postDispatch = (action: string) => {
-    setCheckIfCallback(true);
-    // setCheckIfSave(true);
-    content &&
+  const postDispatch = (action: string, isChangeArticle: boolean) => {
+    setCheckIfInitial(true);
+    setCheckIfChangeArticle(isChangeArticle);
+    (content !== "<p><br></p>" || title) &&
       dispatch({
         type: `article/${action}A`,
         payload: {
@@ -84,19 +80,16 @@ const WritePage: React.FC = () => {
   };
 
   // onChange
-  const handleContentChange = (value: string, state: IChangeState) => {
+  const handleContentChange = (value: string) => {
     setContent(value);
-    // setCheckIfSave(!state);
   };
 
-  const handleTitleChange = (value: string, state: IChangeState) => {
+  const handleTitleChange = (value: string) => {
     setTitle(value);
-    // setCheckIfSave(!state);
   };
 
-  const handleTagChange = (value: Array<string>, state: IChangeState) => {
+  const handleTagChange = (value: Array<string>) => {
     setTag(value);
-    // setCheckIfSave(!state);
   };
 
   return (

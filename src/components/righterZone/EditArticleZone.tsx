@@ -40,10 +40,10 @@ interface IEditArticleZoneProp {
   content: string;
   title: string;
   articleTag: Array<string>;
-  handleTitleChange: (title: string, state: IChangeState) => void;
-  handleContentChange: (content: string, state: IChangeState) => void;
-  handleTagChange: (tag: Array<string>, state: IChangeState) => void;
-  postDispatch: (action: string) => void;
+  handleTitleChange: (title: string) => void;
+  handleContentChange: (content: string) => void;
+  handleTagChange: (tag: Array<string>) => void;
+  postDispatch: (action: string, isChangeArticle: boolean) => void;
 }
 
 const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
@@ -90,13 +90,13 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
 
   useEffect(() => {
     if (props.id) {
-      props.handleTitleChange(chooseArticle(props.id)[0].title, 0);
-      props.handleContentChange(chooseArticle(props.id)[0].content, 0);
-      props.handleTagChange(chooseArticle(props.id)[0].tag, 0);
+      props.handleTitleChange(chooseArticle(props.id)[0].title);
+      props.handleContentChange(chooseArticle(props.id)[0].content);
+      props.handleTagChange(chooseArticle(props.id)[0].tag);
     } else {
-      props.handleTitleChange("", 0);
-      props.handleContentChange("", 0);
-      props.handleTagChange([], 0);
+      props.handleTitleChange("");
+      props.handleContentChange("");
+      props.handleTagChange([]);
     }
   }, [props.id]);
 
@@ -109,7 +109,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
         <div>文章标题</div>
         <Input
           value={props.title}
-          onChange={(event) => props.handleTitleChange(event.target.value, 1)}
+          onChange={(event) => props.handleTitleChange(event.target.value)}
           placeholder={"请输入内容..."}
         />
         <div>文章正文</div>
@@ -124,9 +124,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
             defaultConfig={editorConfig}
             value={props.content}
             onCreated={setEditor}
-            onChange={(editor) =>
-              props.handleContentChange(editor.getHtml(), 1)
-            }
+            onChange={(editor) => props.handleContentChange(editor.getHtml())}
             mode="default"
             style={{ height: "500px", overflowY: "hidden" }}
           />
@@ -144,7 +142,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
           value={[...props.articleTag]}
           getOptionLabel={(option) => option}
           renderInput={(params) => <TextField {...params} />}
-          onChange={(event, value) => props.handleTagChange(value, 1)}
+          onChange={(event, value) => props.handleTagChange(value)}
         />
 
         <ButtonBox>
@@ -162,20 +160,20 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
           <ViviButtonCompo
             text="保存"
             color="#000000"
-            onClick={() => props.postDispatch("save")}
+            onClick={() => props.postDispatch("save", false)}
           />
           {props.id && chooseArticle(props.id)[0].articleState === 1 && (
             <ViviButtonCompo
               text="删除"
               color="#000000"
-              onClick={() => props.postDispatch("delete")}
+              onClick={() => props.postDispatch("delete", false)}
             />
           )}
           {props.id && chooseArticle(props.id)[0].articleState === 1 && (
             <ViviButtonCompo
               text="归档"
               color="#000000"
-              onClick={() => props.postDispatch("archive")}
+              onClick={() => props.postDispatch("archive", false)}
             />
           )}
           {((props.id && chooseArticle(props.id)[0].articleState !== 1) ||
@@ -183,7 +181,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
             <ViviButtonCompo
               text="发布"
               color="#000000"
-              onClick={() => props.postDispatch("publish")}
+              onClick={() => props.postDispatch("publish", false)}
             />
           )}
         </ButtonBox>
