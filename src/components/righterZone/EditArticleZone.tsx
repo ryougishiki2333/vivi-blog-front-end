@@ -35,6 +35,11 @@ const ButtonBox = styled.div`
   justify-content: right;
 `;
 
+const TagFilterBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 interface IEditArticleZoneProp {
   id: string;
   content: string;
@@ -99,6 +104,17 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
       props.handleTagChange([]);
     }
   }, [props.id]);
+
+  // 编辑tag界面
+  const tagListFilter = () => {
+    return tag.map((item) => (
+      <TagFilterBox>
+        <DialogContentText>{item.name}</DialogContentText>
+        <Button>修改</Button>
+        <Button>删除</Button>
+      </TagFilterBox>
+    ));
+  };
 
   return (
     <>
@@ -189,9 +205,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
 
       <Dialog open={editTagOpen} onClose={handleEditTag}>
         <DialogTitle>修改Tag</DialogTitle>
-        <DialogContent>
-          <DialogContentText>待补充</DialogContentText>
-        </DialogContent>
+        <DialogContent>{tagListFilter()}</DialogContent>
         <DialogActions>
           <Button onClick={handleEditTag}>取消</Button>
           <Button onClick={handleEditTag}>提交</Button>

@@ -10,11 +10,25 @@ const Wrapper = styled.div`
   ${zoneStyleWrapper}
 `;
 
+const TagFilterBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Tags = styled.div`
+  margin-left: 5px;
+`;
+
 const ArticleZone: React.FC = () => {
   const articleItem = useAppSelector((state) => state.article.value);
   const { id } = useParams();
   const articleItemFilter = articleItem.filter((article) => article.id === id);
-  console.log(articleItemFilter);
+
+  const tagList = () => {
+    return articleItemFilter[0].tag.map((item) => (
+      <Tags key={item.id}>{item.name}</Tags>
+    ));
+  };
 
   return (
     <Wrapper>
@@ -22,6 +36,7 @@ const ArticleZone: React.FC = () => {
       <div
         dangerouslySetInnerHTML={{ __html: articleItemFilter[0].content }}
       ></div>
+      <TagFilterBox>{tagList()}</TagFilterBox>
     </Wrapper>
   );
 };

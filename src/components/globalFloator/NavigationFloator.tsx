@@ -3,6 +3,10 @@ import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import Stack from "@mui/material/Stack";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/img.jpg";
+import { RootState } from "src/store/store";
+import { useAppSelector } from "../../store/hooks";
+import sample from "lodash/sample";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   padding: 3px;
@@ -32,6 +36,15 @@ const RightWrapper = styled.div`
 `;
 
 const NavigationFloator: React.FC = () => {
+  const selectArticle = (state: RootState) => state.article.value;
+  const article = useAppSelector(selectArticle);
+  const randomId = () => {
+    const tem = sample(article.filter((item) => item.articleState === 1));
+    return tem ? tem.id : "";
+  };
+
+  const [to, setTo] = useState(randomId());
+
   return (
     <Wrapper>
       <LeftWrapper>
@@ -45,7 +58,13 @@ const NavigationFloator: React.FC = () => {
       </LeftWrapper>
       <RightWrapper>
         <Stack direction="row" spacing={2}>
-          <ViviButtonCompo to={"/article"} text={"随机 | Random"} />
+          <ViviButtonCompo
+            to={`/article/${to}`}
+            text={"随机 | Random"}
+            onClick={() => {
+              setTo(randomId());
+            }}
+          />
           <ViviButtonCompo to={"/main/filterPage"} text={"目录 | Category"} />
           <ViviButtonCompo to={"/main/aboutPage"} text={"打赏 | Support"} />
           <AvatarCompo text={"CS"} sx={undefined} img={img} />
