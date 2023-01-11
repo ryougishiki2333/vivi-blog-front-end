@@ -1,28 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { ITag } from "../types/dataType"
+import { createSlice } from "@reduxjs/toolkit";
+import { ITag } from "../types/dataType";
 
 export const tagReducer = createSlice({
-  name: 'tag',
+  name: "tag",
   initialState: {
     value: [
-        "miaomiaomiao","gugugu"
-    ] as ITag[]
+      { name: "miaomiaomiao", id: "123123" },
+      { name: "gugugu", id: "1234" },
+    ] as ITag[],
   },
   reducers: {
-    addTag: state => {
-    //   state.value += 1
-    },
-    deleteTag: state => {
-    //   state.value -= 1
-    },
-    // changeTagCheck: (state, action) => {
-    //   state.value.forEach((tag)=>{if (tag.name === action.payload) {
-    //     tag.check = !tag.check
-    //   }})
-    // }
-  }
-})
+    addTag: (state, action) => {},
+    deleteTag: (state, action) => {},
+    editTag: (state, action) => {},
+  },
+});
 
-export const { addTag, deleteTag } = tagReducer.actions
+export const { addTag, deleteTag } = tagReducer.actions;
 
-export default tagReducer.reducer
+export default tagReducer.reducer;

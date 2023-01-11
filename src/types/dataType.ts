@@ -1,12 +1,12 @@
 export type IArticle = {
-    title:string
-    content: string
-    tag:Array<ITag>
-    articleState:IArticleState
-    id:string
-}
+  title: string;
+  content: string;
+  tag: Array<ITag>;
+  articleState: IArticleState;
+  id: string;
+};
 
-export type ITag = string
+export type ITag = { name: string; id: string };
 
 export enum IArticleState {
   draft = 0,
@@ -20,8 +20,8 @@ export enum IArticleState {
 }
 
 export enum IChangeState {
-    // 0代表下传id
-    down = 0,
-    // 1代表上传回调
-    up = 1,
-  }
+  // 0代表下传id
+  down = 0,
+  // 1代表上传回调
+  up = 1,
+}

@@ -9,28 +9,40 @@ export const articleReducer = createSlice({
       {
         title: "test0",
         content: "<p>test0</p>",
-        tag: ["miaomiaomiao", "gugugu"],
+        tag: [
+          { name: "miaomiaomiao", id: "123123" },
+          { name: "gugugu", id: "1234" },
+        ],
         articleState: 0,
         id: "123123",
       },
       {
         title: "test1",
         content: "<p>test1</p>",
-        tag: ["miaomiaomiao", "gugugu"],
+        tag: [
+          { name: "miaomiaomiao", id: "123123" },
+          { name: "gugugu", id: "1234" },
+        ],
         articleState: 1,
         id: "12341231123",
       },
       {
         title: "test2",
         content: "<p>test2</p>",
-        tag: ["miaomiaomiao", "gugugu"],
+        tag: [
+          { name: "miaomiaomiao", id: "123123" },
+          { name: "gugugu", id: "1234" },
+        ],
         articleState: 2,
         id: "1234123112311",
       },
       {
         title: "test3",
         content: "<p>test3</p>",
-        tag: ["miaomiaomiao", "gugugu"],
+        tag: [
+          { name: "miaomiaomiao", id: "123123" },
+          { name: "gugugu", id: "1234" },
+        ],
         articleState: 3,
         id: "12341231123123",
       },

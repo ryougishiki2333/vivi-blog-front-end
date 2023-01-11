@@ -39,10 +39,10 @@ interface IEditArticleZoneProp {
   id: string;
   content: string;
   title: string;
-  articleTag: Array<string>;
+  articleTag: Array<ITag>;
   handleTitleChange: (title: string) => void;
   handleContentChange: (content: string) => void;
-  handleTagChange: (tag: Array<string>) => void;
+  handleTagChange: (tag: Array<ITag>) => void;
   postDispatch: (action: string, isChangeArticle: boolean) => void;
 }
 
@@ -140,7 +140,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
           id="multiple-limit-tags"
           options={tag}
           value={[...props.articleTag]}
-          getOptionLabel={(option) => option}
+          getOptionLabel={(option) => option.name}
           renderInput={(params) => <TextField {...params} />}
           onChange={(event, value) => props.handleTagChange(value)}
         />

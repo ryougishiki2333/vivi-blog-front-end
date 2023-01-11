@@ -16,12 +16,13 @@ import Button from "@mui/material/Button";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 import { RootState } from "../store/store";
+import { ITag } from "src/types/dataType";
 
 const WritePage: React.FC = () => {
   // 数据保存
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [tag, setTag] = useState<Array<string>>([]);
+  const [tag, setTag] = useState<Array<ITag>>([]);
   const [checkSaveOpen, setCheckSaveOpen] = useState(false);
   const [id, setId] = useState("");
   const [tempId, setTempId] = useState("");
@@ -88,7 +89,7 @@ const WritePage: React.FC = () => {
     setTitle(value);
   };
 
-  const handleTagChange = (value: Array<string>) => {
+  const handleTagChange = (value: Array<ITag>) => {
     setTag(value);
   };
 
