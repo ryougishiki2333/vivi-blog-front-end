@@ -4,6 +4,7 @@ export type IArticle = {
   tag: Array<ITag>;
   articleState: IArticleState;
   id: string;
+  coverPicture:string
 };
 
 export type ITag = { name: string; id: string };

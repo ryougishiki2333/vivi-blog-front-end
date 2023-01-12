@@ -15,6 +15,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 0,
         id: "123123",
+        coverPicture:''
       },
       {
         title: "test1",
@@ -25,6 +26,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "12341231123",
+        coverPicture:''
       },
       {
         title: "test11",
@@ -34,6 +36,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "123412311231",
+        coverPicture:''
       },
       {
         title: "test111",
@@ -43,6 +46,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "12341231123123",
+        coverPicture:''
       },
       {
         title: "test1111",
@@ -53,6 +57,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "123412311233456",
+        coverPicture:''
       },
       {
         title: "test11111",
@@ -63,6 +68,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "1234123112387568",
+        coverPicture:''
       },
       {
         title: "test2",
@@ -73,6 +79,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 2,
         id: "1234123112311",
+        coverPicture:''
       },
       {
         title: "test3",
@@ -83,6 +90,7 @@ export const articleReducer = createSlice({
         ],
         articleState: 3,
         id: "12341231123123",
+        coverPicture:''
       },
     ] as IArticle[],
   },

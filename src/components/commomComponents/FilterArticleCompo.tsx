@@ -9,21 +9,12 @@ const Wrapper = styled.div`
   height: 200px;
 `;
 
-const Tags = styled.div`
-  margin-left: 5px;
-`;
-
-const TagFilterBox = styled.div`
-  display: flex;
-  justify-content: left;
-`;
-
 type IFilter = {
   tag?: string;
   keyWord?: string;
 };
 
-const PreviewArticleCompo: React.FC<IFilter> = (props) => {
+const FilterArticleCompo: React.FC<IFilter> = (props) => {
   const articleItem = useAppSelector((state) => state.article.value);
   const articleItemPublish = articleItem.filter((item) => {
     if (props.tag) {
@@ -32,22 +23,13 @@ const PreviewArticleCompo: React.FC<IFilter> = (props) => {
       return item.articleState === 1;
     }
   });
-
-  const tagList = () => {
-    return articleItemPublish[0].tag.map((item) => (
-      <Tags key={item.id}>{item.name}</Tags>
-    ));
-  };
-
-  return (
-    <Link
-      key={articleItemPublish[0].id}
-      to={"/article/" + articleItemPublish[0].id}
-    >
-      <Wrapper>{articleItemPublish[0].title}</Wrapper>
-      <TagFilterBox>{tagList()}</TagFilterBox>
+  const articleItemPublishRender = articleItemPublish.map((article) => (
+    <Link key={article.id} to={"/article/" + article.id}>
+      <Wrapper>{article.title}</Wrapper>
     </Link>
-  );
+  ));
+
+  return <>{articleItemPublishRender}</>;
 };
 
-export default PreviewArticleCompo;
+export default FilterArticleCompo;

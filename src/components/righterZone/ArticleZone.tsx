@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 const TagFilterBox = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: left;
 `;
 
 const Tags = styled.div`
