@@ -2,11 +2,21 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import { find } from "lodash";
+import { IArticle } from "src/types/dataType";
 
 const Wrapper = styled.div`
-  background: #d6aefb;
-  margin: 20px;
-  height: 200px;
+  margin: 5px;
+  height: 300px;
+`;
+
+const Content = styled.div`
+  display: flex;
+  justify-content: left;
+`;
+
+const Title = styled.div`
+  font-size: 1.5em;
+  text-align: center;
 `;
 
 const Tags = styled.div`
@@ -33,20 +43,27 @@ const PreviewArticleCompo: React.FC<IFilter> = (props) => {
     }
   });
 
-  const tagList = () => {
-    return articleItemPublish[0].tag.map((item) => (
+  const tagList = (articleItem: IArticle) => {
+    return articleItem.tag.map((item) => (
       <Tags key={item.id}>{item.name}</Tags>
     ));
   };
 
   return (
-    <Link
-      key={articleItemPublish[0].id}
-      to={"/article/" + articleItemPublish[0].id}
-    >
-      <Wrapper>{articleItemPublish[0].title}</Wrapper>
-      <TagFilterBox>{tagList()}</TagFilterBox>
-    </Link>
+    <>
+      <Link
+        key={articleItemPublish[0].id}
+        to={"/article/" + articleItemPublish[0].id}
+      >
+        <Wrapper>
+          <Title>{articleItemPublish[0].title}</Title>
+          <div
+            dangerouslySetInnerHTML={{ __html: articleItemPublish[0].content }}
+          ></div>
+        </Wrapper>
+      </Link>
+      <TagFilterBox>{tagList(articleItemPublish[0])}</TagFilterBox>
+    </>
   );
 };
 
