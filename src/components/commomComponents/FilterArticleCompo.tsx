@@ -69,7 +69,7 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
     <Wrapper>
       <PictureWrapper>
         <Link key={article.id} to={"/article/" + article.id}>
-          <img height={180} width={180} src={img} alt={"2123"} loading="lazy" />
+          <img height={140} width={180} src={img} alt={"2123"} loading="lazy" />
         </Link>
       </PictureWrapper>
       <TextWrapper>
