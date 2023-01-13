@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 import { useAppSelector } from "../../store/hooks";
 import { useParams } from "react-router-dom";
+import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -32,6 +33,7 @@ const ArticleZone: React.FC = () => {
 
   return (
     <Wrapper>
+      <SvgTitleCompo text="Article" />
       <Title>{articleItemFilter[0].title}</Title>
       <div
         dangerouslySetInnerHTML={{ __html: articleItemFilter[0].content }}
