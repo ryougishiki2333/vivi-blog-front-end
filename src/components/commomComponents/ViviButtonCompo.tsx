@@ -15,7 +15,9 @@ const ViviButtonCompo: React.FC<IViviButton> = (props) => {
 
   const handleOnClick = () => {
     props.onClick && props.onClick();
-    props.to && navigate(props.to);
+    props.to && props.state
+      ? navigate(props.to, { state: props.state })
+      : navigate(props.to ? props.to : "");
   };
 
   return (

@@ -11,6 +11,11 @@ export type IViviButton = {
     color?:string
     backgroundColor?:string
     onClick?:Function
+    state?:IRouterState
+}
+
+type IRouterState = {
+     name: string 
 }
 
 export type IAvatar = {

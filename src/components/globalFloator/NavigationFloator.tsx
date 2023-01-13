@@ -7,6 +7,7 @@ import { RootState } from "src/store/store";
 import { useAppSelector } from "../../store/hooks";
 import sample from "lodash/sample";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding: 3px;
@@ -36,6 +37,8 @@ const RightWrapper = styled.div`
 `;
 
 const NavigationFloator: React.FC = () => {
+  const navigate = useNavigate();
+
   const selectArticle = (state: RootState) => state.article.value;
   const article = useAppSelector(selectArticle);
   const randomId = () => {
@@ -65,7 +68,11 @@ const NavigationFloator: React.FC = () => {
               setTo(randomId());
             }}
           />
-          <ViviButtonCompo to={"/main/filterPage"} text={"目录 | Category"} />
+          <ViviButtonCompo
+            to={"/main/filterPage"}
+            state={{ name: `` }}
+            text={"目录 | Category"}
+          />
           <ViviButtonCompo to={"/main/aboutPage"} text={"打赏 | Support"} />
           <AvatarCompo text={"CS"} sx={undefined} img={img} />
         </Stack>
