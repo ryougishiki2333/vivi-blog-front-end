@@ -73,10 +73,12 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
         </Link>
       </PictureWrapper>
       <TextWrapper>
-        <TopperWrapper>
-          <Title>{article.title}</Title>
-          <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
-        </TopperWrapper>
+        <Link key={article.id} to={"/article/" + article.id}>
+          <TopperWrapper>
+            <Title>{article.title}</Title>
+            <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
+          </TopperWrapper>
+        </Link>
         <TagFilterBox>{tagList(article)}</TagFilterBox>
       </TextWrapper>
     </Wrapper>
