@@ -66,14 +66,14 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
     ));
   };
   const articleItemPublishRender = articleItemPublish.map((article) => (
-    <Wrapper>
+    <Wrapper key={article.id}>
       <PictureWrapper>
-        <Link key={article.id} to={"/article/" + article.id}>
+        <Link to={"/article/" + article.id}>
           <img height={140} width={180} src={img} alt={"2123"} loading="lazy" />
         </Link>
       </PictureWrapper>
       <TextWrapper>
-        <Link key={article.id} to={"/article/" + article.id}>
+        <Link to={"/article/" + article.id}>
           <TopperWrapper>
             <Title>{article.title}</Title>
             <div dangerouslySetInnerHTML={{ __html: article.content }}></div>

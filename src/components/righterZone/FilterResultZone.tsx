@@ -4,10 +4,11 @@ import FilterArticleCompo from "../commomComponents/FilterArticleCompo";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { RootState } from "src/store/store";
+import { useLocation } from "react-router-dom";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -22,9 +23,13 @@ const SeleteWrapper = styled.div`
 `;
 
 const FilterResultZone: React.FC = () => {
+  let location = useLocation();
+
   const [chooseTag, setChooseTag] = useState("");
-  // const [age, setAge] = useState("");
-  // const [age, setAge] = useState("");
+
+  useEffect(() => {
+    setChooseTag(location.state.name);
+  }, [location.state.name]);
 
   const handleChange = (event: SelectChangeEvent) => {
     setChooseTag(event.target.value);
@@ -35,7 +40,9 @@ const FilterResultZone: React.FC = () => {
 
   const tagMenuItem = () => {
     return tag.map((item) => (
-      <MenuItem value={item.name}>{item.name}</MenuItem>
+      <MenuItem key={item.id} value={item.name}>
+        {item.name}
+      </MenuItem>
     ));
   };
   return (
@@ -46,7 +53,7 @@ const FilterResultZone: React.FC = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={chooseTag}
+            value={chooseTag || ""}
             label="Tag"
             onChange={handleChange}
           >

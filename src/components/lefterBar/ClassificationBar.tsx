@@ -7,6 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { RootState } from "src/store/store";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { ITag } from "src/types/dataType";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Title = styled.div`
   ${barStyleTitle}
@@ -16,16 +17,22 @@ const Wrapper = styled.div`
 `;
 
 const ClassificationBar: React.FC = () => {
+  const navigate = useNavigate();
+
   const selectTag = (state: RootState) => state.tag.value;
   const tag = useAppSelector(selectTag);
 
   const tagList = (tagItem: Array<ITag>) => {
     return tagItem.map((item) => (
-      <Link key={item.id} to={"/filterPage" + item.name}>
-        <ListItem disableGutters>
-          <ListItemText primary={item.name} />
-        </ListItem>
-      </Link>
+      <ListItem
+        key={item.id}
+        disableGutters
+        onClick={() => {
+          navigate("/main/filterPage", { state: { name: `${item.name}` } });
+        }}
+      >
+        <ListItemText primary={item.name} />
+      </ListItem>
     ));
   };
 
