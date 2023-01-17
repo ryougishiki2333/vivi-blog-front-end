@@ -22,7 +22,7 @@ const MainPage: React.FC = () => {
           <Outlet />
         </RighterWrapper>
       </ContentWrapper>
-      <ScrollRestoration />
+      {/* <ScrollRestoration /> */}
     </>
   );
 };

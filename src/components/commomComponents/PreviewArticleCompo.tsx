@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import { find } from "lodash";
 import { IArticle } from "src/types/dataType";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   margin: 5px;
@@ -25,7 +26,7 @@ const Tags = styled.div`
 
 const TagFilterBox = styled.div`
   display: flex;
-  justify-content: left;
+  justify-content: center;
 `;
 
 type IFilter = {
@@ -43,26 +44,36 @@ const PreviewArticleCompo: React.FC<IFilter> = (props) => {
     }
   });
 
+  const navigate = useNavigate();
+
   const tagList = (articleItem: IArticle) => {
     return articleItem.tag.map((item) => (
-      <Tags key={item.id}>{item.name}</Tags>
+      <Tags
+        key={item.id}
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate("/main/filterPage", { state: { name: `${item.name}` } });
+        }}
+      >
+        {item.name}
+      </Tags>
     ));
   };
 
   return (
     <>
-      <Link
+      <Wrapper
         key={articleItemPublish[0].id}
-        to={"/article/" + articleItemPublish[0].id}
+        onClick={() => {
+          navigate("/article/" + articleItemPublish[0].id);
+        }}
       >
-        <Wrapper>
-          <Title>{articleItemPublish[0].title}</Title>
-          <div
-            dangerouslySetInnerHTML={{ __html: articleItemPublish[0].content }}
-          ></div>
-        </Wrapper>
-      </Link>
-      <TagFilterBox>{tagList(articleItemPublish[0])}</TagFilterBox>
+        <Title>{articleItemPublish[0].title}</Title>
+        <TagFilterBox>{tagList(articleItemPublish[0])}</TagFilterBox>
+        <div
+          dangerouslySetInnerHTML={{ __html: articleItemPublish[0].content }}
+        ></div>
+      </Wrapper>
     </>
   );
 };

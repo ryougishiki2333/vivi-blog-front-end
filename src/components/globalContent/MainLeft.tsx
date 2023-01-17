@@ -2,8 +2,8 @@ import InfoBar from "../lefterBar/InfoBar";
 import AnnounceBar from "../lefterBar/AnnounceBar";
 import DataBar from "../lefterBar/DataBar";
 import ClassificationBar from "../lefterBar/ClassificationBar";
-import OtherFrameBar from "../lefterBar/OtherFrameBar";
 import OtherLinkBar from "../lefterBar/OtherLinkBar";
+import InfoLinkBar from "../lefterBar/InfoLinkBar";
 
 const MainLeft: React.FC = () => {
   return (
@@ -12,8 +12,8 @@ const MainLeft: React.FC = () => {
       <AnnounceBar />
       <ClassificationBar />
       <DataBar />
-      <OtherFrameBar />
       <OtherLinkBar />
+      <InfoLinkBar />
     </>
   );
 };

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { barStyleTitle, barStyleWrapper } from "./barStyle";
 import { RootState } from "src/store/store";
 import { useAppSelector } from "../../store/hooks";
+import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
 const Title = styled.div`
   ${barStyleTitle}
@@ -24,6 +25,7 @@ const DataBar: React.FC = () => {
 
   return (
     <Wrapper>
+      <SvgTitleCompo text="Data" />
       <FlexBox>
         <Title>
           Article: {article.filter((item) => item.articleState === 1).length}

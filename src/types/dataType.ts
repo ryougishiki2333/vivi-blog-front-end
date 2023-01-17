@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export type IArticle = {
   title: string;
   content: string;
@@ -30,5 +28,13 @@ export enum IChangeState {
 }
 
 export type ITextReducer = {
-  billboard: string
+  billBoard: string
+  usefulLink: Array<ILink>
+  otherLink: Array<ILink>
+}
+
+export type ILink = {
+  name: string;
+  url: string;
+  img?: string
 }

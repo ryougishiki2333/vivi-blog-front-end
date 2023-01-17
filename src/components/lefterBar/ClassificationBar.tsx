@@ -8,6 +8,7 @@ import { RootState } from "src/store/store";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { ITag } from "src/types/dataType";
 import { useLocation, useNavigate } from "react-router-dom";
+import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
 const Title = styled.div`
   ${barStyleTitle}
@@ -38,7 +39,7 @@ const ClassificationBar: React.FC = () => {
 
   return (
     <Wrapper>
-      <Title>分类信息</Title>
+      <SvgTitleCompo text="Classify" />
       <List>{tagList(tag)}</List>
     </Wrapper>
   );

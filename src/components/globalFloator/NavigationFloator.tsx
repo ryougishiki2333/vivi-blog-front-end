@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   );
   display: flex;
   justify-content: space-between;
+  z-index: 10;
 `;
 
 const LeftWrapper = styled.div`

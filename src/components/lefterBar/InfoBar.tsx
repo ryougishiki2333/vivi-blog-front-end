@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { barStyleTitle, barStyleWrapper } from "./barStyle";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/img.jpg";
+import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
 const Title = styled.div`
   font-size: 1em;
@@ -28,6 +29,7 @@ const JustBox = styled.div``;
 const InfoBar: React.FC = () => {
   return (
     <Wrapper>
+      <SvgTitleCompo text="Info" />
       <FlexBox>
         <AvatarCompo text={"CS"} sx={undefined} img={img} />
         <JustBox>

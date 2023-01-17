@@ -3,6 +3,7 @@ import { barStyleTitle, barStyleWrapper } from "./barStyle";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import { RootState } from "src/store/store";
 import { useAppSelector } from "../../store/hooks";
+import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
 const Title = styled.div`
   ${barStyleTitle}
@@ -22,9 +23,10 @@ const AnnounceBar: React.FC = () => {
 
   return (
     <Wrapper>
+      <SvgTitleCompo text="Board" />
       <FlexBox>
         <VolumeUpIcon />
-        <Title>{textReducer.billboard}</Title>
+        <Title>{textReducer.billBoard}</Title>
       </FlexBox>
     </Wrapper>
   );
