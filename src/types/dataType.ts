@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type IArticle = {
   title: string;
   content: string;
@@ -25,4 +27,8 @@ export enum IChangeState {
   down = 0,
   // 1代表上传回调
   up = 1,
+}
+
+export type ITextReducer = {
+  billboard: string
 }

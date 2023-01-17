@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ITag } from "../types/dataType";
 
-export const tagReducer = createSlice({
+export const scoreReducer = createSlice({
   name: "tag",
   initialState: {
     value: [
@@ -16,6 +16,6 @@ export const tagReducer = createSlice({
   },
 });
 
-export const { addTag, deleteTag } = tagReducer.actions;
+export const { addTag, deleteTag } = scoreReducer.actions;
 
-export default tagReducer.reducer;
+export default scoreReducer.reducer;

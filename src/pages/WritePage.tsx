@@ -51,9 +51,11 @@ const WritePage: React.FC = () => {
   // 控制是否回调
   const [checkIfInitial, setCheckIfInitial] = useState(false);
 
-  // 保存后回调
+  // 数据
   const selectArticle = (state: RootState) => state.article.value;
   const article = useAppSelector(selectArticle);
+
+  // 保存后回调
   useEffect(() => {
     if (checkIfChangeArticle) {
       setCheckIfChangeArticle(false);
