@@ -108,7 +108,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
   // 编辑tag界面
   const tagListFilter = () => {
     return tag.map((item) => (
-      <TagFilterBox>
+      <TagFilterBox key={item.id}>
         <DialogContentText>{item.name}</DialogContentText>
         <Button>修改</Button>
         <Button>删除</Button>
