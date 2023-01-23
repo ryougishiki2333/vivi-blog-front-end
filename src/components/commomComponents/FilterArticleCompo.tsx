@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 const Wrapper = styled.div`
   border-style: solid;
   border-radius: 10px;
-  height: 200px;
   border-width: thin;
   margin-bottom: 10px;
   display: flex;
@@ -30,6 +29,8 @@ const TextWrapper = styled.div`
 
 const TopperWrapper = styled.div`
   height: 160px;
+  overflow-wrap: break-word;
+  overflow: hidden;
 `;
 
 const Title = styled.div`

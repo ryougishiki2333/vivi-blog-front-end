@@ -27,3 +27,4 @@ export type IAvatar = {
 export type ITitle = {
     text: string
 }
+

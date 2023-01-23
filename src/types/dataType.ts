@@ -38,3 +38,17 @@ export type ILink = {
   url: string;
   img?: string
 }
+
+export type IUser = {
+    token: string
+    userId: string
+    id: string
+    type: IUserType
+    avatar: string
+}
+
+export enum IUserType {
+  other = 0,
+  visiter = 1,
+  owner = 2,
+}

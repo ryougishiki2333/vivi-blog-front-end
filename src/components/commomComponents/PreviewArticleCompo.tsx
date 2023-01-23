@@ -5,9 +5,15 @@ import { find } from "lodash";
 import { IArticle } from "src/types/dataType";
 import { useNavigate } from "react-router-dom";
 
-const Wrapper = styled.div`
+const WrapperTop = styled.div`
   margin: 5px;
   height: 300px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+`;
+
+const WrapperBottom = styled.div`
+  margin: 5px;
 `;
 
 const Content = styled.div`
@@ -28,6 +34,8 @@ const TagFilterBox = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+const ArticleContent = styled.div``;
 
 type IFilter = {
   tag?: string;
@@ -62,7 +70,7 @@ const PreviewArticleCompo: React.FC<IFilter> = (props) => {
 
   return (
     <>
-      <Wrapper
+      <WrapperTop
         key={articleItemPublish[0].id}
         onClick={() => {
           navigate("/article/" + articleItemPublish[0].id);
@@ -70,10 +78,10 @@ const PreviewArticleCompo: React.FC<IFilter> = (props) => {
       >
         <Title>{articleItemPublish[0].title}</Title>
         <TagFilterBox>{tagList(articleItemPublish[0])}</TagFilterBox>
-        <div
+        <ArticleContent
           dangerouslySetInnerHTML={{ __html: articleItemPublish[0].content }}
-        ></div>
-      </Wrapper>
+        ></ArticleContent>
+      </WrapperTop>
     </>
   );
 };
