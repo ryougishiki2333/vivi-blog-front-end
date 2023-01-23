@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IArticle } from "../types/dataType";
 import { nanoid } from "@reduxjs/toolkit";
+import { testString } from "./testString";
 
 export const articleReducer = createSlice({
   name: "article",
@@ -8,7 +9,7 @@ export const articleReducer = createSlice({
     value: [
       {
         title: "test0",
-        content: "<p>test0</p>",
+        content: `<p>13123123123</p>`,
         tag: [
           { name: "miaomiaomiao", id: "123123" },
           { name: "gugugu", id: "1234" },
@@ -18,8 +19,8 @@ export const articleReducer = createSlice({
         coverPicture:''
       },
       {
-        title: "test1",
-        content: "<p>test1123</p>",
+        title: `最浪漫的七日间`,
+        content: testString,
         tag: [
           { name: "miaomiaomiao", id: "123123" },
           { name: "gugugu", id: "1234" },

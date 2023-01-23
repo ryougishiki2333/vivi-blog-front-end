@@ -5,7 +5,7 @@ import ContentWrapper from "../globalWrapper/ContentWrapper";
 import LefterWrapper from "../globalWrapper/LefterWrapper";
 import RighterWrapper from "../globalWrapper/RighterWrapper";
 
-const MainPageDetail: React.FC = () => {
+const FilterPageDetail: React.FC = () => {
   return (
     <>
       <FilterResultZone></FilterResultZone>
@@ -13,4 +13,4 @@ const MainPageDetail: React.FC = () => {
   );
 };
 
-export default MainPageDetail;
+export default FilterPageDetail;

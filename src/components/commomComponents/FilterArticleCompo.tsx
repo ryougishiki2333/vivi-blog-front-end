@@ -4,6 +4,7 @@ import { useAppSelector } from "../../store/hooks";
 import { find } from "lodash";
 import img from "../../assets/img/img.jpg";
 import { IArticle } from "src/types/dataType";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   border-style: solid;
@@ -60,9 +61,19 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
     }
   });
 
+  const navigate = useNavigate();
+
   const tagList = (articleItem: IArticle) => {
     return articleItem.tag.map((item) => (
-      <Tags key={item.id}>{item.name}</Tags>
+      <Tags
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate("/main/filterPage", { state: { name: `${item.name}` } });
+        }}
+        key={item.id}
+      >
+        {item.name}
+      </Tags>
     ));
   };
   const articleItemPublishRender = articleItemPublish.map((article) => (

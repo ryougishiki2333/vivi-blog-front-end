@@ -3,6 +3,7 @@ import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 import { useAppSelector } from "../../store/hooks";
 import { useParams } from "react-router-dom";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
+import { useNavigate } from "react-router-dom";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -24,10 +25,18 @@ const ArticleZone: React.FC = () => {
   const articleItem = useAppSelector((state) => state.article.value);
   const { id } = useParams();
   const articleItemFilter = articleItem.filter((article) => article.id === id);
-
+  const navigate = useNavigate();
   const tagList = () => {
     return articleItemFilter[0].tag.map((item) => (
-      <Tags key={item.id}>{item.name}</Tags>
+      <Tags
+        key={item.id}
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate("/main/filterPage", { state: { name: `${item.name}` } });
+        }}
+      >
+        {item.name}
+      </Tags>
     ));
   };
 
