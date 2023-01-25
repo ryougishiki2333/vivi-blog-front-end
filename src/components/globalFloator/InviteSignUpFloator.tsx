@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
+import { RootState } from "src/store/store";
 
 const Wrapper = styled.div`
   background: #fa9ab1;
@@ -11,13 +12,19 @@ const Wrapper = styled.div`
 `;
 
 const InviteSignUpFloator: React.FC = () => {
-  return (
+  const selectUser = (state: RootState) => state.user.value;
+  const user = useAppSelector(selectUser);
+  const inviteFloator = user.type ? (
+    <></>
+  ) : (
     <Link to={"/visitor/signUp"}>
       <Wrapper>
         游客114514您好！注册登录后可使用自定义头像等功能，快去尝试看看吧！
       </Wrapper>
     </Link>
   );
+
+  return <>{inviteFloator}</>;
 };
 
 export default InviteSignUpFloator;
