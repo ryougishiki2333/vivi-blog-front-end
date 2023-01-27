@@ -29,7 +29,7 @@ const JustBox = styled.div``;
 const InfoBar: React.FC = () => {
   return (
     <Wrapper>
-      <SvgTitleCompo text="Info" />
+      <SvgTitleCompo text="Vivi" />
       <FlexBox>
         <AvatarCompo text={"CS"} sx={undefined} img={img} />
         <JustBox>
