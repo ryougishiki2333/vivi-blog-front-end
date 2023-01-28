@@ -9,7 +9,14 @@ const AvatarCompo: React.FC<IAvatar> = (props) => {
   return (
     <Avatar
       sx={props.sx}
-      onClick={() => navigate("/manage/main")}
+      onClick={() => {
+        if (props.type === 2) {
+          navigate("/manage/main");
+        }
+        if (props.type === 1) {
+          navigate("/visitor/inner");
+        }
+      }}
       src={props.img ? props.img : undefined}
     >
       {props.text}

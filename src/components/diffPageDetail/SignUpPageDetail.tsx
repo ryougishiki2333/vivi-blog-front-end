@@ -8,6 +8,25 @@ import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { RootState } from "src/store/store";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
+import { TransitionProps } from "@mui/material/transitions";
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<any, any>;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -22,7 +41,7 @@ const ButtonBox = styled.div`
   justify-content: right;
 `;
 
-const SignInZone: React.FC = () => {
+const SignInZone: React.FC<any> = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -68,8 +87,7 @@ const SignInZone: React.FC = () => {
           text="登录"
           color="#000000"
           onClick={() => {
-            username &&
-              password &&
+            if (username && password) {
               dispatch({
                 type: "user/logIn",
                 payload: {
@@ -80,6 +98,8 @@ const SignInZone: React.FC = () => {
                   avatar: "",
                 },
               });
+              props.handleClickOpen();
+            }
           }}
         />
       </ButtonBox>
@@ -145,11 +165,55 @@ const SignUpZone: React.FC = () => {
   );
 };
 
+const AlertDialogSlide: React.FC<any> = (props) => {
+  return (
+    <Dialog
+      open={props.open}
+      TransitionComponent={Transition}
+      keepMounted
+      onClose={() => props.handleClose("/main/mainPage")}
+      aria-describedby="alert-dialog-slide-description"
+    >
+      <DialogTitle>{"是否返回首页"}</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-slide-description">
+          倒计时结束将前往博客首页页面。
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => props.handleClose("/main/mainPage")}>
+          跳转主页（5）
+        </Button>
+        <Button onClick={() => props.handleClose("/visitor/inner")}>
+          个人信息
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
 const MainPageDetail: React.FC = () => {
+  const navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (to: string) => {
+    setOpen(false);
+    navigate(to);
+  };
+
   return (
     <>
-      <SignInZone></SignInZone>
+      <SignInZone handleClickOpen={handleClickOpen}></SignInZone>
       <SignUpZone></SignUpZone>
+      <AlertDialogSlide
+        open={open}
+        handleClickOpen={handleClickOpen}
+        handleClose={handleClose}
+      ></AlertDialogSlide>
     </>
   );
 };

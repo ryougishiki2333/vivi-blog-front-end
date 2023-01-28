@@ -42,6 +42,10 @@ const NavigationFloator: React.FC = () => {
 
   const selectArticle = (state: RootState) => state.article.value;
   const article = useAppSelector(selectArticle);
+
+  const selectUser = (state: RootState) => state.user.value;
+  const user = useAppSelector(selectUser);
+
   const randomId = () => {
     const tem = sample(article.filter((item) => item.articleState === 1));
     return tem ? tem.id : "";
@@ -75,7 +79,7 @@ const NavigationFloator: React.FC = () => {
             text={"目录 | Category"}
           />
           <ViviButtonCompo to={"/main/aboutPage"} text={"打赏 | Support"} />
-          <AvatarCompo text={"CS"} sx={undefined} img={img} />
+          <AvatarCompo text={"CS"} sx={undefined} img={img} type={user.type} />
         </Stack>
       </RightWrapper>
     </Wrapper>

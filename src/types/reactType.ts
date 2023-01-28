@@ -1,4 +1,5 @@
 import React from "react"
+import {IUserType} from './dataType'
 
 export type IWrapper = {
     children: React.ReactNode
@@ -22,6 +23,10 @@ export type IAvatar = {
     img: string
     text: string
     sx: any
+    type: IUserType
+    //   other = 0,
+    //   visiter = 1,
+    //   owner = 2,
 }
 
 export type ITitle = {

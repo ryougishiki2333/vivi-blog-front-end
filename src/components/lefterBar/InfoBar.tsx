@@ -31,7 +31,7 @@ const InfoBar: React.FC = () => {
     <Wrapper>
       <SvgTitleCompo text="Vivi" />
       <FlexBox>
-        <AvatarCompo text={"CS"} sx={undefined} img={img} />
+        <AvatarCompo text={"CS"} sx={undefined} img={img} type={2} />
         <JustBox>
           <Title>miaomiaomiao</Title>
           <Text>All work and no play make vivi a dull girl</Text>
