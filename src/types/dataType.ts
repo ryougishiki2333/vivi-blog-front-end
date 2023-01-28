@@ -1,3 +1,9 @@
+export type IScore = {
+  id: string
+  score: number
+  articleId: string
+}
+
 export type IArticle = {
   title: string;
   content: string;
@@ -40,11 +46,11 @@ export type ILink = {
 }
 
 export type IUser = {
-    token: string
-    userId: string
-    id: string
-    type: IUserType
-    avatar: string
+  token: string
+  userId: string
+  id: string
+  type: IUserType
+  avatar: string
 }
 
 export enum IUserType {

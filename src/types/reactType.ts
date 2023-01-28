@@ -1,5 +1,5 @@
 import React from "react"
-import {IUserType} from './dataType'
+import { IUserType } from './dataType'
 
 export type IWrapper = {
     children: React.ReactNode

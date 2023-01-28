@@ -3,6 +3,7 @@ import tagReducer from './tagReducer'
 import articleReducer from './articleReducer'
 import globalTextReducer from './globalTextReducer'
 import userReducer from './userReducer'
+import scoreReducer from './scoreReducer'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     article: articleReducer,
     globalText: globalTextReducer,
     user: userReducer,
+    score: scoreReducer,
   }
 })
 

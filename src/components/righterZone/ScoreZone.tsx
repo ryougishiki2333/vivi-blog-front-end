@@ -1,5 +1,10 @@
 import styled from "styled-components";
 import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
+import { Rate } from "antd";
+import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
+import { useAppSelector } from "../../store/hooks";
+import { useParams } from "react-router-dom";
+import { meanBy } from "lodash";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -8,10 +13,27 @@ const Wrapper = styled.div`
   ${zoneStyleWrapper}
 `;
 
+const FlexDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const ScoreZone: React.FC = () => {
+  const scoreItem = useAppSelector((state) => state.score.value);
+  console.log(scoreItem);
+  const { id } = useParams();
+  const acticleScoreItem = scoreItem.filter((item) => {
+    return item.articleId === id;
+  });
+  const scoreMean = meanBy(acticleScoreItem, "score");
+
   return (
     <Wrapper>
-      <Title>打分显示组件</Title>
+      <SvgTitleCompo text="Score" />
+      <FlexDiv>
+        <Rate disabled defaultValue={scoreMean} />
+        <div>{acticleScoreItem.length} scores</div>
+      </FlexDiv>
     </Wrapper>
   );
 };
