@@ -92,7 +92,7 @@ const SignInZone: React.FC<any> = (props) => {
                 type: "user/logIn",
                 payload: {
                   token: "23333",
-                  userId: username,
+                  username: username,
                   id: "233333",
                   type: 1,
                   avatar: "",

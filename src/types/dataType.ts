@@ -1,7 +1,38 @@
+export type IMotherComment = {
+  id:string
+  content:string
+  username:string
+  displayName:string
+  state:ICommentState
+  articleId:string
+  children: Array<IChildrenComment>
+  timestamp: number
+  userId:string
+}
+
+export type IChildrenComment = {
+  id:string
+  content:string
+  username:string
+  displayName:string
+  state:ICommentState
+  replyUserId:string
+  timestamp: number
+  userId:string
+  articleId:string
+}
+
+export enum ICommentState {
+  delete = 0,
+  publish = 1,
+}
+
+
 export type IScore = {
   id: string
   score: number
   articleId: string
+  userId:string
 }
 
 export type IArticle = {
@@ -47,7 +78,8 @@ export type ILink = {
 
 export type IUser = {
   token: string
-  userId: string
+  username: string
+  displayName:string
   id: string
   type: IUserType
   avatar: string
