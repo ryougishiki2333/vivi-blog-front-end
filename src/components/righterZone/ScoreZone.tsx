@@ -20,7 +20,6 @@ const FlexDiv = styled.div`
 
 const ScoreZone: React.FC = () => {
   const scoreItem = useAppSelector((state) => state.score.value);
-  console.log(scoreItem);
   const { id } = useParams();
   const acticleScoreItem = scoreItem.filter((item) => {
     return item.articleId === id;
