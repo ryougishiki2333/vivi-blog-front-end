@@ -5,7 +5,6 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/img.jpg";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
-import Item from "antd/es/list/Item";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -31,7 +30,7 @@ type ICommentUnit = {
   img: string;
   replyUserId: string;
   content: string;
-  timestamp: string;
+  timestamp: number;
 };
 
 const CommentUnit: React.FC<ICommentUnit> = (props) => {
@@ -66,13 +65,42 @@ const CommentZone: React.FC = () => {
     item.children && (count = count + item.children.length);
   });
 
-  const commentPlainData = [];
+  const commentPlainData = [] as Array<ICommentUnit>;
 
   commentItem.forEach((item) => {
-    commentPlainData.push();
+    commentPlainData.push({
+      displayName: item.displayName,
+      email: item.userId,
+      img: "",
+      replyUserId: "",
+      content: item.content,
+      timestamp: item.timestamp,
+    } as ICommentUnit);
     if (item.children) {
-      item.children.forEach(() => {});
+      item.children.forEach((itemChildren) => {
+        commentPlainData.push({
+          displayName: itemChildren.displayName,
+          email: itemChildren.userId,
+          img: "",
+          replyUserId: itemChildren.replyUserId ? itemChildren.replyUserId : "",
+          content: itemChildren.content,
+          timestamp: itemChildren.timestamp,
+        } as ICommentUnit);
+      });
     }
+  });
+
+  const renderComment = commentPlainData.map((item) => {
+    return (
+      <CommentUnit
+        content={item.content}
+        timestamp={item.timestamp}
+        displayName={item.displayName}
+        email={item.email}
+        img={item.img}
+        replyUserId={item.replyUserId}
+      ></CommentUnit>
+    );
   });
 
   return (
@@ -81,6 +109,7 @@ const CommentZone: React.FC = () => {
         <SvgTitleCompo text="Reply" />
         {count} comments
       </FlexWrapper>
+      {renderComment}
     </Wrapper>
   );
 };
