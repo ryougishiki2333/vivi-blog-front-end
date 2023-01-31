@@ -4,6 +4,7 @@ import { useAppSelector } from "../../store/hooks";
 import { useParams } from "react-router-dom";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import { useNavigate } from "react-router-dom";
+import InviteSignUpFloator from "../globalFloator/InviteSignUpFloator";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -41,14 +42,17 @@ const ArticleZone: React.FC = () => {
   };
 
   return (
-    <Wrapper>
-      <SvgTitleCompo text="Article" />
-      <Title>{articleItemFilter[0].title}</Title>
-      <div
-        dangerouslySetInnerHTML={{ __html: articleItemFilter[0].content }}
-      ></div>
-      <TagFilterBox>{tagList()}</TagFilterBox>
-    </Wrapper>
+    <>
+      <InviteSignUpFloator />
+      <Wrapper>
+        <SvgTitleCompo text="Article" />
+        <Title>{articleItemFilter[0].title}</Title>
+        <div
+          dangerouslySetInnerHTML={{ __html: articleItemFilter[0].content }}
+        ></div>
+        <TagFilterBox>{tagList()}</TagFilterBox>
+      </Wrapper>
+    </>
   );
 };
 

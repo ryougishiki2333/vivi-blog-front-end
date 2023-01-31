@@ -5,6 +5,13 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/img.jpg";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
+import { useState, useEffect } from "react";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import TextField from "@mui/material/TextField";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -24,6 +31,10 @@ const InfoTopWrapper = styled.div`
   align-items: center;
 `;
 
+const MarginLeftFive = styled.div`
+  margin-left: 10px;
+`;
+
 type ICommentUnit = {
   displayName: string;
   email: string;
@@ -34,6 +45,13 @@ type ICommentUnit = {
 };
 
 const CommentUnit: React.FC<ICommentUnit> = (props) => {
+  const [replyModalOpen, setReplyModalOpen] = useState(false);
+  const [replyToSomeOne, setReplyToSomeOne] = useState("");
+
+  const handleReply = (displayName: string) => {
+    displayName && setReplyToSomeOne(`reply to ${displayName}`);
+    setReplyModalOpen(!replyModalOpen);
+  };
   return (
     <>
       <InfoTopWrapper>
@@ -43,8 +61,8 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
           sx={undefined}
           type={0}
         />
-        <div>{props.displayName}</div>
-        <div>{props.email ? props.email : ""}</div>
+        <MarginLeftFive> {props.displayName} </MarginLeftFive>
+        <MarginLeftFive>{props.email ? props.email : ""}</MarginLeftFive>
       </InfoTopWrapper>
       <InfoTopWrapper>
         {props.replyUserId ? "Reply to 由replyUserId索引的用户名" : ""}{" "}
@@ -52,8 +70,38 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
       </InfoTopWrapper>
       <InfoTopWrapper>
         <div>{props.timestamp}</div>
-        <ViviButtonCompo text="回复" color="#000000" onClick={() => {}} />
+        <ViviButtonCompo
+          text="回复"
+          color="#000000"
+          onClick={() => {
+            handleReply(props.displayName);
+          }}
+        />
       </InfoTopWrapper>
+
+      <Dialog open={replyModalOpen} onClose={handleReply}>
+        <DialogContent
+          sx={{
+            "& > :not(style)": { width: "60ch" },
+          }}
+        >
+          <TextField
+            value={replyToSomeOne}
+            onChange={(event) => {
+              setReplyToSomeOne(event.target.value);
+            }}
+            autoFocus
+            multiline={true}
+            minRows={"1"}
+            id="reply"
+            label="reply"
+            variant="outlined"
+          />
+        </DialogContent>
+        <DialogActions>
+          <ViviButtonCompo text="发布" color="#000000" onClick={handleReply} />
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
