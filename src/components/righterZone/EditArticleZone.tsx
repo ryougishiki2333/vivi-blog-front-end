@@ -15,11 +15,16 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Button from "@mui/material/Button";
 import { RootState } from "../../store/store";
 import { IChangeState, ITag } from "src/types/dataType";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import Stack from "@mui/material/Stack";
+import { UploadOutlined } from "@ant-design/icons";
+import type { UploadProps } from "antd";
+import { Button, message, Upload } from "antd";
 
 const TagBox = styled.div`
   display: flex;
@@ -52,6 +57,28 @@ interface IEditArticleZoneProp {
 }
 
 const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
+  // 上传参数
+  const uploadProp: UploadProps = {
+    name: "file",
+    action: "http://127.0.0.1:4000/api/upload",
+    className: "avatar-uploader",
+    showUploadList: false,
+    headers: {
+      authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzU2NzExMDAsImV4cCI6MTY3NTc1NzUwMH0.pM7bMedL16CoAtFsdYUj9tNxjzSzxH_T2WTXagrmYt0",
+    },
+    onChange(info) {
+      if (info.file.status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === "done") {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null); // TS 语法
 
@@ -201,6 +228,9 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
             />
           )}
         </ButtonBox>
+        <Upload {...uploadProp}>
+          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+        </Upload>
       </Wrapper>
 
       <Dialog open={editTagOpen} onClose={handleEditTag}>
