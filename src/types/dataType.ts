@@ -39,7 +39,7 @@ export type IArticle = {
   title: string;
   content: string;
   tag: Array<ITag>;
-  articleState: IArticleState;
+  articleState: IArticleState; 
   id: string;
   coverPicture:string
 };
