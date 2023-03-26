@@ -18,6 +18,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { userLogin, userRegister } from "../../api/user";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -46,6 +47,12 @@ const SignInZone: React.FC<any> = (props) => {
   const [password, setPassword] = useState("");
 
   const dispatch = useAppDispatch();
+
+  const buttonLogin = async () => {
+    const loginResult = await userLogin(username, password);
+    console.log(loginResult);
+    localStorage.setItem("token", loginResult.data.token);
+  };
 
   return (
     <Wrapper>
@@ -88,17 +95,8 @@ const SignInZone: React.FC<any> = (props) => {
           color="#000000"
           onClick={() => {
             if (username && password) {
-              dispatch({
-                type: "user/logIn",
-                payload: {
-                  token: "23333",
-                  username: username,
-                  id: "233333",
-                  type: 1,
-                  avatar: "",
-                },
-              });
-              props.handleClickOpen();
+              buttonLogin();
+              // props.handleClickOpen();
             }
           }}
         />
