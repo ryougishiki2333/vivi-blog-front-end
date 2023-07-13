@@ -53,7 +53,9 @@ const SignInZone: React.FC<any> = (props) => {
       const loginResult = await userLogin(username, password);
       console.log(loginResult);
       localStorage.setItem("token", loginResult.data.token);
-    } catch {}
+    } catch {
+      localStorage.setItem("token", "");
+    }
   };
 
   return (
@@ -98,7 +100,7 @@ const SignInZone: React.FC<any> = (props) => {
           onClick={() => {
             if (username && password) {
               buttonLogin();
-              props.handleClickOpen();
+              // props.handleClickOpen();
             }
           }}
         />

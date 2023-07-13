@@ -7,6 +7,8 @@ type loginRes = {
   };
 };
 
+const token = window.localStorage.getItem('token')
+
 export const userLogin = async (
   username: string,
   password: string
@@ -15,6 +17,7 @@ export const userLogin = async (
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "token": `Bearer ${token}`
     },
     body: JSON.stringify({ username, password }),
   });
