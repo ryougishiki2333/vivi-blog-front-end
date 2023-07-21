@@ -12,9 +12,11 @@ const Wrapper = styled.div`
 `;
 
 const InviteSignUpFloator: React.FC = () => {
-  const selectUser = (state: RootState) => state.user.value;
-  const user = useAppSelector(selectUser);
-  const inviteFloator = user.type ? (
+  const user = useAppSelector((state) => {
+    return state.user.value;
+  });
+
+  const inviteFloator = user.token ? (
     <></>
   ) : (
     <Link to={"/visitor/signUp"}>

@@ -4,6 +4,7 @@ import { barStyleTitle, barStyleWrapper } from "./barStyle";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/img.jpg";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
+import { useAppSelector } from "../../store/hooks";
 
 const Title = styled.div`
   font-size: 1em;
@@ -27,11 +28,14 @@ const FlexBox = styled.div`
 const JustBox = styled.div``;
 
 const InfoBar: React.FC = () => {
+  const user = useAppSelector((state) => {
+    return state.user.value;
+  });
   return (
     <Wrapper>
       <SvgTitleCompo text="Vivi" />
       <FlexBox>
-        <AvatarCompo text={"CS"} sx={undefined} img={img} type={2} />
+        <AvatarCompo text={"CS"} sx={undefined} img={img} type={user.type} />
         <JustBox>
           <Title>miaomiaomiao</Title>
           <Text>All work and no play make vivi a dull girl</Text>

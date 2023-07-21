@@ -40,11 +40,13 @@ const RightWrapper = styled.div`
 const NavigationFloator: React.FC = () => {
   const navigate = useNavigate();
 
-  const selectArticle = (state: RootState) => state.article.value;
-  const article = useAppSelector(selectArticle);
+  const article = useAppSelector((state) => {
+    return state.article.value;
+  });
 
-  const selectUser = (state: RootState) => state.user.value;
-  const user = useAppSelector(selectUser);
+  const user = useAppSelector((state) => {
+    return state.user.value;
+  });
 
   const randomId = () => {
     const tem = sample(article.filter((item) => item.articleState === 1));

@@ -80,7 +80,7 @@ export type IUser = {
   token: string
   username: string
   displayName:string
-  id: string
+  // id: string
   type: IUserType
   avatar: string
 }

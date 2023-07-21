@@ -51,10 +51,19 @@ const SignInZone: React.FC<any> = (props) => {
   const buttonLogin = async () => {
     try {
       const loginResult = await userLogin(username, password);
-      console.log(loginResult);
-      localStorage.setItem("token", loginResult.data.token);
+      const loginData = loginResult.data;
+      dispatch({
+        type: `user/logIn`,
+        payload: { ...loginData },
+      });
+      props.handleClickOpen();
     } catch {
-      localStorage.setItem("token", "");
+      dispatch({
+        type: `user/logIn`,
+        payload: {
+          token: "",
+        },
+      });
     }
   };
 
@@ -100,7 +109,6 @@ const SignInZone: React.FC<any> = (props) => {
           onClick={() => {
             if (username && password) {
               buttonLogin();
-              // props.handleClickOpen();
             }
           }}
         />
@@ -184,7 +192,7 @@ const AlertDialogSlide: React.FC<any> = (props) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => props.handleClose("/main/mainPage")}>
-          跳转主页（5）
+          跳转主页
         </Button>
         <Button onClick={() => props.handleClose("/visitor/inner")}>
           个人信息

@@ -4,14 +4,17 @@ import { IUser } from "../types/dataType";
 export const userReducer = createSlice({
   name: "user",
   initialState: {
-    value: { token: "", username: "", id: "", type: 0, avatar: "", displayName:''} as IUser,
+    value: { token: "", username: "", type: 0, avatar: "", displayName:'' } as IUser,
   },
   reducers: {
     logIn: (state, action) => {
-      state.value = {...action.payload, displayName:'喵喵喵'}
+      state.value = action.payload.token ? {...action.payload} : { token: "", username: "", type: 0, avatar: "", displayName:'' }
+      console.log(state.value);
+      
+      // localStorage.setItem("token", action.payload.data.token);
     },
     logOut: (state, action) => {
-      state.value = { token: "", username: "", id: "", type: 0, avatar: "", displayName:''}
+      state.value = { token: "", username: "", type: 0, avatar: "", displayName:''}
     },
     // editTag: (state, action) => {},
   },
