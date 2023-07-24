@@ -17,6 +17,9 @@ import ManageCommentDetail from "../components/diffPageDetail/ManageCommentDetai
 import ManagePageDetail from "../components/diffPageDetail/ManagePageDetail";
 import ManageTagDetail from "../components/diffPageDetail/ManageTagDetail";
 import ManageVisitorDetail from "../components/diffPageDetail/ManageVisitorDetail";
+import RequireAuth from "./RequireAuth";
+
+// export const
 
 export const route = [
   {
@@ -63,19 +66,27 @@ export const route = [
         path: "/visitor/signUp",
         element: <SignUpPageDetail />,
       },
-      {
-        path: "/visitor/inner",
-        element: <InnerPageDetail />,
-      },
+      // {
+      //   path: "/visitor/inner",
+      //   element: <InnerPageDetail />,
+      // },
     ],
   },
   {
     path: "/manage/article",
-    element: <WritePage />,
+    element: (
+      <RequireAuth>
+        <WritePage />
+      </RequireAuth>
+    ),
   },
   {
     path: "/manage",
-    element: <ManagePage />,
+    element: (
+      <RequireAuth>
+        <ManagePage />
+      </RequireAuth>
+    ),
     children: [
       {
         path: "/manage/main",

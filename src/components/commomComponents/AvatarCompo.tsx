@@ -13,9 +13,9 @@ const AvatarCompo: React.FC<IAvatar> = (props) => {
         if (props.type === 2) {
           navigate("/manage/main");
         }
-        if (props.type === 1) {
-          navigate("/visitor/inner");
-        }
+        // if (props.type === 1) {
+        //   navigate("/visitor/inner");
+        // }
       }}
       src={props.img ? props.img : undefined}
     >

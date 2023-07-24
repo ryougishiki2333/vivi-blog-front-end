@@ -11,10 +11,15 @@ interface FetchOptions {
   integrity?: string;
 }
 
+const token = window.localStorage.getItem('token')
+
 export const sendRequest = async (url: string, options: FetchOptions = {}): Promise<Response> => {
   const response = await fetch(url, {
     method: options.method || 'GET',
-    headers: options.headers || {},
+    headers: {
+      "Content-Type": "application/json",
+      "token": `Bearer ${token}`
+    },
     body: options.body || undefined,
     mode: options.mode || 'cors',
     credentials: options.credentials || 'same-origin',

@@ -19,6 +19,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { userLogin, userRegister } from "../../api/user";
+import { type } from "os";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -42,7 +43,12 @@ const ButtonBox = styled.div`
   justify-content: right;
 `;
 
-const SignInZone: React.FC<any> = (props) => {
+type signZone = {
+  handleSwitch: () => void;
+  handleClickOpen: () => void;
+};
+
+const SignInZone: React.FC<signZone> = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -104,6 +110,11 @@ const SignInZone: React.FC<any> = (props) => {
       </Box>
       <ButtonBox>
         <ViviButtonCompo
+          text="去注册"
+          color="#000000"
+          onClick={() => props.handleSwitch()}
+        />
+        <ViviButtonCompo
           text="登录"
           color="#000000"
           onClick={() => {
@@ -117,10 +128,29 @@ const SignInZone: React.FC<any> = (props) => {
   );
 };
 
-const SignUpZone: React.FC = () => {
+const SignUpZone: React.FC<signZone> = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
+  const buttonRegister = async () => {
+    try {
+      const loginResult = await userRegister(username, password, email);
+      const loginData = loginResult.data;
+      // dispatch({
+      //   type: `user/logIn`,
+      //   payload: { ...loginData },
+      // });
+      // props.handleClickOpen();
+    } catch {
+      // dispatch({
+      //   type: `user/logIn`,
+      //   payload: {
+      //     token: "",
+      //   },
+      // });
+    }
+  };
 
   return (
     <Wrapper>
@@ -169,7 +199,20 @@ const SignUpZone: React.FC = () => {
         </Input>
       </Box>
       <ButtonBox>
-        <ViviButtonCompo text="注册" color="#000000" onClick={() => {}} />
+        <ViviButtonCompo
+          text="去登录"
+          color="#000000"
+          onClick={() => props.handleSwitch()}
+        />
+        <ViviButtonCompo
+          text="注册"
+          color="#000000"
+          onClick={() => {
+            if (username && password) {
+              buttonRegister();
+            }
+          }}
+        />
       </ButtonBox>
     </Wrapper>
   );
@@ -205,6 +248,7 @@ const AlertDialogSlide: React.FC<any> = (props) => {
 const MainPageDetail: React.FC = () => {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
+  const [isLogIn, setIsLogIn] = React.useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -215,10 +259,23 @@ const MainPageDetail: React.FC = () => {
     navigate(to);
   };
 
+  const handleSwitch = () => {
+    setIsLogIn(!isLogIn);
+  };
+
   return (
     <>
-      <SignInZone handleClickOpen={handleClickOpen}></SignInZone>
-      <SignUpZone></SignUpZone>
+      {isLogIn ? (
+        <SignInZone
+          handleSwitch={handleSwitch}
+          handleClickOpen={handleClickOpen}
+        ></SignInZone>
+      ) : (
+        <SignUpZone
+          handleSwitch={handleSwitch}
+          handleClickOpen={handleClickOpen}
+        ></SignUpZone>
+      )}
       <AlertDialogSlide
         open={open}
         handleClickOpen={handleClickOpen}
