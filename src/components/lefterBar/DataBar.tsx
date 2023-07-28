@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import { barStyleTitle, barStyleWrapper } from "./barStyle";
+import { Title, Wrapper } from "./barStyle";
 import { RootState } from "src/store/store";
 import { useAppSelector } from "../../store/hooks";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
-const Title = styled.div`
-  ${barStyleTitle}
-`;
-const Wrapper = styled.div`
-  ${barStyleWrapper}
-`;
+// const Title = styled.div`
+//   ${barStyleTitle}
+// `;
+// const Wrapper = styled.div`
+//   ${barStyleWrapper}
+// `;
 
 const FlexBox = styled.div`
   display: flex;

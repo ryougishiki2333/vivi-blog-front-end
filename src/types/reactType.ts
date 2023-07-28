@@ -1,5 +1,6 @@
 import React from "react"
 import { IUserType } from './dataType'
+import { SxProps, Theme } from '@mui/material/styles';
 
 export type IWrapper = {
     children: React.ReactNode
@@ -22,7 +23,7 @@ type IRouterState = {
 export type IAvatar = {
     img: string
     text: string
-    sx: any
+    sx: SxProps<Theme>
     type: IUserType
     //   other = 0,
     //   visiter = 1,

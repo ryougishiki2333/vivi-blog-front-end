@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { barStyleTitle, barStyleWrapper } from "./barStyle";
+import { Title, Wrapper } from "./barStyle";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -9,12 +9,12 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { ILink, ITag } from "src/types/dataType";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Title = styled.div`
-  ${barStyleTitle}
-`;
-const Wrapper = styled.div`
-  ${barStyleWrapper}
-`;
+// const Title = styled.div`
+//   ${barStyleTitle}
+// `;
+// const Wrapper = styled.div`
+//   ${barStyleWrapper}
+// `;
 
 const OtherLinkBar: React.FC = () => {
   const selectGlobalText = (state: RootState) => state.globalText.value;

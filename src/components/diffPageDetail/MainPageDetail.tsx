@@ -4,7 +4,7 @@ import OverviewZone from "../righterZone/OverviewZone";
 const MainPageDetail: React.FC = () => {
   return (
     <>
-      <NeatMapZone></NeatMapZone>
+      {/* <NeatMapZone></NeatMapZone> */}
       <OverviewZone></OverviewZone>
     </>
   );

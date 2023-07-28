@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { barStyleTitle, barStyleWrapper } from "./barStyle";
+import { Title, Wrapper } from "./barStyle";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import { RootState } from "src/store/store";
 import List from "@mui/material/List";
@@ -8,12 +8,12 @@ import ListItemText from "@mui/material/ListItemText";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { ILink, ITag } from "src/types/dataType";
 
-const Title = styled.div`
-  ${barStyleTitle}
-`;
-const Wrapper = styled.div`
-  ${barStyleWrapper}
-`;
+// const Title = styled.div`
+//   ${barStyleTitle}
+// `;
+// const Wrapper = styled.div`
+//   ${barStyleWrapper}
+// `;
 
 const OtherFrameBar: React.FC = () => {
   const selectGlobalText = (state: RootState) => state.globalText.value;

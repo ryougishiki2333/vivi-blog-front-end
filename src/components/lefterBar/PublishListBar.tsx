@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { barStyleTitle, barStyleWrapper } from "./barStyle";
+import { Title, Wrapper } from "./barStyle";
 
-const Title = styled.div`
-  ${barStyleTitle}
-`;
-const Wrapper = styled.div`
-  ${barStyleWrapper}
-`;
+// const Title = styled.div`
+//   ${barStyleTitle}
+// `;
+// const Wrapper = styled.div`
+//   ${barStyleWrapper}
+// `;
 
 const PublishListBar: React.FC = () => {
   return (

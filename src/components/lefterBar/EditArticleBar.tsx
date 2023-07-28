@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { barStyleTitle, barStyleWrapper } from "./barStyle";
+import { Title, Wrapper } from "./barStyle";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -11,12 +11,12 @@ import { IArticle, IArticleState } from "src/types/dataType";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 
-const Title = styled.div`
-  ${barStyleTitle}
-`;
-const Wrapper = styled.div`
-  ${barStyleWrapper}
-`;
+// const Title = styled.div`
+//   ${barStyleTitle}
+// `;
+// const Wrapper = styled.div`
+//   ${barStyleWrapper}
+// `;
 
 interface IEditArticleBarProp {
   handleIdChange: (id: string) => void;

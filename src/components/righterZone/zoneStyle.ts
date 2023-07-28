@@ -4,10 +4,9 @@ export const zoneStyleTitle = `
   `
 
 export const zoneStyleWrapper = `
-    background: papayawhip;
-    width: 70%; 
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-    display: inline-block;
+    box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   `

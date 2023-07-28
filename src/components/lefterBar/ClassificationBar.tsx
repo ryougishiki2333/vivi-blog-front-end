@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { barStyleTitle, barStyleWrapper } from "./barStyle";
+import { Title, Wrapper } from "./barStyle";
 import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -10,12 +10,12 @@ import { ITag } from "src/types/dataType";
 import { useLocation, useNavigate } from "react-router-dom";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 
-const Title = styled.div`
-  ${barStyleTitle}
-`;
-const Wrapper = styled.div`
-  ${barStyleWrapper}
-`;
+// const Title = styled.div`
+//   ${barStyleTitle}
+// `;
+// const Wrapper = styled.div`
+//   ${barStyleWrapper}
+// `;
 
 const ClassificationBar: React.FC = () => {
   const navigate = useNavigate();

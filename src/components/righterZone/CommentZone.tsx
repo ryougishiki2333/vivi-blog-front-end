@@ -58,7 +58,7 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
         <AvatarCompo
           text={"CS"}
           img={props.img ? props.img : img}
-          sx={undefined}
+          sx={{}}
           type={0}
         />
         <MarginLeftFive> {props.displayName} </MarginLeftFive>

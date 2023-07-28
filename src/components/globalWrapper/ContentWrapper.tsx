@@ -4,6 +4,7 @@ import { IWrapper } from "../../types/reactType";
 const ContentWrapperInner = styled.div`
   width: 100%;
   display: flex;
+  justify-content: center;
 `;
 
 const ContentWrapper: React.FC<IWrapper> = (props) => {

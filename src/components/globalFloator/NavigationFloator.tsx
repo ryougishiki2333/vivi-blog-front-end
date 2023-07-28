@@ -60,7 +60,7 @@ const NavigationFloator: React.FC = () => {
       <LeftWrapper>
         <Stack direction="row" spacing={2}>
           <ViviButtonCompo
-            fontSize={18}
+            fontSize={20}
             to={"/main/mainPage"}
             text={"Vivi的小站"}
           />
@@ -81,7 +81,7 @@ const NavigationFloator: React.FC = () => {
             text={"目录 | Category"}
           />
           <ViviButtonCompo to={"/main/aboutPage"} text={"打赏 | Support"} />
-          <AvatarCompo text={"CS"} sx={undefined} img={img} type={user.type} />
+          {/* <AvatarCompo text={"CS"} sx={undefined} img={img} type={user.type} /> */}
         </Stack>
       </RightWrapper>
     </Wrapper>

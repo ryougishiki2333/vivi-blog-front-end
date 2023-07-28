@@ -18,7 +18,7 @@ const MainPage: React.FC = () => {
           <MainLeft />
         </LefterWrapper>
         <RighterWrapper>
-          <InviteSignUpFloator />
+          {/* <InviteSignUpFloator /> */}
           <Outlet />
         </RighterWrapper>
       </ContentWrapper>

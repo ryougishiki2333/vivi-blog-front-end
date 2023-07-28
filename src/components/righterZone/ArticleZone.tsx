@@ -43,7 +43,7 @@ const ArticleZone: React.FC = () => {
 
   return (
     <>
-      <InviteSignUpFloator />
+      {/* <InviteSignUpFloator /> */}
       <Wrapper>
         <SvgTitleCompo text="Article" />
         <Title>{articleItemFilter[0].title}</Title>
