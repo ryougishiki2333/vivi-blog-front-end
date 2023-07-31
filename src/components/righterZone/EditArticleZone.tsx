@@ -229,7 +229,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
           )}
         </ButtonBox>
         <Upload {...uploadProp}>
-          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+          {/* <Button icon={<UploadOutlined />}>Click to Upload</Button> */}
         </Upload>
       </Wrapper>
 
