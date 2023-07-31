@@ -3,7 +3,7 @@ import { zoneStyleTitle, zoneStyleWrapper } from "./zoneStyle";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import AvatarCompo from "../commomComponents/AvatarCompo";
-import img from "../../assets/img/img.jpg";
+import img from "../../assets/img/SharedScreenshot.jpg";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";

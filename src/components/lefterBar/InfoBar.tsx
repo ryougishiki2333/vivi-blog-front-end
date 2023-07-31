@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Wrapper } from "./barStyle";
 import AvatarCompo from "../commomComponents/AvatarCompo";
-import img from "../../assets/img/img.jpg";
+import img from "../../assets/img/SharedScreenshot.jpg";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import { useAppSelector } from "../../store/hooks";
 import TwitterIcon from "@mui/icons-material/Twitter";

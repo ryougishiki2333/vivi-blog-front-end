@@ -9,6 +9,7 @@ const WrapperTop = styled.div`
   height: 300px;
   overflow-wrap: break-word;
   overflow: hidden;
+  margin-top: 20px;
 `;
 
 const WrapperBottom = styled.div`
@@ -27,6 +28,9 @@ const Title = styled.div`
 
 const Tags = styled.div`
   margin-left: 5px;
+  background-color: #f5f5f5;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
 `;
 
 const TagFilterBox = styled.div`

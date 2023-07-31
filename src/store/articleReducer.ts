@@ -16,10 +16,13 @@ export const articleReducer = createSlice({
         ],
         articleState: 0,
         id: "123123",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
       {
-        title: `最浪漫的七日间`,
+        title: `The seven day of best`,
         content: testString,
         tag: [
           { name: "miaomiaomiao", id: "123123" },
@@ -27,7 +30,10 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "12341231123",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
       {
         title: "test11",
@@ -37,7 +43,10 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "123412311231",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
       {
         title: "test111",
@@ -47,7 +56,10 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "12341231123123",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
       {
         title: "test1111",
@@ -58,7 +70,10 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "123412311233456",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
       {
         title: "test11111",
@@ -69,7 +84,10 @@ export const articleReducer = createSlice({
         ],
         articleState: 1,
         id: "1234123112387568",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
       {
         title: "test2",
@@ -80,7 +98,10 @@ export const articleReducer = createSlice({
         ],
         articleState: 2,
         id: "1234123112311",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
       {
         title: "test3",
@@ -91,7 +112,10 @@ export const articleReducer = createSlice({
         ],
         articleState: 3,
         id: "12341231123123",
-        coverPicture:''
+        coverPicture:'',
+        synopsis:"123123123132",
+        createdAt:new Date("2023-07-31T09:37:18.000Z"),
+        updatedAt:new Date("2023-07-31T09:37:18.000Z")
       },
     ] as IArticle[],
   },

@@ -41,7 +41,10 @@ export type IArticle = {
   tag: Array<ITag>;
   articleState: IArticleState; 
   id: string;
-  coverPicture:string
+  coverPicture:string;
+  synopsis:string;
+  createdAt:Date;
+  updatedAt:Date;
 };
 
 export type ITag = { name: string; id: string };

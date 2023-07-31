@@ -2,49 +2,71 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import { find } from "lodash";
-import img from "../../assets/img/img.jpg";
+import img from "../../assets/img/SharedScreenshot.jpg";
 import { IArticle } from "src/types/dataType";
 import { useNavigate } from "react-router-dom";
+import UpdateIcon from "@mui/icons-material/Update";
+import DateRangeIcon from "@mui/icons-material/DateRange";
 
 const Wrapper = styled.div`
-  border-style: solid;
   border-radius: 10px;
   border-width: thin;
-  margin-bottom: 10px;
-  display: flex;
+  margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
-const PictureWrapper = styled.div`
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-`;
+// const PictureWrapper = styled.div`
+//   width: 30%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 200px;
+// `;
 
 const TextWrapper = styled.div`
-  width: 70%;
-  height: 200px;
+  width: 100%;
+  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.07);
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 `;
 
 const TopperWrapper = styled.div`
-  height: 160px;
   overflow-wrap: break-word;
   overflow: hidden;
 `;
 
 const Title = styled.div`
-  font-size: 1.5em;
-  text-align: center;
+  font-size: 1.7em;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 5px;
+  /* margin-botton: 10px; */
 `;
 
-const TagFilterBox = styled.div`
+const Introduction = styled.div`
+  font-size: 1em;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 5px;
+  /* margin-botton: 10px; */
+`;
+
+const TagAndOthersFilterBox = styled.div`
   display: flex;
   justify-content: left;
+  margin-left: 20px;
+  margin-top: 10px;
 `;
 
 const Tags = styled.div`
-  margin-left: 5px;
+  margin-right: 5px;
+  padding: 4px;
+  background-color: #c7c2c2;
+`;
+
+const Others = styled.div`
+  margin-right: 5px;
 `;
 
 type IFilter = {
@@ -79,19 +101,31 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
   };
   const articleItemPublishRender = articleItemPublish.map((article) => (
     <Wrapper key={article.id}>
-      <PictureWrapper>
+      {/* <PictureWrapper>
         <Link to={"/article/" + article.id}>
           <img height={140} width={180} src={img} alt={"2123"} loading="lazy" />
         </Link>
-      </PictureWrapper>
+      </PictureWrapper> */}
       <TextWrapper>
-        <Link to={"/article/" + article.id}>
-          <TopperWrapper>
-            <Title>{article.title}</Title>
-            <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
-          </TopperWrapper>
-        </Link>
-        <TagFilterBox>{tagList(article)}</TagFilterBox>
+        {/* <Link to={"/article/" + article.id}> */}
+        <TagAndOthersFilterBox>
+          <DateRangeIcon />
+          <Others>
+            {"created at " + article.createdAt.toLocaleDateString()}
+          </Others>
+          <UpdateIcon />
+          <Others>
+            {"updated at " + article.updatedAt.toLocaleDateString()}
+          </Others>
+        </TagAndOthersFilterBox>
+        <TopperWrapper>
+          <Title>{article.title}</Title>
+          <Introduction>{article.synopsis}</Introduction>
+          {/* <div dangerouslySetInnerHTML={{ __html: article.content }}></div> */}
+        </TopperWrapper>
+
+        {/* </Link> */}
+        <TagAndOthersFilterBox>{tagList(article)}</TagAndOthersFilterBox>
       </TextWrapper>
     </Wrapper>
   ));

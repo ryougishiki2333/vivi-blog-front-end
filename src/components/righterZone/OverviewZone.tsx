@@ -18,14 +18,14 @@ const MarginLeftWrapper = styled.div`
 const OverviewZone: React.FC = () => {
   return (
     <>
-      <Wrapper>
+      {/* <Wrapper>
         <SvgTitleCompo icon={<FiberNewIcon />} text="Preview" />
         <MarginLeftWrapper>
           <PreviewArticleCompo />
         </MarginLeftWrapper>
-      </Wrapper>
+      </Wrapper> */}
       <Wrapper>
-        <SvgTitleCompo icon={<UpdateIcon />} text="Newest" />
+        <SvgTitleCompo icon={<FiberNewIcon />} text="Newest" />
         <MarginLeftWrapper>
           <FilterArticleCompo />
         </MarginLeftWrapper>

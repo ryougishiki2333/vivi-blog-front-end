@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import Stack from "@mui/material/Stack";
 import AvatarCompo from "../commomComponents/AvatarCompo";
-import img from "../../assets/img/img.jpg";
+import img from "../../assets/img/SharedScreenshot.jpg";
 import { RootState } from "src/store/store";
 import { useAppSelector } from "../../store/hooks";
 import sample from "lodash/sample";
