@@ -23,7 +23,7 @@ type IRouterState = {
 export type IAvatar = {
     img: string
     text: string
-    sx: SxProps<Theme>
+    sx?: SxProps<Theme>
     type: IUserType
     //   other = 0,
     //   visiter = 1,
@@ -31,6 +31,9 @@ export type IAvatar = {
 }
 
 export type ITitle = {
-    text: string
+    text: string;
+    icon?: React.ReactNode 
+    size?: number
+
 }
 

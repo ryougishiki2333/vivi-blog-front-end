@@ -1,6 +1,6 @@
 import CatalogBar from "../lefterBar/CatalogBar";
 import SubscribeBar from "../lefterBar/SubscribeBar";
-import OtherLinkBar from "../lefterBar/InfoLinkBar";
+import OtherLinkBar from "../lefterBar/OtherLinkBar";
 
 const ArticleLeft: React.FC = () => {
   return (

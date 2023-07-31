@@ -11,8 +11,8 @@ const StyleWrapper = styled.div`
   margin-bottom: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
-  border-radius: 5px;
+  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.07);
+  border-radius: 10px;
 `;
 
 export const Wrapper: React.FC<IWrapper> = (props) => {

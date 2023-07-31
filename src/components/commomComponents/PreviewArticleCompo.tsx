@@ -6,7 +6,6 @@ import { IArticle } from "src/types/dataType";
 import { useNavigate } from "react-router-dom";
 
 const WrapperTop = styled.div`
-  margin: 5px;
   height: 300px;
   overflow-wrap: break-word;
   overflow: hidden;

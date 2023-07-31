@@ -1,21 +1,69 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Title, Wrapper } from "./barStyle";
+import { Wrapper } from "./barStyle";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/img.jpg";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import { useAppSelector } from "../../store/hooks";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import EmailIcon from "@mui/icons-material/Email";
+import { RootState } from "src/store/store";
+
+const DataFlexBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+const DataOutsideBox = styled.div`
+  cursor: pointer;
+`;
+
+const DataName = styled.div`
+  font-weight: 500;
+  font-size: 1.2em;
+  color: #4c4948;
+  text-align: center;
+`;
+
+const DataNumber = styled.div`
+  font-weight: 500;
+  font-size: 1.4em;
+  color: #4c4948;
+  text-align: center;
+`;
+
+const DataBar: React.FC = () => {
+  const selectTag = (state: RootState) => state.tag.value;
+  const selectArticle = (state: RootState) => state.article.value;
+  const article = useAppSelector(selectArticle);
+  const tag = useAppSelector(selectTag);
+
+  return (
+    <DataFlexBox>
+      <DataOutsideBox>
+        <DataName>Article</DataName>
+        <DataNumber>
+          {article.filter((item) => item.articleState === 1).length}
+        </DataNumber>
+      </DataOutsideBox>
+      <DataOutsideBox>
+        <DataName>Tag</DataName>
+        <DataNumber>{tag.length}</DataNumber>
+      </DataOutsideBox>
+    </DataFlexBox>
+  );
+};
 
 const Name = styled.div`
   font-weight: 500;
-  font-size: 1.57em;
+  font-size: 1.6em;
   color: #4c4948;
 `;
 
 const Bio = styled.div`
-  font-size: 0.7em;
+  font-size: 0.8em;
   color: #4c4948;
   font-weight: 500;
 `;
@@ -59,12 +107,16 @@ const InfoBar: React.FC = () => {
       <FlexBox>
         <Bio>All work and no play make vivi a dull girl</Bio>
       </FlexBox>
+      <DataBar />
       <FlexBox>
         <IconBox>
           <TwitterIcon />
         </IconBox>
         <IconBox>
           <TelegramIcon />
+        </IconBox>
+        <IconBox>
+          <EmailIcon />
         </IconBox>
       </FlexBox>
     </Wrapper>

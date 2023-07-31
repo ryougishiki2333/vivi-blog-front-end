@@ -9,13 +9,20 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { ITag } from "src/types/dataType";
 import { useLocation, useNavigate } from "react-router-dom";
 import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
+import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 
-// const Title = styled.div`
-//   ${barStyleTitle}
-// `;
-// const Wrapper = styled.div`
-//   ${barStyleWrapper}
-// `;
+const ListNameWrapper = styled.div`
+  font-weight: 500;
+  font-size: 0.9em;
+  color: #4c4948;
+  text-align: left;
+  margin-left: 25px;
+  cursor: pointer;
+`;
+
+const ListName: React.FC<{ name: string }> = (props) => {
+  return <ListNameWrapper>{props.name}</ListNameWrapper>;
+};
 
 const ClassificationBar: React.FC = () => {
   const navigate = useNavigate();
@@ -32,14 +39,20 @@ const ClassificationBar: React.FC = () => {
           navigate("/main/filterPage", { state: { name: `${item.name}` } });
         }}
       >
-        <ListItemText primary={item.name} />
+        <a>
+          <ListItemText
+            // sx={{ display: "flex", justifyContent: "space-between" }}
+            primary={<ListName name={item.name} />}
+            // secondary={item.name}
+          />
+        </a>
       </ListItem>
     ));
   };
 
   return (
     <Wrapper>
-      <SvgTitleCompo text="Classify" />
+      <SvgTitleCompo text="Categories" size={1} icon={<DensityMediumIcon />} />
       <List>{tagList(tag)}</List>
     </Wrapper>
   );
