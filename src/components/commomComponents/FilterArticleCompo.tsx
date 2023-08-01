@@ -7,6 +7,7 @@ import { IArticle } from "src/types/dataType";
 import { useNavigate } from "react-router-dom";
 import UpdateIcon from "@mui/icons-material/Update";
 import DateRangeIcon from "@mui/icons-material/DateRange";
+import { Divider, Space, Tag } from "antd";
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -61,8 +62,7 @@ const TagAndOthersFilterBox = styled.div`
 
 const Tags = styled.div`
   margin-right: 5px;
-  padding: 4px;
-  background-color: #c7c2c2;
+  cursor: pointer;
 `;
 
 const Others = styled.div`
@@ -95,7 +95,7 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
         }}
         key={item.id}
       >
-        {item.name}
+        <Tag>{item.name}</Tag>
       </Tags>
     ));
   };

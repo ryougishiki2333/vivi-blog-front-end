@@ -12,6 +12,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
+import ForumIcon from "@mui/icons-material/Forum";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -29,10 +30,29 @@ const FlexWrapper = styled.div`
 const InfoTopWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 20px;
 `;
 
 const MarginLeftFive = styled.div`
   margin-left: 10px;
+`;
+
+const ScoreWrapper = styled.div`
+  margin-right: 20px;
+`;
+
+const AllCommentWrapper = styled.div`
+  margin-left: 20px;
+`;
+
+const CommentWrapper = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.07);
+  border-radius: 10px;
+  margin-right: 20px;
 `;
 
 type ICommentUnit = {
@@ -54,30 +74,32 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
   };
   return (
     <>
-      <InfoTopWrapper>
-        <AvatarCompo
-          text={"CS"}
-          img={props.img ? props.img : img}
-          sx={{}}
-          type={0}
-        />
-        <MarginLeftFive> {props.displayName} </MarginLeftFive>
-        <MarginLeftFive>{props.email ? props.email : ""}</MarginLeftFive>
-      </InfoTopWrapper>
-      <InfoTopWrapper>
-        {props.replyUserId ? "Reply to 由replyUserId索引的用户名" : ""}{" "}
-        {props.content}
-      </InfoTopWrapper>
-      <InfoTopWrapper>
-        <div>{props.timestamp}</div>
-        <ViviButtonCompo
-          text="回复"
-          color="#000000"
-          onClick={() => {
-            handleReply(props.displayName);
-          }}
-        />
-      </InfoTopWrapper>
+      <CommentWrapper>
+        <InfoTopWrapper>
+          <AvatarCompo
+            text={"CS"}
+            img={props.img ? props.img : img}
+            sx={{}}
+            type={0}
+          />
+          <MarginLeftFive> {props.displayName} </MarginLeftFive>
+          <MarginLeftFive>{props.email ? props.email : ""}</MarginLeftFive>
+        </InfoTopWrapper>
+        <InfoTopWrapper>
+          {props.replyUserId ? "Reply to 由replyUserId索引的用户名" : ""}{" "}
+          {props.content}
+        </InfoTopWrapper>
+        <InfoTopWrapper>
+          <div>{props.timestamp}</div>
+          <ViviButtonCompo
+            text="回复"
+            color="#000000"
+            onClick={() => {
+              handleReply(props.displayName);
+            }}
+          />
+        </InfoTopWrapper>
+      </CommentWrapper>
 
       <Dialog open={replyModalOpen} onClose={handleReply}>
         <DialogContent
@@ -154,10 +176,10 @@ const CommentZone: React.FC = () => {
   return (
     <Wrapper>
       <FlexWrapper>
-        <SvgTitleCompo text="Reply" />
-        {count} comments
+        <SvgTitleCompo icon={<ForumIcon />} text="Reply" />
+        <ScoreWrapper>{count} comments</ScoreWrapper>
       </FlexWrapper>
-      {renderComment}
+      <AllCommentWrapper>{renderComment}</AllCommentWrapper>
     </Wrapper>
   );
 };

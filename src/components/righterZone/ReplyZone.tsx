@@ -5,6 +5,7 @@ import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
+import AddCommentIcon from "@mui/icons-material/AddComment";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -22,7 +23,7 @@ const ReplyZone: React.FC = () => {
   const [reply, setReply] = useState("");
   return (
     <Wrapper>
-      <SvgTitleCompo text="Reply" />
+      <SvgTitleCompo icon={<AddCommentIcon />} text="Reply" />
       <Box
         component="form"
         sx={{

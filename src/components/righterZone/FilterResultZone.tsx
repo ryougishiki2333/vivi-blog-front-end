@@ -21,6 +21,12 @@ const SeleteWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-left: 20px;
+`;
+
+const MarginLeftWrapper = styled.div`
+  margin-left: 30px;
+  margin-right: 30px;
 `;
 
 const FilterResultZone: React.FC = () => {
@@ -62,7 +68,9 @@ const FilterResultZone: React.FC = () => {
           </Select>
         </FormControl>
       </SeleteWrapper>
-      <FilterArticleCompo tag={chooseTag} />
+      <MarginLeftWrapper>
+        <FilterArticleCompo tag={chooseTag} />
+      </MarginLeftWrapper>
     </Wrapper>
   );
 };

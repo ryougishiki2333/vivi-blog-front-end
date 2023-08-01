@@ -8,8 +8,8 @@ const ArticlePageDetail: React.FC = () => {
   return (
     <>
       <ArticleZone></ArticleZone>
-      <ScoreZone></ScoreZone>
-      <ShareZone></ShareZone>
+      {/* <ScoreZone></ScoreZone>
+      <ShareZone></ShareZone> */}
       <CommentZone></CommentZone>
       <ReplyZone></ReplyZone>
     </>

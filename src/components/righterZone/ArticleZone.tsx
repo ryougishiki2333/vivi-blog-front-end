@@ -6,6 +6,7 @@ import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import { useNavigate } from "react-router-dom";
 import InviteSignUpFloator from "../globalFloator/InviteSignUpFloator";
 import ArticleIcon from "@mui/icons-material/Article";
+import { Divider, Space, Tag } from "antd";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -19,13 +20,20 @@ const TagFilterBox = styled.div`
   justify-content: left;
 `;
 
-const Tags = styled.div`
-  margin-left: 5px;
+const TagAndOthersFilterBox = styled.div`
+  display: flex;
+  justify-content: left;
+  margin-top: 10px;
 `;
 
 const MarginLeftWrapper = styled.div`
   margin-left: 30px;
   margin-right: 30px;
+`;
+
+const Tags = styled.div`
+  margin-right: 5px;
+  cursor: pointer;
 `;
 
 const ArticleZone: React.FC = () => {
@@ -42,7 +50,7 @@ const ArticleZone: React.FC = () => {
           navigate("/main/filterPage", { state: { name: `${item.name}` } });
         }}
       >
-        {item.name}
+        <Tag>{item.name}</Tag>
       </Tags>
     ));
   };
@@ -57,7 +65,7 @@ const ArticleZone: React.FC = () => {
           <div
             dangerouslySetInnerHTML={{ __html: articleItemFilter[0].content }}
           ></div>
-          <TagFilterBox>{tagList()}</TagFilterBox>
+          <TagAndOthersFilterBox>{tagList()}</TagAndOthersFilterBox>
         </MarginLeftWrapper>
       </Wrapper>
     </>

@@ -110,13 +110,19 @@ const InfoBar: React.FC = () => {
       <DataBar />
       <FlexBox>
         <IconBox>
-          <TwitterIcon />
+          <a href="https://twitter.com/allhellshiki">
+            <TwitterIcon />
+          </a>
         </IconBox>
         <IconBox>
-          <TelegramIcon />
+          <a href="https://t.me/miaomiaomiao2333">
+            <TelegramIcon />
+          </a>
         </IconBox>
         <IconBox>
-          <EmailIcon />
+          <a href="ryougishiki23333@gmail.com">
+            <EmailIcon />
+          </a>
         </IconBox>
       </FlexBox>
     </Wrapper>

@@ -5,16 +5,25 @@ import SvgTitleCompo from "../commomComponents/SvgTitleCompo";
 import { useAppSelector } from "../../store/hooks";
 import { useParams } from "react-router-dom";
 import { meanBy } from "lodash";
+import AlignHorizontalLeftIcon from "@mui/icons-material/AlignHorizontalLeft";
 
-const Title = styled.div`
-  ${zoneStyleTitle}
-`;
 const Wrapper = styled.div`
   ${zoneStyleWrapper}
 `;
 
 const FlexDiv = styled.div`
   display: flex;
+`;
+
+const ScoreWrapper = styled.div`
+  margin-left: 20px;
+`;
+
+const Text = styled.div`
+  margin-top: 5px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -28,10 +37,12 @@ const ScoreZone: React.FC = () => {
 
   return (
     <Wrapper>
-      <SvgTitleCompo text="Score" />
+      <SvgTitleCompo text="Score" icon={<AlignHorizontalLeftIcon />} />
       <FlexDiv>
-        <Rate disabled defaultValue={scoreMean} />
-        <div>{acticleScoreItem.length} scores</div>
+        <ScoreWrapper>
+          <Rate disabled defaultValue={scoreMean} />
+        </ScoreWrapper>
+        <Text>{acticleScoreItem.length + " scores"}</Text>
       </FlexDiv>
     </Wrapper>
   );
