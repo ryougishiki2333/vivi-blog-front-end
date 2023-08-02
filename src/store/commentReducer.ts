@@ -12,7 +12,7 @@ export const commentReducer = createSlice({
         displayName: "喵喵喵",
         state: 1,
         articleId: "12341231123",
-        timestamp: 1231231231231,
+        updatedAt:new Date("2023-07-31T09:37:18.000Z"),
         userId: "sadfasdfsad",
         children: [
           {
@@ -22,7 +22,7 @@ export const commentReducer = createSlice({
             state: 1,
             articleId: "12341231123",
             replyUserId: "",
-            timestamp: 1231231231232,
+            updatedAt:new Date("2023-07-31T09:37:18.000Z"),
             username: "12312",
             displayName: "游客账号114",
           },
@@ -34,7 +34,7 @@ export const commentReducer = createSlice({
             articleId: "12341231123",
             replyUserId: "sadfasdfsad",
             replyDisplayName:"游客账号114",
-            timestamp: 1231231231232,
+            updatedAt:new Date("2023-07-31T09:37:18.000Z"),
             username: "1231213",
             displayName: "游客账号514",
           },

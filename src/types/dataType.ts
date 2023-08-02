@@ -6,7 +6,7 @@ export type IMotherComment = {
   state:ICommentState
   articleId:string
   children: Array<IChildrenComment>
-  timestamp: number
+  updatedAt: Date
   userId:string
 }
 
@@ -17,7 +17,7 @@ export type IChildrenComment = {
   displayName:string
   state:ICommentState
   replyUserId:string
-  timestamp: number
+  updatedAt: Date
   userId:string
   articleId:string
 }
@@ -45,6 +45,15 @@ export type IArticle = {
   synopsis:string;
   createdAt:Date;
   updatedAt:Date;
+};
+
+export type ICommentUnit = {
+  displayName: string;
+  email: string;
+  img: string;
+  replyUserId: string;
+  content: string;
+  updatedAt: Date;
 };
 
 export type ITag = { name: string; id: string };

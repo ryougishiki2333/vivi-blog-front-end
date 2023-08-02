@@ -22,8 +22,8 @@ const TagFilterBox = styled.div`
 
 const TagAndOthersFilterBox = styled.div`
   display: flex;
-  justify-content: left;
-  margin-top: 10px;
+  justify-content: right;
+  margin-top: 40px;
 `;
 
 const MarginLeftWrapper = styled.div`
@@ -32,7 +32,7 @@ const MarginLeftWrapper = styled.div`
 `;
 
 const Tags = styled.div`
-  margin-right: 5px;
+  margin-left: 5px;
   cursor: pointer;
 `;
 

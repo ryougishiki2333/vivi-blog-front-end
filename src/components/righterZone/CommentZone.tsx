@@ -13,6 +13,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import ForumIcon from "@mui/icons-material/Forum";
+import { ICommentUnit } from "src/types/dataType";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -33,8 +34,23 @@ const InfoTopWrapper = styled.div`
   margin-left: 20px;
 `;
 
-const MarginLeftFive = styled.div`
+const Name = styled.div`
   margin-left: 10px;
+  font-size: 1em;
+`;
+
+const UpdatedAt = styled.div`
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #717171;
+  font-size: 0.95em;
+`;
+
+const Email = styled.div`
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #717171;
+  font-size: 0.95em;
 `;
 
 const ScoreWrapper = styled.div`
@@ -55,15 +71,6 @@ const CommentWrapper = styled.div`
   margin-right: 20px;
 `;
 
-type ICommentUnit = {
-  displayName: string;
-  email: string;
-  img: string;
-  replyUserId: string;
-  content: string;
-  timestamp: number;
-};
-
 const CommentUnit: React.FC<ICommentUnit> = (props) => {
   const [replyModalOpen, setReplyModalOpen] = useState(false);
   const [replyToSomeOne, setReplyToSomeOne] = useState("");
@@ -82,15 +89,15 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
             sx={{}}
             type={0}
           />
-          <MarginLeftFive> {props.displayName} </MarginLeftFive>
-          <MarginLeftFive>{props.email ? props.email : ""}</MarginLeftFive>
+          <Name> {props.displayName} </Name>
+          <Email> {props.email ? props.email : ""} </Email>
+          <UpdatedAt> {props.updatedAt.valueOf()}</UpdatedAt>
         </InfoTopWrapper>
         <InfoTopWrapper>
           {props.replyUserId ? "Reply to 由replyUserId索引的用户名" : ""}{" "}
           {props.content}
         </InfoTopWrapper>
         <InfoTopWrapper>
-          <div>{props.timestamp}</div>
           <ViviButtonCompo
             text="回复"
             color="#000000"
@@ -144,7 +151,7 @@ const CommentZone: React.FC = () => {
       img: "",
       replyUserId: "",
       content: item.content,
-      timestamp: item.timestamp,
+      updatedAt: item.updatedAt,
     } as ICommentUnit);
     if (item.children) {
       item.children.forEach((itemChildren) => {
@@ -154,7 +161,7 @@ const CommentZone: React.FC = () => {
           img: "",
           replyUserId: itemChildren.replyUserId ? itemChildren.replyUserId : "",
           content: itemChildren.content,
-          timestamp: itemChildren.timestamp,
+          updatedAt: itemChildren.updatedAt,
         } as ICommentUnit);
       });
     }
@@ -164,7 +171,7 @@ const CommentZone: React.FC = () => {
     return (
       <CommentUnit
         content={item.content}
-        timestamp={item.timestamp}
+        updatedAt={item.updatedAt}
         displayName={item.displayName}
         email={item.email}
         img={item.img}

@@ -7,7 +7,7 @@ const ViviButtonCompo: React.FC<IViviButton> = (props) => {
   const TextButton = styled(Button)({
     color: props.color ? props.color : "#ffffff",
     backgroundColor: props.backgroundColor ? props.backgroundColor : "",
-    borderRadius: 25,
+    // borderRadius: 25,
     textTransform: "none",
     fontSize: props.fontSize ? props.fontSize : 16,
   });

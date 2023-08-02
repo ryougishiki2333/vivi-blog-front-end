@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import UpdateIcon from "@mui/icons-material/Update";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { Divider, Space, Tag } from "antd";
+import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -56,6 +57,7 @@ const Introduction = styled.div`
 const TagAndOthersFilterBox = styled.div`
   display: flex;
   justify-content: left;
+  align-items: center;
   margin-left: 20px;
   margin-top: 10px;
 `;
@@ -66,7 +68,10 @@ const Tags = styled.div`
 `;
 
 const Others = styled.div`
+  margin-left: 5px;
   margin-right: 5px;
+  color: #717171;
+  font-size: 0.95em;
 `;
 
 type IFilter = {
@@ -107,7 +112,6 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
         </Link>
       </PictureWrapper> */}
       <TextWrapper>
-        {/* <Link to={"/article/" + article.id}> */}
         <TagAndOthersFilterBox>
           <DateRangeIcon />
           <Others>
@@ -119,12 +123,13 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
           </Others>
         </TagAndOthersFilterBox>
         <TopperWrapper>
-          <Title>{article.title}</Title>
-          <Introduction>{article.synopsis}</Introduction>
+          <Link to={"/article/" + article.id}>
+            <Title>{article.title}</Title>
+            <Introduction>{article.synopsis}</Introduction>
+          </Link>
           {/* <div dangerouslySetInnerHTML={{ __html: article.content }}></div> */}
         </TopperWrapper>
 
-        {/* </Link> */}
         <TagAndOthersFilterBox>{tagList(article)}</TagAndOthersFilterBox>
       </TextWrapper>
     </Wrapper>
