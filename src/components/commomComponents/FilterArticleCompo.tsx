@@ -9,6 +9,7 @@ import UpdateIcon from "@mui/icons-material/Update";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { Divider, Space, Tag } from "antd";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
+import moment from "moment";
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -115,11 +116,13 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
         <TagAndOthersFilterBox>
           <DateRangeIcon />
           <Others>
-            {"created at " + article.createdAt.toLocaleDateString()}
+            {"created at " +
+              moment(article.createdAt.valueOf()).format("YYYY/MM/DD hh:mm:ss")}
           </Others>
           <UpdateIcon />
           <Others>
-            {"updated at " + article.updatedAt.toLocaleDateString()}
+            {"updated at " +
+              moment(article.updatedAt.valueOf()).format("YYYY/MM/DD hh:mm:ss")}
           </Others>
         </TagAndOthersFilterBox>
         <TopperWrapper>

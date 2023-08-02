@@ -14,6 +14,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import ForumIcon from "@mui/icons-material/Forum";
 import { ICommentUnit } from "src/types/dataType";
+import moment from "moment";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -32,6 +33,7 @@ const InfoTopWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-left: 20px;
+  margin-top: 5px;
 `;
 
 const Name = styled.div`
@@ -40,17 +42,26 @@ const Name = styled.div`
 `;
 
 const UpdatedAt = styled.div`
-  margin-left: 5px;
-  margin-right: 5px;
-  color: #717171;
-  font-size: 0.95em;
+  margin-left: 10px;
+  color: #9b9b9b;
+  font-size: 0.91em;
 `;
 
 const Email = styled.div`
-  margin-left: 5px;
-  margin-right: 5px;
-  color: #717171;
-  font-size: 0.95em;
+  margin-left: 10px;
+  color: #abaaaa;
+  font-size: 0.91em;
+`;
+
+const Reply = styled.div`
+  margin-left: 15px;
+  margin-right: -5px;
+  color: #abaaaa;
+  font-size: 0.91em;
+`;
+
+const Text = styled.div`
+  margin-left: 15px;
 `;
 
 const ScoreWrapper = styled.div`
@@ -71,6 +82,14 @@ const CommentWrapper = styled.div`
   margin-right: 20px;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 5px;
+  justify-content: right;
+`;
+
 const CommentUnit: React.FC<ICommentUnit> = (props) => {
   const [replyModalOpen, setReplyModalOpen] = useState(false);
   const [replyToSomeOne, setReplyToSomeOne] = useState("");
@@ -89,15 +108,17 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
             sx={{}}
             type={0}
           />
-          <Name> {props.displayName} </Name>
-          <Email> {props.email ? props.email : ""} </Email>
-          <UpdatedAt> {props.updatedAt.valueOf()}</UpdatedAt>
+          <Name>{props.displayName}</Name>
+          <Email>{props.email ? props.email : ""}</Email>
+          <UpdatedAt>
+            {moment(props.updatedAt.valueOf()).format("YYYY/MM/DD hh:mm:ss")}
+          </UpdatedAt>
         </InfoTopWrapper>
         <InfoTopWrapper>
-          {props.replyUserId ? "Reply to 由replyUserId索引的用户名" : ""}{" "}
-          {props.content}
+          {props.replyUserId ? <Reply>Reply to Vivi</Reply> : <></>}
+          <Text>{props.content}</Text>
         </InfoTopWrapper>
-        <InfoTopWrapper>
+        <ButtonWrapper>
           <ViviButtonCompo
             text="回复"
             color="#000000"
@@ -105,7 +126,7 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
               handleReply(props.displayName);
             }}
           />
-        </InfoTopWrapper>
+        </ButtonWrapper>
       </CommentWrapper>
 
       <Dialog open={replyModalOpen} onClose={handleReply}>
