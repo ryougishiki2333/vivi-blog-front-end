@@ -92,10 +92,15 @@ const ButtonWrapper = styled.div`
 
 const CommentUnit: React.FC<ICommentUnit> = (props) => {
   const [replyModalOpen, setReplyModalOpen] = useState(false);
-  const [replyToSomeOne, setReplyToSomeOne] = useState("");
+  const [replyText, setReplyText] = useState("");
+  const [replyTo, setReplyTo] = useState("");
+  const user = useAppSelector((state) => {
+    return state.user.value;
+  });
 
   const handleReply = (displayName: string) => {
-    displayName && setReplyToSomeOne(`reply to ${displayName}`);
+    setReplyText("");
+    setReplyTo(displayName);
     setReplyModalOpen(!replyModalOpen);
   };
   return (
@@ -120,43 +125,58 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
         </InfoTopWrapper>
         <ButtonWrapper>
           <ViviButtonCompo
-            text="回复"
+            text="Reply"
             color="#000000"
             onClick={() => {
-              handleReply(props.displayName);
+              if (user.token) {
+                handleReply(props.displayName);
+              } else {
+                props.handleNoTokenSubmit();
+              }
             }}
           />
         </ButtonWrapper>
       </CommentWrapper>
 
-      <Dialog open={replyModalOpen} onClose={handleReply}>
+      <Dialog
+        open={replyModalOpen}
+        onClose={() => {
+          setReplyModalOpen(!replyModalOpen);
+        }}
+      >
+        <DialogTitle>{"Reply to " + replyTo}</DialogTitle>
         <DialogContent
           sx={{
             "& > :not(style)": { width: "60ch" },
           }}
         >
           <TextField
-            value={replyToSomeOne}
+            value={replyText}
             onChange={(event) => {
-              setReplyToSomeOne(event.target.value);
+              setReplyText(event.target.value);
             }}
             autoFocus
             multiline={true}
             minRows={"1"}
             id="reply"
-            label="reply"
             variant="outlined"
           />
         </DialogContent>
         <DialogActions>
-          <ViviButtonCompo text="发布" color="#000000" onClick={handleReply} />
+          <ViviButtonCompo
+            text="Submit"
+            color="#000000"
+            onClick={() => {
+              setReplyModalOpen(!replyModalOpen);
+            }}
+          />
         </DialogActions>
       </Dialog>
     </>
   );
 };
 
-const CommentZone: React.FC = () => {
+const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const commentItem = useAppSelector((state) => state.comment.value);
   let count = commentItem.length;
   commentItem.forEach((item) => {
@@ -173,6 +193,7 @@ const CommentZone: React.FC = () => {
       replyUserId: "",
       content: item.content,
       updatedAt: item.updatedAt,
+      id: item.id,
     } as ICommentUnit);
     if (item.children) {
       item.children.forEach((itemChildren) => {
@@ -183,6 +204,7 @@ const CommentZone: React.FC = () => {
           replyUserId: itemChildren.replyUserId ? itemChildren.replyUserId : "",
           content: itemChildren.content,
           updatedAt: itemChildren.updatedAt,
+          id: itemChildren.id,
         } as ICommentUnit);
       });
     }
@@ -191,12 +213,15 @@ const CommentZone: React.FC = () => {
   const renderComment = commentPlainData.map((item) => {
     return (
       <CommentUnit
+        id={item.id}
+        key={item.id}
         content={item.content}
         updatedAt={item.updatedAt}
         displayName={item.displayName}
         email={item.email}
         img={item.img}
         replyUserId={item.replyUserId}
+        handleNoTokenSubmit={props.handleNoTokenSubmit}
       ></CommentUnit>
     );
   });

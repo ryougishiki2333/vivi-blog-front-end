@@ -54,6 +54,8 @@ export type ICommentUnit = {
   replyUserId: string;
   content: string;
   updatedAt: Date;
+  handleNoTokenSubmit: () => void
+  id: string
 };
 
 export type ITag = { name: string; id: string };

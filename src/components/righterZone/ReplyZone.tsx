@@ -6,10 +6,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import AddCommentIcon from "@mui/icons-material/AddComment";
+import { useAppSelector } from "../../store/hooks";
 
-const Title = styled.div`
-  ${zoneStyleTitle}
-`;
 const Wrapper = styled.div`
   ${zoneStyleWrapper}
 `;
@@ -19,33 +17,54 @@ const ButtonBox = styled.div`
   justify-content: right;
 `;
 
-const ReplyZone: React.FC = () => {
+const ReplyBox = styled.div`
+  width: 100%;
+  margin-left: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const [reply, setReply] = useState("");
+  const user = useAppSelector((state) => {
+    return state.user.value;
+  });
+
   return (
     <Wrapper>
       <SvgTitleCompo icon={<AddCommentIcon />} text="Reply" />
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "75ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          value={reply}
-          onChange={(event) => {
-            setReply(event.target.value);
+      <ReplyBox>
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1, width: "90%" },
           }}
-          multiline={true}
-          minRows={"5"}
-          id="reply"
-          label="reply"
-          variant="outlined"
-        />
-      </Box>
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            value={reply}
+            onChange={(event) => {
+              setReply(event.target.value);
+            }}
+            multiline={true}
+            minRows={"5"}
+            id="reply"
+            variant="outlined"
+          />
+        </Box>
+      </ReplyBox>
       <ButtonBox>
-        <ViviButtonCompo text="发布" color="#000000" onClick={() => {}} />
+        <ViviButtonCompo
+          text="Submit"
+          color="#000000"
+          onClick={() => {
+            if (user.token) {
+            } else {
+              props.handleNoTokenSubmit();
+            }
+          }}
+        />
       </ButtonBox>
     </Wrapper>
   );

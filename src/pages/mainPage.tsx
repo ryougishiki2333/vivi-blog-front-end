@@ -18,11 +18,9 @@ const MainPage: React.FC = () => {
           <MainLeft />
         </LefterWrapper>
         <RighterWrapper>
-          {/* <InviteSignUpFloator /> */}
           <Outlet />
         </RighterWrapper>
       </ContentWrapper>
-      {/* <ScrollRestoration /> */}
     </>
   );
 };

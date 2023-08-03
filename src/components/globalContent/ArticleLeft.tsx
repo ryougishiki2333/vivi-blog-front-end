@@ -5,9 +5,9 @@ import OtherLinkBar from "../lefterBar/OtherLinkBar";
 const ArticleLeft: React.FC = () => {
   return (
     <>
-      <CatalogBar />
+      {/* <CatalogBar /> */}
       <OtherLinkBar />
-      <SubscribeBar />
+      {/* <SubscribeBar /> */}
     </>
   );
 };
