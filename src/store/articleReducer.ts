@@ -3,6 +3,8 @@ import { IArticle } from "../types/dataType";
 import { nanoid } from "@reduxjs/toolkit";
 import { testString } from "./testString";
 
+const date = new Date("2023-07-31T09:37:18.000Z")
+
 export const articleReducer = createSlice({
   name: "article",
   initialState: {
@@ -18,8 +20,8 @@ export const articleReducer = createSlice({
         id: "123123",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
       {
         title: `The seven day of best`,
@@ -32,8 +34,8 @@ export const articleReducer = createSlice({
         id: "12341231123",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
       {
         title: "test11",
@@ -45,8 +47,8 @@ export const articleReducer = createSlice({
         id: "123412311231",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
       {
         title: "test111",
@@ -58,8 +60,8 @@ export const articleReducer = createSlice({
         id: "12341231123123",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
       {
         title: "test1111",
@@ -72,8 +74,8 @@ export const articleReducer = createSlice({
         id: "123412311233456",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
       {
         title: "test11111",
@@ -86,8 +88,8 @@ export const articleReducer = createSlice({
         id: "1234123112387568",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
       {
         title: "test2",
@@ -100,8 +102,8 @@ export const articleReducer = createSlice({
         id: "1234123112311",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
       {
         title: "test3",
@@ -114,8 +116,8 @@ export const articleReducer = createSlice({
         id: "12341231123123",
         coverPicture:'',
         synopsis:"123123123132",
-        createdAt:new Date("2023-07-31T09:37:18.000Z"),
-        updatedAt:new Date("2023-07-31T09:37:18.000Z")
+        createdAt:date,
+        updatedAt:date
       },
     ] as IArticle[],
   },

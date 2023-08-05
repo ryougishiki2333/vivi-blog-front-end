@@ -128,7 +128,7 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
             text="Reply"
             color="#000000"
             onClick={() => {
-              if (user.token) {
+              if (user.id) {
                 handleReply(props.displayName);
               } else {
                 props.handleNoTokenSubmit();

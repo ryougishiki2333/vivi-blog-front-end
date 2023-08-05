@@ -19,7 +19,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { userLogin, userRegister } from "../../api/user";
-import { type } from "os";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {

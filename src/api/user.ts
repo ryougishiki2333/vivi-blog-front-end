@@ -10,7 +10,7 @@ type loginRes = {
 export const userLogin = async (
   username: string,
   password: string
-): Promise<loginRes> => {
+): Promise<any> => {
   const response = await sendRequest("http://localhost:4000/api/user/login", {
     method: "POST",
     body: JSON.stringify({ username, password }),

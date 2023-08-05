@@ -94,7 +94,7 @@ export type IUser = {
   token: string
   username: string
   displayName:string
-  // id: string
+  id: number
   type: IUserType
   avatar: string
 }

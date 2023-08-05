@@ -59,7 +59,7 @@ const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
           text="Submit"
           color="#000000"
           onClick={() => {
-            if (user.token) {
+            if (user.id) {
             } else {
               props.handleNoTokenSubmit();
             }
