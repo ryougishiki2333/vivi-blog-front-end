@@ -6,6 +6,17 @@ export type IWrapper = {
     children: React.ReactNode
 }
 
+export type ICommentUnit = {
+  username: string;
+  email: string;
+  img: string;
+  replyUserId: string;
+  content: string;
+  updatedAt: Date;
+  handleNoTokenSubmit: () => void
+  id: string
+};
+
 export type IViviButton = {
     to?: string
     text: string

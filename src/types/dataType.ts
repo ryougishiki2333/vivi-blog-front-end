@@ -1,25 +1,25 @@
-export type IMotherComment = {
-  id:string
-  content:string
-  username:string
-  displayName:string
-  state:ICommentState
-  articleId:string
-  children: Array<IChildrenComment>
-  updatedAt: Date
-  userId:string
-}
+// export type IMotherComment = {
+//   id:string
+//   content:string
+//   username:string
+//   displayName:string
+//   state:ICommentState
+//   articleId:string
+//   children: Array<IChildrenComment>
+//   updatedAt: Date
+//   userId:string
+// }
 
-export type IChildrenComment = {
+export type IComment = {
   id:string
   content:string
   username:string
-  displayName:string
   state:ICommentState
   replyUserId:string
   updatedAt: Date
   userId:string
   articleId:string
+  email:string
 }
 
 export enum ICommentState {
@@ -45,17 +45,6 @@ export type IArticle = {
   synopsis:string;
   createdAt:Date;
   updatedAt:Date;
-};
-
-export type ICommentUnit = {
-  displayName: string;
-  email: string;
-  img: string;
-  replyUserId: string;
-  content: string;
-  updatedAt: Date;
-  handleNoTokenSubmit: () => void
-  id: string
 };
 
 export type ITag = { name: string; id: string };

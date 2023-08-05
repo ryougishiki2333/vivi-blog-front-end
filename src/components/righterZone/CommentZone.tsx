@@ -13,7 +13,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import ForumIcon from "@mui/icons-material/Forum";
-import { ICommentUnit } from "src/types/dataType";
+import { ICommentUnit } from "src/types/reactType";
 import moment from "moment";
 
 const Title = styled.div`
@@ -113,7 +113,7 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
             sx={{}}
             type={0}
           />
-          <Name>{props.displayName}</Name>
+          <Name>{props.username}</Name>
           <Email>{props.email ? props.email : ""}</Email>
           <UpdatedAt>
             {moment(props.updatedAt.valueOf()).format("YYYY/MM/DD hh:mm:ss")}
@@ -129,7 +129,7 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
             color="#000000"
             onClick={() => {
               if (user.id) {
-                handleReply(props.displayName);
+                handleReply(props.username);
               } else {
                 props.handleNoTokenSubmit();
               }
@@ -179,35 +179,35 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
 const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const commentItem = useAppSelector((state) => state.comment.value);
   let count = commentItem.length;
-  commentItem.forEach((item) => {
-    item.children && (count = count + item.children.length);
-  });
+  // commentItem.forEach((item) => {
+  //   item.children && (count = count + item.children.length);
+  // });
 
   const commentPlainData = [] as Array<ICommentUnit>;
 
   commentItem.forEach((item) => {
     commentPlainData.push({
-      displayName: item.displayName,
-      email: item.userId,
+      username: item.username,
+      email: item.email,
       img: "",
       replyUserId: "",
       content: item.content,
       updatedAt: item.updatedAt,
       id: item.id,
     } as ICommentUnit);
-    if (item.children) {
-      item.children.forEach((itemChildren) => {
-        commentPlainData.push({
-          displayName: itemChildren.displayName,
-          email: itemChildren.userId,
-          img: "",
-          replyUserId: itemChildren.replyUserId ? itemChildren.replyUserId : "",
-          content: itemChildren.content,
-          updatedAt: itemChildren.updatedAt,
-          id: itemChildren.id,
-        } as ICommentUnit);
-      });
-    }
+    // if (item.children) {
+    //   item.children.forEach((itemChildren) => {
+    //     commentPlainData.push({
+    //       displayName: itemChildren.displayName,
+    //       email: itemChildren.userId,
+    //       img: "",
+    //       replyUserId: itemChildren.replyUserId ? itemChildren.replyUserId : "",
+    //       content: itemChildren.content,
+    //       updatedAt: itemChildren.updatedAt,
+    //       id: itemChildren.id,
+    //     } as ICommentUnit);
+    //   });
+    // }
   });
 
   const renderComment = commentPlainData.map((item) => {
@@ -217,7 +217,7 @@ const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
         key={item.id}
         content={item.content}
         updatedAt={item.updatedAt}
-        displayName={item.displayName}
+        username={item.username}
         email={item.email}
         img={item.img}
         replyUserId={item.replyUserId}
