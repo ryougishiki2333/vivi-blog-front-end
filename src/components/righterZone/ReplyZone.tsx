@@ -7,6 +7,8 @@ import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import { useAppSelector } from "../../store/hooks";
+import { replyCreate } from "../../api/reply";
+import { useParams } from "react-router-dom";
 
 const Wrapper = styled.div`
   ${zoneStyleWrapper}
@@ -26,6 +28,7 @@ const ReplyBox = styled.div`
 
 const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const [reply, setReply] = useState("");
+  const { id } = useParams();
   const user = useAppSelector((state) => {
     return state.user.value;
   });
@@ -58,8 +61,17 @@ const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
         <ViviButtonCompo
           text="Submit"
           color="#000000"
-          onClick={() => {
+          onClick={async () => {
             if (user.id) {
+              await replyCreate({
+                content: reply,
+                username: user.username,
+                state: 1,
+                replyUserId: 0,
+                userId: user.id,
+                articleId: parseInt(id || "0"),
+              });
+              setReply("");
             } else {
               props.handleNoTokenSubmit();
             }

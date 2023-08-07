@@ -10,8 +10,6 @@ const initialUser = {
   id: parseInt(localStorage.getItem("id")||'0')
 };
 
-console.log(initialUser);
-
 
 export const userReducer = createSlice({
   name: "user",

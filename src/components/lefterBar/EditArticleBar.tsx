@@ -19,7 +19,7 @@ import Button from "@mui/material/Button";
 // `;
 
 interface IEditArticleBarProp {
-  handleIdChange: (id: string) => void;
+  handleIdChange: (id: number) => void;
 }
 
 const selectArticle = (state: RootState) => state.article.value;
@@ -57,9 +57,9 @@ const EditArticleBar: React.FC<IEditArticleBarProp> = (props) => {
   return (
     <>
       <Wrapper>
-        <Button variant="text" onClick={() => props.handleIdChange("")}>
+        {/* <Button variant="text" onClick={() => props.handleIdChange("")}>
           新建文章
-        </Button>
+        </Button> */}
       </Wrapper>
       <Wrapper>
         <Title>草稿箱</Title>

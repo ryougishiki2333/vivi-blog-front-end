@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { find } from "lodash";
 import img from "../../assets/img/SharedScreenshot.jpg";
 import { IArticle } from "src/types/dataType";
@@ -10,6 +10,9 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import { Divider, Space, Tag } from "antd";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import moment from "moment";
+import { useEffect } from "react";
+import { articleFindAll } from "../../api/article";
+import { tagFindAll } from "../../api/tag";
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -81,6 +84,17 @@ type IFilter = {
 };
 
 const FilterArticleCompo: React.FC<IFilter> = (props) => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const getArticle = async () => {
+      const articleList = await articleFindAll();
+      dispatch({ type: `article/getArticles`, payload: articleList });
+      const tagList = await tagFindAll();
+      dispatch({ type: `tag/getTags`, payload: tagList });
+    };
+    getArticle();
+  }, []);
+
   const articleItem = useAppSelector((state) => state.article.value);
   const articleItemPublish = articleItem.filter((item) => {
     if (props.tag) {

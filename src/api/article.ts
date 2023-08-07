@@ -25,15 +25,9 @@ export const articleCreate = async (
   return response.json();
 };
 
-export const articleFindAlle = async () => {
+export const articleFindAll = async () => {
   const response = await sendRequest(
-    "http://localhost:4000/api/user/register",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
+    "http://localhost:4000/api/article"
   );
 
   return response.json();

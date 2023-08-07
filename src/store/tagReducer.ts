@@ -5,11 +5,14 @@ export const tagReducer = createSlice({
   name: "tag",
   initialState: {
     value: [
-      { name: "miaomiaomiao", id: "123123" },
-      { name: "gugugu", id: "1234" },
+      
     ] as ITag[],
   },
   reducers: {
+    getTags:(state, action) =>{
+      state.value = action.payload
+      console.log(state.value, "tag");
+    },
     addTag: (state, action) => {},
     deleteTag: (state, action) => {},
     editTag: (state, action) => {},

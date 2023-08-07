@@ -46,7 +46,7 @@ const TagFilterBox = styled.div`
 `;
 
 interface IEditArticleZoneProp {
-  id: string;
+  id: number;
   content: string;
   title: string;
   articleTag: Array<ITag>;
@@ -112,7 +112,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
   const article = useAppSelector(selectArticle);
   const tag = useAppSelector(selectTag);
 
-  const chooseArticle = (id: string) => {
+  const chooseArticle = (id: number) => {
     return id
       ? article.filter((item) => {
           return item.id === id;

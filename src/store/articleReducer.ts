@@ -9,119 +9,17 @@ export const articleReducer = createSlice({
   name: "article",
   initialState: {
     value: [
-      {
-        title: "test0",
-        content: `<p>13123123123</p>`,
-        tag: [
-          { name: "miaomiaomiao", id: "123123" },
-          { name: "gugugu", id: "1234" },
-        ],
-        articleState: 0,
-        id: "123",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
-      {
-        title: `The seven day of best`,
-        content: testString,
-        tag: [
-          { name: "miaomiaomiao", id: "123123" },
-          { name: "gugugu", id: "1234" },
-        ],
-        articleState: 1,
-        id: "1234",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
-      {
-        title: "test11",
-        content: "<p>test1345</p>",
-        tag: [
-          { name: "gugugu", id: "1234" },
-        ],
-        articleState: 1,
-        id: "12341",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
-      {
-        title: "test111",
-        content: "<p>test1456</p>",
-        tag: [
-          { name: "miaomiaomiao", id: "123123" },
-        ],
-        articleState: 1,
-        id: "1234123",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
-      {
-        title: "test1111",
-        content: "<p>test1567</p>",
-        tag: [
-          { name: "miaomiaomiao", id: "123123" },
-          { name: "gugugu", id: "1234" },
-        ],
-        articleState: 1,
-        id: "12",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
-      {
-        title: "test11111",
-        content: "<p>test178978</p>",
-        tag: [
-          { name: "miaomiaomiao", id: "123123" },
-          { name: "gugugu", id: "1234" },
-        ],
-        articleState: 1,
-        id: "123333",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
-      {
-        title: "test2",
-        content: "<p>test290345903456</p>",
-        tag: [
-          { name: "miaomiaomiao", id: "123123" },
-          { name: "gugugu", id: "1234" },
-        ],
-        articleState: 2,
-        id: "1234123112311",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
-      {
-        title: "test3",
-        content: "<p>test3345345345</p>",
-        tag: [
-          { name: "miaomiaomiao", id: "123123" },
-          { name: "gugugu", id: "1234" },
-        ],
-        articleState: 3,
-        id: "12341231123123",
-        coverPicture:'',
-        synopsis:"123123123132",
-        createdAt:date,
-        updatedAt:date
-      },
     ] as IArticle[],
   },
   reducers: {
+    getArticles:(state, action) =>{
+      state.value = action.payload
+      console.log(state.value, "article");
+      
+    },
+
+
+
     saveA: (state, action) => {
       // 如果是草稿,则在草稿箱新增
       // 如果已经有id,则直接替换同id内容

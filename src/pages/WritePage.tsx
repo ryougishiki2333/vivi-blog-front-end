@@ -24,14 +24,14 @@ const WritePage: React.FC = () => {
   const [content, setContent] = useState("");
   const [tag, setTag] = useState<Array<ITag>>([]);
   const [checkSaveOpen, setCheckSaveOpen] = useState(false);
-  const [id, setId] = useState("");
-  const [tempId, setTempId] = useState("");
+  const [id, setId] = useState(0);
+  const [tempId, setTempId] = useState(0);
 
   // 是否属于文章切换时保存
   const [checkIfChangeArticle, setCheckIfChangeArticle] = useState(true);
 
   // id改变则出现弹窗
-  const handleIdChange = (idClickValue: string) => {
+  const handleIdChange = (idClickValue: number) => {
     setTempId(idClickValue);
     setCheckSaveOpen(true);
   };
@@ -44,7 +44,7 @@ const WritePage: React.FC = () => {
     if (state !== 0) {
       setId(tempId);
     }
-    setTempId("");
+    setTempId(0);
     setCheckSaveOpen(false);
   };
 
@@ -100,7 +100,7 @@ const WritePage: React.FC = () => {
       <BackToManagePageFloator />
       <ContentWrapper>
         <LefterWrapper>
-          <EditArticleBar handleIdChange={handleIdChange} />
+          {/* <EditArticleBar handleIdChange={handleIdChange} /> */}
         </LefterWrapper>
         <RighterWrapper>
           <EditArticleZone

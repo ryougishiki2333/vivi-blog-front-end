@@ -40,14 +40,14 @@ export type IArticle = {
   content: string;
   tag: Array<ITag>;
   articleState: IArticleState; 
-  id: string;
-  coverPicture:string;
+  id: number;
+  // coverPicture:string;
   synopsis:string;
   createdAt:Date;
   updatedAt:Date;
 };
 
-export type ITag = { name: string; id: string };
+export type ITag = { name: string; id: number };
 
 export enum IArticleState {
   draft = 0,
