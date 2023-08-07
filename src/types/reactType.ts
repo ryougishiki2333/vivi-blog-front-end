@@ -10,11 +10,11 @@ export type ICommentUnit = {
   username: string;
   email: string;
   img: string;
-  replyUserId: string;
+  replyUserId: number;
   content: string;
   updatedAt: Date;
   handleNoTokenSubmit: () => void
-  id: string
+  id: number
 };
 
 export type IViviButton = {

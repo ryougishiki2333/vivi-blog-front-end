@@ -15,6 +15,9 @@ import TextField from "@mui/material/TextField";
 import ForumIcon from "@mui/icons-material/Forum";
 import { ICommentUnit } from "src/types/reactType";
 import moment from "moment";
+import { replyCreate } from "../../api/reply";
+import { findUserById } from "../../api/user";
+import { useParams } from "react-router-dom";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -91,12 +94,28 @@ const ButtonWrapper = styled.div`
 `;
 
 const CommentUnit: React.FC<ICommentUnit> = (props) => {
+  const { id } = useParams();
   const [replyModalOpen, setReplyModalOpen] = useState(false);
   const [replyText, setReplyText] = useState("");
   const [replyTo, setReplyTo] = useState("");
+  const [thisReplyIsReplyTo, setThisReplyIsReplyTo] = useState(0);
+
+  useEffect(() => {
+    replyToSomebodyGetInfo(props.replyUserId);
+  });
+
   const user = useAppSelector((state) => {
     return state.user.value;
   });
+
+  const replyToSomebodyGetInfo = async (id: number) => {
+    if (id === 0) {
+      setThisReplyIsReplyTo(0);
+    } else {
+      const userResult = await findUserById(id);
+      setThisReplyIsReplyTo(userResult.username);
+    }
+  };
 
   const handleReply = (displayName: string) => {
     setReplyText("");
@@ -120,7 +139,11 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
           </UpdatedAt>
         </InfoTopWrapper>
         <InfoTopWrapper>
-          {props.replyUserId ? <Reply>Reply to Vivi</Reply> : <></>}
+          {props.replyUserId !== 0 ? (
+            <Reply>{`Reply to ${thisReplyIsReplyTo}`}</Reply>
+          ) : (
+            <></>
+          )}
           <Text>{props.content}</Text>
         </InfoTopWrapper>
         <ButtonWrapper>
@@ -166,7 +189,15 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
           <ViviButtonCompo
             text="Submit"
             color="#000000"
-            onClick={() => {
+            onClick={async () => {
+              await replyCreate({
+                content: replyText,
+                username: user.username,
+                state: 1,
+                replyUserId: props.replyUserId,
+                userId: user.id,
+                articleId: parseInt(id || "0"),
+              });
               setReplyModalOpen(!replyModalOpen);
             }}
           />
@@ -190,7 +221,7 @@ const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
       username: item.username,
       email: item.email,
       img: "",
-      replyUserId: "",
+      replyUserId: item.replyUserId,
       content: item.content,
       updatedAt: item.updatedAt,
       id: item.id,
@@ -229,7 +260,7 @@ const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   return (
     <Wrapper>
       <FlexWrapper>
-        <SvgTitleCompo icon={<ForumIcon />} text="Reply" />
+        <SvgTitleCompo icon={<ForumIcon />} text="Comments" />
         <ScoreWrapper>{count} comments</ScoreWrapper>
       </FlexWrapper>
       <AllCommentWrapper>{renderComment}</AllCommentWrapper>

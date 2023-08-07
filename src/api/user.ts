@@ -7,6 +7,15 @@ type loginRes = {
   };
 };
 
+export const findUserById = async (
+  id: number
+): Promise<any> => {
+  const response = await sendRequest("http://localhost:4000/api/user?id="+id.toString(), {
+    method: "GET",
+  });
+  return response.json();
+};
+
 export const userLogin = async (
   username: string,
   password: string

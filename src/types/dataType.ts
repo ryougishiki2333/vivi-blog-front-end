@@ -11,14 +11,14 @@
 // }
 
 export type IComment = {
-  id:string
+  id:number
   content:string
   username:string
   state:ICommentState
-  replyUserId:string
+  replyUserId:number
   updatedAt: Date
-  userId:string
-  articleId:string
+  userId:number
+  articleId:number
   email:string
 }
 
