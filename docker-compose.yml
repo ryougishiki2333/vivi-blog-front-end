@@ -1,0 +1,12 @@
+version: "3"
+services:
+
+  app:
+    build: .
+    # volumes:
+    #   - /usr/local/nginx/html:/usr/share/nginx/html
+    ports:
+      - "80:80"
+      - "443:443"
+    # restart: on-failure
+
