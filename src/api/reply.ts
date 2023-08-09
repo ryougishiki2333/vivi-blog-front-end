@@ -19,6 +19,18 @@ export const replyCreate = async (
   return response.json();
 };
 
+
+export const replyFindReplyByArticleId = async (
+  id:string
+): Promise<any> => {
+  const response = await sendRequest("http://localhost:4000/api/reply?id="+(id.toString()))
+  return response.json();
+};
+
+
+
+
+
 // export const userRegister = async (username: string, password: string, email:string) => {
 //   const response = await sendRequest(
 //     "http://localhost:4000/api/user/register",

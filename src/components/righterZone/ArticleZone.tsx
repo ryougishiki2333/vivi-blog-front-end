@@ -40,6 +40,7 @@ const Tags = styled.div`
 `;
 
 const ArticleZone: React.FC = () => {
+  const { id } = useParams();
   const dispatch = useAppDispatch();
   useEffect(() => {
     const getArticle = async () => {
@@ -52,7 +53,6 @@ const ArticleZone: React.FC = () => {
   }, []);
   const articleItem = useAppSelector((state) => state.article.value);
 
-  const { id } = useParams();
   const articleItemFilter = articleItem.length
     ? articleItem.filter((article) => article.id === parseInt(id || "0"))
     : [];

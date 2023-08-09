@@ -17,6 +17,7 @@ import { ICommentUnit } from "src/types/reactType";
 import moment from "moment";
 import { replyCreate } from "../../api/reply";
 import { findUserById } from "../../api/user";
+import { replyFindReplyByArticleId } from "../../api/reply";
 import { useParams } from "react-router-dom";
 
 const Title = styled.div`
@@ -208,6 +209,16 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
 };
 
 const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const getReply = async () => {
+      const replyList = await replyFindReplyByArticleId(id || "");
+      dispatch({ type: `comment/getReplys`, payload: replyList });
+    };
+    getReply();
+  }, []);
+
   const commentItem = useAppSelector((state) => state.comment.value);
   let count = commentItem.length;
   // commentItem.forEach((item) => {
