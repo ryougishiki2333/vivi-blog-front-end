@@ -22,28 +22,28 @@ import RequireAuth from "./RequireAuth";
 // export const
 
 export const route = [
+  // {
+  //   path: "/",
+  //   element: <WelcomePage />,
+  // },
   {
     path: "/",
-    element: <WelcomePage />,
-  },
-  {
-    path: "/main",
     element: <MainPage />,
     children: [
       {
-        path: "/main/mainPage",
+        path: "/",
         element: <MainPageDetail />,
       },
       {
-        path: "/main/filterPage",
+        path: "/filterPage",
         element: <FilterPageDetail />,
       },
       {
-        path: "/main/tagPage",
+        path: "/tagPage",
         element: <ManyTagPageDetail />,
       },
       {
-        path: "/main/aboutPage",
+        path: "/aboutPage",
         element: <AboutPageDetail />,
       },
     ],

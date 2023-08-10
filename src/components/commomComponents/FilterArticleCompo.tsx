@@ -111,7 +111,7 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
       <Tags
         onClick={(e) => {
           e.stopPropagation();
-          navigate("/main/filterPage", { state: { name: `${item.name}` } });
+          navigate("/filterPage", { state: { name: `${item.name}` } });
         }}
         key={item.id}
       >

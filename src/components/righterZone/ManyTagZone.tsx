@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 const ManyTagZone: React.FC = () => {
   return (
-    <Link to={"/main/filterPage"}>
+    <Link to={"/filterPage"}>
       <Wrapper>
         <Title>标签显示组件</Title>
       </Wrapper>

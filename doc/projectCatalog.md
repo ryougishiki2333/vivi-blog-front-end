@@ -1,7 +1,7 @@
 |-- src
     |-- api
     |-- pages
-        |-- mainPage
+        |-- 
         |-- articlePage
         |-- filterPage
         |-- tagPage

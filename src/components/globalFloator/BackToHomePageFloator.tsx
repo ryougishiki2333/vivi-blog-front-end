@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const BackToHomePageFloator: React.FC = () => {
   return (
-    <Link to={"/main/mainPage"}>
+    <Link to={"/"}>
       <Wrapper>返回Vivi小站</Wrapper>
     </Link>
   );

@@ -63,7 +63,7 @@ const PreviewArticleCompo: React.FC<IFilter> = (props) => {
         key={item.id}
         onClick={(e) => {
           e.stopPropagation();
-          navigate("/main/filterPage", { state: { name: `${item.name}` } });
+          navigate("/filterPage", { state: { name: `${item.name}` } });
         }}
       >
         {item.name}

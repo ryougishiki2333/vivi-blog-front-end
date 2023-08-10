@@ -15,7 +15,7 @@ const WelcomePage: React.FC = () => {
   `;
 
   return (
-    <Link to={"main/mainPage"}>
+    <Link to={"main/"}>
       <Wrapper>
         <Title>Vivi小站（欢迎页）</Title>
       </Wrapper>

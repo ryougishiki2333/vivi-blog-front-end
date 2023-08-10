@@ -223,7 +223,7 @@ const AlertDialogSlide: React.FC<any> = (props) => {
       open={props.open}
       TransitionComponent={Transition}
       keepMounted
-      onClose={() => props.handleClose("/main/mainPage")}
+      onClose={() => props.handleClose("/")}
       aria-describedby="alert-dialog-slide-description"
     >
       <DialogTitle>{"是否返回首页"}</DialogTitle>
@@ -233,9 +233,7 @@ const AlertDialogSlide: React.FC<any> = (props) => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => props.handleClose("/main/mainPage")}>
-          跳转主页
-        </Button>
+        <Button onClick={() => props.handleClose("/")}>跳转主页</Button>
         <Button onClick={() => props.handleClose("/visitor/inner")}>
           个人信息
         </Button>

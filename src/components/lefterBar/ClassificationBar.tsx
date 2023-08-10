@@ -36,7 +36,7 @@ const ClassificationBar: React.FC = () => {
         key={item.id}
         disableGutters
         onClick={() => {
-          navigate("/main/filterPage", { state: { name: `${item.name}` } });
+          navigate("/filterPage", { state: { name: `${item.name}` } });
         }}
       >
         <a>
