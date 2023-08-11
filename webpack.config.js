@@ -65,7 +65,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolvePath("./public/index.html"),
     }),
-    new ForkTsCheckerWebpackPlugin(),
+    isDevelopment && new ForkTsCheckerWebpackPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),
 
