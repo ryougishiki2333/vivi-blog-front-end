@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm i --registry=http://mirrors.cloud.tencent.com/npm/
+RUN npm i 
 
 COPY . .
 
