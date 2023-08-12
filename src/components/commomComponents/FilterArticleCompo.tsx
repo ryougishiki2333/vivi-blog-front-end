@@ -10,9 +10,10 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import { Divider, Space, Tag } from "antd";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import moment from "moment";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { articleFindAll } from "../../api/article";
 import { tagFindAll } from "../../api/tag";
+import { Spin } from "antd";
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -87,10 +88,15 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     const getArticle = async () => {
-      const articleList = await articleFindAll();
-      dispatch({ type: `article/getArticles`, payload: articleList });
-      const tagList = await tagFindAll();
-      dispatch({ type: `tag/getTags`, payload: tagList });
+      try {
+        const articleList = await articleFindAll();
+        dispatch({ type: `article/getArticles`, payload: articleList });
+        const tagList = await tagFindAll();
+        dispatch({ type: `tag/getTags`, payload: tagList });
+      } catch (error) {
+        dispatch({ type: `article/getArticles`, payload: [] });
+        dispatch({ type: `tag/getTags`, payload: [] });
+      }
     };
     getArticle();
   }, []);
