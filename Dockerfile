@@ -2,11 +2,9 @@ FROM node:16-alpine as builder
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-
-RUN npm i --registry https://registry.npm.taobao.org 
-
 COPY . .
+
+RUN npm i
 
 RUN npm run build 
 
