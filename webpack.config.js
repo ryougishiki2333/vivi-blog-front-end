@@ -70,10 +70,10 @@ module.exports = {
   ].filter(Boolean),
 
   resolve: {
-    alias: {
-      "@": resolvePath("./src"),
-      router: resolvePath("./src/router"),
-    },
+    // alias: {
+    //   "@": resolvePath("./src"),
+    //   router: resolvePath("./src/router"),
+    // },
     extensions: [".js", ".ts", ".jsx", ".tsx"],
   },
 
