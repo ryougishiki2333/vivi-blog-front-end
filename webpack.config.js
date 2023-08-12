@@ -12,6 +12,19 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 module.exports = {
   entry: resolvePath("./src/index.tsx"),
 
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      minSize: 500 * 1000,
+      maxSize: 2000 * 1000,
+      maxAsyncSize: 2000 * 1000,
+      minRemainingSize: 100 * 1000,
+      minChunks: 1,
+      maxAsyncRequests: 2,
+      maxInitialRequests: 30,
+    },
+  },
+
   output: {
     path: resolvePath("./dist"),
     clean: true,
@@ -36,7 +49,7 @@ module.exports = {
       // 加载图片
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         // 处理字体资源
@@ -70,10 +83,10 @@ module.exports = {
   ].filter(Boolean),
 
   resolve: {
-    alias: {
-      "@": resolvePath("./src"),
-      router: resolvePath("./src/router"),
-    },
+    // alias: {
+    //   "@": resolvePath("./src"),
+    //   router: resolvePath("./src/router"),
+    // },
     extensions: [".js", ".ts", ".jsx", ".tsx"],
   },
 
