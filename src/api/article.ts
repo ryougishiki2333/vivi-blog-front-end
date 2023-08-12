@@ -1,5 +1,5 @@
 
-import { sendRequest } from "./request";
+import { sendRequest, baseURL } from "./request";
 
 
 type articleCreateRes = {
@@ -14,7 +14,7 @@ const token = window.localStorage.getItem('token')
 export const articleCreate = async (
   article:articleCreateRes
 ): Promise<any> => {
-  const response = await sendRequest("http://localhost:4000/api/article", {
+  const response = await sendRequest("api/article", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const articleCreate = async (
 
 export const articleFindAll = async () => {
   const response = await sendRequest(
-    "http://localhost:4000/api/article"
+    "api/article"
   );
 
   return response.json();

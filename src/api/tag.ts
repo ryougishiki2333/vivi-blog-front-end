@@ -1,5 +1,5 @@
 
-import { sendRequest } from "./request";
+import { sendRequest, baseURL } from "./request";
 
 
 // type articleCreateRes = {
@@ -27,7 +27,7 @@ import { sendRequest } from "./request";
 
 export const tagFindAll = async () => {
   const response = await sendRequest(
-    "http://localhost:4000/api/tag",
+    "api/tag",
   );
 
   return response.json();

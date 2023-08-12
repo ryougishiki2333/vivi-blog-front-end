@@ -11,10 +11,12 @@ interface FetchOptions {
   integrity?: string;
 }
 
+export const baseURL = process.env.NODE_ENV === 'docker' ? 'http://65.49.195.65:4000/' : 'http://localhost:4000/'
+
 const token = window.localStorage.getItem('token')
 
 export const sendRequest = async (url: string, options: FetchOptions = {}): Promise<Response> => {
-  const response = await fetch(url, {
+  const response = await fetch(baseURL+url, {
     method: options.method || 'GET',
     headers: {
       "Content-Type": "application/json",

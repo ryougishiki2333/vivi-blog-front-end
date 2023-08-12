@@ -10,7 +10,7 @@ type loginRes = {
 export const findUserById = async (
   id: number
 ): Promise<any> => {
-  const response = await sendRequest("http://localhost:4000/api/user?id="+id.toString(), {
+  const response = await sendRequest("api/user?id="+id.toString(), {
     method: "GET",
   });
   return response.json();
@@ -20,7 +20,7 @@ export const userLogin = async (
   username: string,
   password: string
 ): Promise<any> => {
-  const response = await sendRequest("http://localhost:4000/api/user/login", {
+  const response = await sendRequest("api/user/login", {
     method: "POST",
     body: JSON.stringify({ username, password }),
   });
@@ -29,7 +29,7 @@ export const userLogin = async (
 
 export const userRegister = async (username: string, password: string, email:string) => {
   const response = await sendRequest(
-    "http://localhost:4000/api/user/register",
+    "api/user/register",
     {
       method: "POST",
       body: JSON.stringify({ username, password, email }),

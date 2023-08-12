@@ -1,4 +1,4 @@
-import { sendRequest } from "./request";
+import { sendRequest, baseURL } from "./request";
 
 type reply = {
   content: string,
@@ -12,7 +12,7 @@ type reply = {
 export const replyCreate = async (
   reply:reply
 ): Promise<any> => {
-  const response = await sendRequest("http://localhost:4000/api/reply", {
+  const response = await sendRequest("api/reply", {
     method: "POST",
     body: JSON.stringify(reply),
   });
@@ -23,7 +23,7 @@ export const replyCreate = async (
 export const replyFindReplyByArticleId = async (
   id:string
 ): Promise<any> => {
-  const response = await sendRequest("http://localhost:4000/api/reply?id="+(id.toString()))
+  const response = await sendRequest("api/reply?id="+(id.toString()))
   return response.json();
 };
 
