@@ -28,43 +28,43 @@ export const route = [
   // },
   {
     path: "/",
-    element: <MainPage />,
+    element: MainPage,
     children: [
       {
         path: "/",
-        element: <MainPageDetail />,
+        element: MainPageDetail,
       },
       {
         path: "/filterPage",
-        element: <FilterPageDetail />,
+        element: FilterPageDetail,
       },
       {
         path: "/tagPage",
-        element: <ManyTagPageDetail />,
+        element: ManyTagPageDetail,
       },
       {
         path: "/aboutPage",
-        element: <AboutPageDetail />,
+        element: AboutPageDetail,
       },
     ],
   },
   {
     path: "/article",
-    element: <ArticlePage />,
+    element: ArticlePage,
     children: [
       {
         path: "/article/:id",
-        element: <ArticlePageDetail />,
+        element: ArticlePageDetail,
       },
     ],
   },
   {
     path: "/visitor",
-    element: <SignUpPage />,
+    element: SignUpPage,
     children: [
       {
         path: "/visitor/signUp",
-        element: <SignUpPageDetail />,
+        element: SignUpPageDetail,
       },
       // {
       //   path: "/visitor/inner",
@@ -74,43 +74,43 @@ export const route = [
   },
   {
     path: "/manage/article",
-    element: (
-      <RequireAuth>
-        <WritePage />
-      </RequireAuth>
-    ),
+    element: 
+      // <RequireAuth>
+        WritePage
+      // </RequireAuth>
+    ,
   },
   {
     path: "/manage",
-    element: (
-      <RequireAuth>
-        <ManagePage />
-      </RequireAuth>
-    ),
+    element: 
+      // <RequireAuth>
+        ManagePage
+      // </RequireAuth>
+    ,
     children: [
       {
         path: "/manage/main",
-        element: <ManageMainDetail />,
+        element: ManageMainDetail,
       },
       {
         path: "/manage/visitor",
-        element: <ManageVisitorDetail />,
+        element: ManageVisitorDetail,
       },
       {
         path: "/manage/page",
-        element: <ManagePageDetail />,
+        element: ManagePageDetail,
       },
       {
         path: "/manage/tag",
-        element: <ManageTagDetail />,
+        element: ManageTagDetail,
       },
       {
         path: "/manage/comment",
-        element: <ManageCommentDetail />,
+        element: ManageCommentDetail,
       },
       {
         path: "/manage/list",
-        element: <ManageArticleDetail />,
+        element: ManageArticleDetail,
       },
     ],
   },
