@@ -65,15 +65,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolvePath("./public/index.html"),
     }),
-    isDevelopment && new ForkTsCheckerWebpackPlugin(),
+    // isDevelopment && new ForkTsCheckerWebpackPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),
 
   resolve: {
-    // alias: {
-    //   "@": resolvePath("./src"),
-    //   router: resolvePath("./src/router"),
-    // },
+    alias: {
+      "@": resolvePath("./src"),
+      router: resolvePath("./src/router"),
+    },
     extensions: [".js", ".ts", ".jsx", ".tsx"],
   },
 
