@@ -14,6 +14,7 @@ import { useEffect, Suspense } from "react";
 import { articleFindAll } from "../../api/article";
 import { tagFindAll } from "../../api/tag";
 import { Spin } from "antd";
+import { replyCreate } from "../../api/reply";
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -93,6 +94,14 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
         dispatch({ type: `article/getArticles`, payload: articleList });
         const tagList = await tagFindAll();
         dispatch({ type: `tag/getTags`, payload: tagList });
+        await replyCreate({
+          content: "reply",
+          username: "2134234",
+          state: 1,
+          replyUserId: 0,
+          userId: 1,
+          articleId: 1,
+        });
       } catch (error) {
         dispatch({ type: `article/getArticles`, payload: [] });
         dispatch({ type: `tag/getTags`, payload: [] });
