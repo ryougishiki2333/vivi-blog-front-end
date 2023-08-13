@@ -90,10 +90,6 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
   useEffect(() => {
     const getArticle = async () => {
       try {
-        const articleList = await articleFindAll();
-        dispatch({ type: `article/getArticles`, payload: articleList });
-        const tagList = await tagFindAll();
-        dispatch({ type: `tag/getTags`, payload: tagList });
         await replyCreate({
           content: "reply",
           username: "2134234",
@@ -102,6 +98,10 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
           userId: 1,
           articleId: 1,
         });
+        const articleList = await articleFindAll();
+        dispatch({ type: `article/getArticles`, payload: articleList });
+        const tagList = await tagFindAll();
+        dispatch({ type: `tag/getTags`, payload: tagList });
       } catch (error) {
         dispatch({ type: `article/getArticles`, payload: [] });
         dispatch({ type: `tag/getTags`, payload: [] });
