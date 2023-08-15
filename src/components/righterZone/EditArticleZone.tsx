@@ -49,11 +49,13 @@ interface IEditArticleZoneProp {
   id: number;
   content: string;
   title: string;
+  synopsis: string;
   articleTag: Array<ITag>;
   handleTitleChange: (title: string) => void;
+  handleSynopsisChange: (title: string) => void;
   handleContentChange: (content: string) => void;
   handleTagChange: (tag: Array<ITag>) => void;
-  postDispatch: (action: string, isChangeArticle: boolean) => void;
+  postDispatch: () => void;
 }
 
 const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
@@ -125,10 +127,12 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
       props.handleTitleChange(chooseArticle(props.id)[0].title);
       props.handleContentChange(chooseArticle(props.id)[0].content);
       props.handleTagChange(chooseArticle(props.id)[0].tag);
+      props.handleSynopsisChange(chooseArticle(props.id)[0].synopsis);
     } else {
       props.handleTitleChange("");
       props.handleContentChange("");
       props.handleTagChange([]);
+      props.handleSynopsisChange("");
     }
   }, [props.id]);
 
@@ -146,13 +150,16 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
   return (
     <>
       <Wrapper>
-        <SvgTitleCompo text="Editing" />
-        <div>文章id</div>
-        <div>{props.id}</div>
         <div>文章标题</div>
         <Input
           value={props.title}
           onChange={(event) => props.handleTitleChange(event.target.value)}
+          placeholder={"请输入内容..."}
+        />
+        <div>文章简介</div>
+        <TextField
+          value={props.synopsis}
+          onChange={(event) => props.handleSynopsisChange(event.target.value)}
           placeholder={"请输入内容..."}
         />
         <div>文章正文</div>
@@ -172,10 +179,9 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
             style={{ height: "500px", overflowY: "hidden" }}
           />
         </div>
-        <div style={{ marginTop: "15px" }}>{props.content}</div>
       </Wrapper>
 
-      <Wrapper>
+      {/* <Wrapper>
         <SvgTitleCompo text="Tag" />
         <Autocomplete
           multiple
@@ -195,7 +201,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
             color="#000000"
           />
         </ButtonBox>
-      </Wrapper>
+      </Wrapper> */}
 
       <Wrapper>
         <SvgTitleCompo text="Controling" />
@@ -203,9 +209,9 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
           <ViviButtonCompo
             text="保存"
             color="#000000"
-            onClick={() => props.postDispatch("save", false)}
+            onClick={() => props.postDispatch()}
           />
-          {props.id && chooseArticle(props.id)[0].articleState === 1 && (
+          {/* {props.id && chooseArticle(props.id)[0].articleState === 1 && (
             <ViviButtonCompo
               text="删除"
               color="#000000"
@@ -218,15 +224,15 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
               color="#000000"
               onClick={() => props.postDispatch("archive", false)}
             />
-          )}
-          {((props.id && chooseArticle(props.id)[0].articleState !== 1) ||
+          )} */}
+          {/* {((props.id && chooseArticle(props.id)[0].articleState !== 1) ||
             !props.id) && (
             <ViviButtonCompo
               text="发布"
               color="#000000"
               onClick={() => props.postDispatch("publish", false)}
             />
-          )}
+          )} */}
         </ButtonBox>
         <Upload {...uploadProp}>
           {/* <Button icon={<UploadOutlined />}>Click to Upload</Button> */}

@@ -73,45 +73,37 @@ export const route = [
     ],
   },
   {
-    path: "/manage/article",
-    element: (
-      // <RequireAuth>
-      <WritePage />
-    ),
-    // </RequireAuth>
-  },
-  {
     path: "/manage",
-    element: (
-      // <RequireAuth>
-      <ManagePage />
-    ),
-    // </RequireAuth>
-    children: [
-      {
-        path: "/manage/main",
-        element: <ManageMainDetail />,
-      },
-      {
-        path: "/manage/visitor",
-        element: <ManageVisitorDetail />,
-      },
-      {
-        path: "/manage/page",
-        element: <ManagePageDetail />,
-      },
-      {
-        path: "/manage/tag",
-        element: <ManageTagDetail />,
-      },
-      {
-        path: "/manage/comment",
-        element: <ManageCommentDetail />,
-      },
-      {
-        path: "/manage/list",
-        element: <ManageArticleDetail />,
-      },
-    ],
+    element: <WritePage />,
   },
+  // {
+  //   path: "/manage",
+  //   element: <ManagePage />,
+  //   children: [
+  //     {
+  //       path: "/manage/main",
+  //       element: <ManageMainDetail />,
+  //     },
+  //     {
+  //       path: "/manage/visitor",
+  //       element: <ManageVisitorDetail />,
+  //     },
+  //     {
+  //       path: "/manage/page",
+  //       element: <ManagePageDetail />,
+  //     },
+  //     {
+  //       path: "/manage/tag",
+  //       element: <ManageTagDetail />,
+  //     },
+  //     {
+  //       path: "/manage/comment",
+  //       element: <ManageCommentDetail />,
+  //     },
+  //     {
+  //       path: "/manage/list",
+  //       element: <ManageArticleDetail />,
+  //     },
+  //   ],
+  // },
 ];

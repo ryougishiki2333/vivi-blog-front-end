@@ -11,15 +11,16 @@ import { IArticle, IArticleState } from "src/types/dataType";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 
-// const Title = styled.div`
-//   ${barStyleTitle}
-// `;
-// const Wrapper = styled.div`
-//   ${barStyleWrapper}
-// `;
+const NewArticle = styled.div`
+  font-size: 1em;
+  text-align: center;
+  cursor: pointer;
+`;
 
 interface IEditArticleBarProp {
   handleIdChange: (id: number) => void;
+  handleNewArticle: (isNew: boolean) => void;
+  article: Array<IArticle>;
 }
 
 const selectArticle = (state: RootState) => state.article.value;
@@ -57,24 +58,24 @@ const EditArticleBar: React.FC<IEditArticleBarProp> = (props) => {
   return (
     <>
       <Wrapper>
-        {/* <Button variant="text" onClick={() => props.handleIdChange("")}>
-          新建文章
-        </Button> */}
+        <NewArticle onClick={() => props.handleNewArticle(true)}>
+          <a>新建文章</a>
+        </NewArticle>
       </Wrapper>
       <Wrapper>
         <Title>草稿箱</Title>
         <List>{renderArticle(filterArticle(article, 0))}</List>
       </Wrapper>
       <Wrapper>
-        <Title>已发布列表</Title>
+        <Title>已发布</Title>
         <List>{renderArticle(filterArticle(article, 1))}</List>
       </Wrapper>
       <Wrapper>
-        <Title>已删除列表</Title>
+        <Title>已删除</Title>
         <List>{renderArticle(filterArticle(article, 2))}</List>
       </Wrapper>
       <Wrapper>
-        <Title>已归档列表</Title>
+        <Title>已归档</Title>
         <List>{renderArticle(filterArticle(article, 3))}</List>
       </Wrapper>
     </>

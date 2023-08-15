@@ -17,41 +17,59 @@ import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 import { RootState } from "../store/store";
 import { ITag } from "src/types/dataType";
+import { articleFindAll } from "../api/article";
+import { tagFindAll } from "../api/tag";
+import { articleCreate, articleUpdate } from "../api/article";
 
 const WritePage: React.FC = () => {
   // 数据保存
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [tag, setTag] = useState<Array<ITag>>([]);
+  const [synopsis, setSynopsis] = useState("");
   const [checkSaveOpen, setCheckSaveOpen] = useState(false);
   const [id, setId] = useState(0);
-  const [tempId, setTempId] = useState(0);
+  // const [tempId, setTempId] = useState(0);
+  const [isNewArticle, setIsNewArticle] = useState(false);
 
   // 是否属于文章切换时保存
   const [checkIfChangeArticle, setCheckIfChangeArticle] = useState(true);
 
   // id改变则出现弹窗
   const handleIdChange = (idClickValue: number) => {
-    setTempId(idClickValue);
-    setCheckSaveOpen(true);
+    setId(idClickValue);
+    setIsNewArticle(false);
+  };
+
+  const handleNewArticle = () => {
+    setIsNewArticle(true);
+    setId(0);
   };
 
   // 保存
-  const closeCheckSave = (state: number) => {
-    if (state === 1) {
-      postDispatch("save", true);
-    }
-    if (state !== 0) {
-      setId(tempId);
-    }
-    setTempId(0);
-    setCheckSaveOpen(false);
-  };
+  const closeCheckSave = (state: number) => {};
+
+  const articleSave = (state: number) => {};
 
   // 控制是否回调
   const [checkIfInitial, setCheckIfInitial] = useState(false);
 
-  // 数据
+  // 获取初始数据
+  useEffect(() => {
+    const getArticle = async () => {
+      try {
+        const articleList = await articleFindAll();
+        dispatch({ type: `article/getArticles`, payload: articleList });
+        const tagList = await tagFindAll();
+        dispatch({ type: `tag/getTags`, payload: tagList });
+      } catch (error) {
+        dispatch({ type: `article/getArticles`, payload: [] });
+        dispatch({ type: `tag/getTags`, payload: [] });
+      }
+    };
+    getArticle();
+  }, []);
+
   const selectArticle = (state: RootState) => state.article.value;
   const article = useAppSelector(selectArticle);
 
@@ -67,19 +85,33 @@ const WritePage: React.FC = () => {
   // 改变store数据
   const dispatch = useAppDispatch();
 
-  const postDispatch = (action: string, isChangeArticle: boolean) => {
-    setCheckIfInitial(true);
-    setCheckIfChangeArticle(isChangeArticle);
-    (content !== "<p><br></p>" || title) &&
-      dispatch({
-        type: `article/${action}A`,
-        payload: {
-          title: title ? title : "未命名文章",
+  const postDispatch = async () => {
+    try {
+      if (isNewArticle) {
+        await articleCreate({
+          title: title,
           content: content,
+          synopsis: synopsis,
           tag: tag,
-          id: id,
-        },
-      });
+        });
+      } else {
+        await articleUpdate(
+          {
+            title: title,
+            content: content,
+            synopsis: synopsis,
+            tag: tag,
+          },
+          id
+        );
+      }
+    } catch (error) {
+    } finally {
+      const articleList = await articleFindAll();
+      dispatch({ type: `article/getArticles`, payload: articleList });
+      const tagList = await tagFindAll();
+      dispatch({ type: `tag/getTags`, payload: tagList });
+    }
   };
 
   // onChange
@@ -95,24 +127,38 @@ const WritePage: React.FC = () => {
     setTag(value);
   };
 
+  const handleSynopsisChange = (value: string) => {
+    setSynopsis(value);
+  };
+
   return (
     <>
       <BackToManagePageFloator />
       <ContentWrapper>
         <LefterWrapper>
-          {/* <EditArticleBar handleIdChange={handleIdChange} /> */}
+          <EditArticleBar
+            article={article}
+            handleNewArticle={handleNewArticle}
+            handleIdChange={handleIdChange}
+          />
         </LefterWrapper>
         <RighterWrapper>
-          <EditArticleZone
-            articleTag={tag}
-            content={content}
-            title={title}
-            id={id}
-            handleContentChange={handleContentChange}
-            handleTagChange={handleTagChange}
-            handleTitleChange={handleTitleChange}
-            postDispatch={postDispatch}
-          />
+          {id || isNewArticle ? (
+            <EditArticleZone
+              articleTag={tag}
+              content={content}
+              title={title}
+              id={id}
+              synopsis={synopsis}
+              handleContentChange={handleContentChange}
+              handleTagChange={handleTagChange}
+              handleTitleChange={handleTitleChange}
+              handleSynopsisChange={handleSynopsisChange}
+              postDispatch={postDispatch}
+            />
+          ) : (
+            <></>
+          )}
         </RighterWrapper>
       </ContentWrapper>
       <ScrollRestoration />

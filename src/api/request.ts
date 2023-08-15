@@ -11,8 +11,8 @@ interface FetchOptions {
   integrity?: string;
 }
 
-// export const baseURL = process.env.NODE_ENV === 'production' ? 'http://65.49.195.65:4000/' : 'http://localhost:4000/'
-export const baseURL = 'http://65.49.195.65:4000/'
+export const baseURL = process.env.NODE_ENV === 'production' ? 'http://65.49.195.65:4000/' : 'http://localhost:4000/'
+// export const baseURL = 'http://65.49.195.65:4000/'
 
 const token = window.localStorage.getItem('token')
 

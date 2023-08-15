@@ -7,15 +7,14 @@ const Wrapper = styled.div`
   width: 100%;
 
   top: 0px;
-  border: solid;
   line-height: 60px;
   text-align: center;
 `;
 
 const BackToManagePageFloator: React.FC = () => {
   return (
-    <Link to={"/manage/main"}>
-      <Wrapper>返回管理菜单</Wrapper>
+    <Link to={"/"}>
+      <Wrapper>返回主页</Wrapper>
     </Link>
   );
 };
