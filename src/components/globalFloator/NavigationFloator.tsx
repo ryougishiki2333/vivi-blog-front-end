@@ -68,7 +68,7 @@ const NavigationFloator: React.FC = () => {
         <Stack direction="row" spacing={2}>
           <ViviButtonCompo
             to={`/article/${to}`}
-            text={"随机 | Random"}
+            text={"Random"}
             onClick={() => {
               setTo(randomId());
             }}
@@ -76,7 +76,7 @@ const NavigationFloator: React.FC = () => {
           <ViviButtonCompo
             to={"/filterPage"}
             state={{ name: `` }}
-            text={"目录 | Category"}
+            text={"Category"}
           />
           {/* <ViviButtonCompo to={"/aboutPage"} text={"打赏 | Support"} /> */}
           {/* <AvatarCompo text={"CS"} sx={undefined} img={img} type={user.type} /> */}
