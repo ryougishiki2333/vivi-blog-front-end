@@ -25,6 +25,7 @@ import Stack from "@mui/material/Stack";
 import { UploadOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import { Button, message, Upload } from "antd";
+import { tagCreate, tagDelete, tagFindAll } from "../../api/tag";
 
 const TagBox = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ interface IEditArticleZoneProp {
 }
 
 const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
+  const dispatch = useAppDispatch();
   // 上传参数
   const uploadProp: UploadProps = {
     name: "file",
@@ -103,6 +105,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
 
   // 关于modal开合逻辑
   const [editTagOpen, setEditTagOpen] = useState(false);
+  const [newTag, setNewTag] = useState("");
 
   const handleEditTag = () => {
     setEditTagOpen(!editTagOpen);
@@ -141,8 +144,15 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
     return tag.map((item) => (
       <TagFilterBox key={item.id}>
         <DialogContentText>{item.name}</DialogContentText>
-        <Button>修改</Button>
-        <Button>删除</Button>
+        <Button
+          onClick={async () => {
+            await tagDelete(item.id);
+            const tagList = await tagFindAll();
+            dispatch({ type: `tag/getTags`, payload: tagList });
+          }}
+        >
+          删除
+        </Button>
       </TagFilterBox>
     ));
   };
@@ -181,7 +191,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
         </div>
       </Wrapper>
 
-      {/* <Wrapper>
+      <Wrapper>
         <SvgTitleCompo text="Tag" />
         <Autocomplete
           multiple
@@ -201,7 +211,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
             color="#000000"
           />
         </ButtonBox>
-      </Wrapper> */}
+      </Wrapper>
 
       <Wrapper>
         <SvgTitleCompo text="Controling" />
@@ -242,9 +252,24 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
       <Dialog open={editTagOpen} onClose={handleEditTag}>
         <DialogTitle>修改Tag</DialogTitle>
         <DialogContent>{tagListFilter()}</DialogContent>
+        <Input
+          value={newTag}
+          onChange={(event) => {
+            setNewTag(event.target.value);
+          }}
+        />
+        <Button
+          onClick={async () => {
+            await tagCreate(newTag);
+            const tagList = await tagFindAll();
+            dispatch({ type: `tag/getTags`, payload: tagList });
+            setNewTag("");
+          }}
+        >
+          确定新建
+        </Button>
         <DialogActions>
-          <Button onClick={handleEditTag}>取消</Button>
-          <Button onClick={handleEditTag}>提交</Button>
+          <Button onClick={handleEditTag}>好的</Button>
         </DialogActions>
       </Dialog>
     </>

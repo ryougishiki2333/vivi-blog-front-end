@@ -38,10 +38,6 @@ const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   });
 
   const getAll = async () => {
-    const articleList = await articleFindAll();
-    dispatch({ type: `article/getArticles`, payload: articleList });
-    const tagList = await tagFindAll();
-    dispatch({ type: `tag/getTags`, payload: tagList });
     const replyList = await replyFindReplyByArticleId(id || "");
     dispatch({ type: `comment/getReplys`, payload: replyList });
   };
