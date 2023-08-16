@@ -74,7 +74,11 @@ export const route = [
   },
   {
     path: "/manage",
-    element: <WritePage />,
+    element: (
+      <RequireAuth>
+        <WritePage />
+      </RequireAuth>
+    ),
   },
   // {
   //   path: "/manage",

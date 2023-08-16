@@ -19,6 +19,8 @@ import { replyCreate } from "../../api/reply";
 import { findUserById } from "../../api/user";
 import { replyFindReplyByArticleId } from "../../api/reply";
 import { useParams } from "react-router-dom";
+import { articleFindAll } from "../../api/article";
+import { tagFindAll } from "../../api/tag";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -199,6 +201,7 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
                 userId: user.id,
                 articleId: parseInt(id || "0"),
               });
+              props.getAll();
               setReplyModalOpen(!replyModalOpen);
             }}
           />
@@ -218,6 +221,15 @@ const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
     };
     getReply();
   }, []);
+
+  const getAll = async () => {
+    const articleList = await articleFindAll();
+    dispatch({ type: `article/getArticles`, payload: articleList });
+    const tagList = await tagFindAll();
+    dispatch({ type: `tag/getTags`, payload: tagList });
+    const replyList = await replyFindReplyByArticleId(id || "");
+    dispatch({ type: `comment/getReplys`, payload: replyList });
+  };
 
   const commentItem = useAppSelector((state) => state.comment.value);
   let count = commentItem.length;
@@ -264,6 +276,7 @@ const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
         img={item.img}
         replyUserId={item.replyUserId}
         handleNoTokenSubmit={props.handleNoTokenSubmit}
+        getAll={getAll}
       ></CommentUnit>
     );
   });

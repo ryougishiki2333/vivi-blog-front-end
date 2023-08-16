@@ -6,9 +6,12 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import AddCommentIcon from "@mui/icons-material/AddComment";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { replyCreate } from "../../api/reply";
 import { useParams } from "react-router-dom";
+import { articleFindAll } from "../../api/article";
+import { tagFindAll } from "../../api/tag";
+import { replyFindReplyByArticleId } from "../../api/reply";
 
 const Wrapper = styled.div`
   ${zoneStyleWrapper}
@@ -29,9 +32,19 @@ const ReplyBox = styled.div`
 const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const [reply, setReply] = useState("");
   const { id } = useParams();
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => {
     return state.user.value;
   });
+
+  const getAll = async () => {
+    const articleList = await articleFindAll();
+    dispatch({ type: `article/getArticles`, payload: articleList });
+    const tagList = await tagFindAll();
+    dispatch({ type: `tag/getTags`, payload: tagList });
+    const replyList = await replyFindReplyByArticleId(id || "");
+    dispatch({ type: `comment/getReplys`, payload: replyList });
+  };
 
   return (
     <Wrapper>
@@ -72,6 +85,7 @@ const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
                 articleId: parseInt(id || "0"),
               });
               setReply("");
+              getAll();
             } else {
               props.handleNoTokenSubmit();
             }

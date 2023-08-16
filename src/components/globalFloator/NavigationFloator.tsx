@@ -4,10 +4,11 @@ import Stack from "@mui/material/Stack";
 import AvatarCompo from "../commomComponents/AvatarCompo";
 import img from "../../assets/img/SharedScreenshot.jpg";
 import { RootState } from "src/store/store";
-import { useAppSelector } from "../../store/hooks";
 import sample from "lodash/sample";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { articleFindAll } from "../../api/article";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
 const Wrapper = styled.div`
   padding: 3px;
@@ -47,10 +48,11 @@ const NavigationFloator: React.FC = () => {
   const user = useAppSelector((state) => {
     return state.user.value;
   });
+  const dispatch = useAppDispatch();
 
   const randomId = () => {
-    const tem = sample(article.filter((item) => item.articleState === 1));
-    return tem ? tem.id : "";
+    const tem = sample(article);
+    return tem ? tem.id : "1";
   };
 
   const [to, setTo] = useState(randomId());
@@ -76,7 +78,7 @@ const NavigationFloator: React.FC = () => {
             state={{ name: `` }}
             text={"目录 | Category"}
           />
-          <ViviButtonCompo to={"/aboutPage"} text={"打赏 | Support"} />
+          {/* <ViviButtonCompo to={"/aboutPage"} text={"打赏 | Support"} /> */}
           {/* <AvatarCompo text={"CS"} sx={undefined} img={img} type={user.type} /> */}
         </Stack>
       </RightWrapper>

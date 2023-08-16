@@ -13,7 +13,8 @@ export type ICommentUnit = {
   replyUserId: number;
   content: string;
   updatedAt: Date;
-  handleNoTokenSubmit: () => void
+  handleNoTokenSubmit: () => void;
+  getAll: () => void;
   id: number
 };
 

@@ -120,7 +120,7 @@ const InfoBar: React.FC = () => {
           </a>
         </IconBox>
         <IconBox>
-          <a href="ryougishiki23333@gmail.com">
+          <a href="mailto:ryougishiki23333@gmail.com">
             <EmailIcon />
           </a>
         </IconBox>

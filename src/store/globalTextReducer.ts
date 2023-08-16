@@ -5,12 +5,12 @@ export const globalTextReducer = createSlice({
   name: "globalText",
   initialState: {
     value: {
-      billBoard: "1231231231231231312",
+      billBoard: "My site is compoleted now !",
       usefulLink: [
-        { name: "MtF.wiki", url: "https://mtf.wiki/zh-cn/" },
+        { name: "Leetcode", url: "https://leetcode.com/" },
         {
-          name: "柑橘与百合Citrus&Lilium",
-          url: "https://www.youtube.com/channel/UCgfr45LK6VTcuuMVBHsiNnQ",
+          name: "Pixiv",
+          url: "https://www.pixiv.net/",
         },
       ],
       otherLink: [
