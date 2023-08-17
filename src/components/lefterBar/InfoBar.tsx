@@ -110,7 +110,7 @@ const InfoBar: React.FC = () => {
       <DataBar />
       <FlexBox>
         <IconBox>
-          <a href="https://twitter.com/allhellshiki">
+          <a>
             <TwitterIcon />
           </a>
         </IconBox>
