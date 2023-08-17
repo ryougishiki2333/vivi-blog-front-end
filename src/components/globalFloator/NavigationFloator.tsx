@@ -76,7 +76,7 @@ const NavigationFloator: React.FC = () => {
           <ViviButtonCompo
             to={"/filterPage"}
             state={{ name: `` }}
-            text={"Category"}
+            text={"Tag"}
           />
           {/* <ViviButtonCompo to={"/aboutPage"} text={"打赏 | Support"} /> */}
           {/* <AvatarCompo text={"CS"} sx={undefined} img={img} type={user.type} /> */}

@@ -52,7 +52,7 @@ const ClassificationBar: React.FC = () => {
 
   return (
     <Wrapper>
-      <SvgTitleCompo text="Categories" size={1} icon={<DensityMediumIcon />} />
+      <SvgTitleCompo text="Tag" size={1} icon={<DensityMediumIcon />} />
       <List>{tagList(tag)}</List>
     </Wrapper>
   );
