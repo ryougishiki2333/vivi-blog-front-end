@@ -33,6 +33,8 @@ const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const [reply, setReply] = useState("");
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const [isBack, setIsBack] = useState(true);
+
   const user = useAppSelector((state) => {
     return state.user.value;
   });
@@ -40,6 +42,7 @@ const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const getAll = async () => {
     const replyList = await replyFindReplyByArticleId(id || "");
     dispatch({ type: `comment/getReplys`, payload: replyList });
+    setIsBack(true);
   };
 
   return (
@@ -71,7 +74,8 @@ const ReplyZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
           text="Submit"
           color="#000000"
           onClick={async () => {
-            if (user.id) {
+            if (user.id && isBack) {
+              setIsBack(false);
               await replyCreate({
                 content: reply,
                 username: user.username,

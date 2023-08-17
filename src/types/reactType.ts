@@ -15,6 +15,8 @@ export type ICommentUnit = {
   updatedAt: Date;
   handleNoTokenSubmit: () => void;
   getAll: () => void;
+  handleBack:()=>void;
+  isBack:boolean;
   id: number
 };
 

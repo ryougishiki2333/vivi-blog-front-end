@@ -193,14 +193,17 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
             text="Submit"
             color="#000000"
             onClick={async () => {
-              await replyCreate({
-                content: replyText,
-                username: user.username,
-                state: 1,
-                replyUserId: props.replyUserId,
-                userId: user.id,
-                articleId: parseInt(id || "0"),
-              });
+              if (props.isBack) {
+                props.handleBack();
+                await replyCreate({
+                  content: replyText,
+                  username: user.username,
+                  state: 1,
+                  replyUserId: props.replyUserId,
+                  userId: user.id,
+                  articleId: parseInt(id || "0"),
+                });
+              }
               props.getAll();
               setReplyModalOpen(!replyModalOpen);
             }}
@@ -214,6 +217,8 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
 const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const [isBack, setIsBack] = useState(true);
+
   useEffect(() => {
     const getReply = async () => {
       const replyList = await replyFindReplyByArticleId(id || "");
@@ -225,6 +230,10 @@ const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
   const getAll = async () => {
     const replyList = await replyFindReplyByArticleId(id || "");
     dispatch({ type: `comment/getReplys`, payload: replyList });
+    setIsBack(true);
+  };
+  const handleBack = () => {
+    setIsBack(false);
   };
 
   const commentItem = useAppSelector((state) => state.comment.value);
@@ -273,6 +282,8 @@ const CommentZone: React.FC<{ handleNoTokenSubmit: () => void }> = (props) => {
         replyUserId={item.replyUserId}
         handleNoTokenSubmit={props.handleNoTokenSubmit}
         getAll={getAll}
+        handleBack={handleBack}
+        isBack={isBack}
       ></CommentUnit>
     );
   });
