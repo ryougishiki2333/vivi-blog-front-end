@@ -25,7 +25,7 @@ const Welcome: React.FC = () => {
   return (
     // <Link to={"/"}>
     <Wrapper>
-      <Title>Wellcome to Vivi's Site</Title>
+      <Title>Wellcome to Vivi's Blog</Title>
     </Wrapper>
     // </Link>
   );

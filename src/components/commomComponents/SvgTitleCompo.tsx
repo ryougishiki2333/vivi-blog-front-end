@@ -12,6 +12,7 @@ const Text = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-warp: wrap;
 `;
 
 const SvgTitleCompo: React.FC<ITitle> = (props) => {

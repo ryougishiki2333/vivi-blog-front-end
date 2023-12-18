@@ -61,7 +61,7 @@ const NavigationFloator: React.FC = () => {
     <Wrapper>
       <LeftWrapper>
         <Stack direction="row" spacing={2}>
-          <ViviButtonCompo fontSize={20} to={"/"} text={"Vivi's Site"} />
+          <ViviButtonCompo fontSize={20} to={"/"} text={"Vivi's Blog"} />
         </Stack>
       </LeftWrapper>
       <RightWrapper>

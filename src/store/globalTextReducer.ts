@@ -5,7 +5,7 @@ export const globalTextReducer = createSlice({
   name: "globalText",
   initialState: {
     value: {
-      billBoard: "My site is compoleted now !",
+      billBoard: "My blog is compoleted now!",
       usefulLink: [
         { name: "Leetcode", url: "https://leetcode.com/" },
         {
