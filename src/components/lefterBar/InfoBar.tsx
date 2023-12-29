@@ -105,7 +105,7 @@ const InfoBar: React.FC = () => {
         <Name>Vivi</Name>
       </FlexBox>
       <FlexBox>
-        <Bio>All work and no play make vivi a dull girl</Bio>
+        <Bio className={"Bio"}>All work and no play make vivi a dull girl</Bio>
       </FlexBox>
       <DataBar />
       <FlexBox>

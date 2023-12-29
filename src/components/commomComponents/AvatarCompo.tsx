@@ -8,6 +8,7 @@ const AvatarCompo: React.FC<IAvatar> = (props) => {
 
   return (
     <Avatar
+      className={"Avatar"}
       sx={props.sx}
       onClick={() => {
         if (props.type === 2) {
