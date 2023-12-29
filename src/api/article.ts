@@ -41,7 +41,7 @@ export const articleUpdate = async (
 
 export const articleFindAll = async () => {
   const response = await sendRequest(
-    "api/article"
+    "api/article/get/all"
   );
 
   return response.json();

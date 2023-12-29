@@ -32,7 +32,7 @@ export const tagDelete = async (
 
 export const tagFindAll = async () => {
   const response = await sendRequest(
-    "api/tag",
+    "api/tag/get/all",
   );
 
   return response.json();
