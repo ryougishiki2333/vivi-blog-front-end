@@ -97,9 +97,16 @@ module.exports = {
   devServer: {
     static: resolvePath("./dist"),
     host: "localhost",
-    port: 8080,
+    port: 8000,
     open: true,
     hot: true,
     historyApiFallback: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:4000/", // 将请求代理到的目标地址
+        changeOrigin: true, // 修改请求头中的 Origin 为目标地址
+        // pathRewrite: { "^/api": "" }, // 重写请求路径，去掉 '/api' 前缀
+      },
+    },
   },
 };
