@@ -17,9 +17,9 @@ import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 import { RootState } from "../store/store";
 import { ITag } from "src/types/dataType";
-import { articleFindAll } from "../api/article";
-import { tagFindAll } from "../api/tag";
-import { articleCreate, articleUpdate } from "../api/article";
+import { articleFindAll } from "../request/article";
+import { tagFindAll } from "../request/tag";
+import { articleCreate, articleUpdate } from "../request/article";
 
 const WritePage: React.FC = () => {
   // 数据保存
@@ -63,8 +63,7 @@ const WritePage: React.FC = () => {
         const tagList = await tagFindAll();
         dispatch({ type: `tag/getTags`, payload: tagList });
       } catch (error) {
-        dispatch({ type: `article/getArticles`, payload: [] });
-        dispatch({ type: `tag/getTags`, payload: [] });
+        console.log(error);
       }
     };
     getArticle();

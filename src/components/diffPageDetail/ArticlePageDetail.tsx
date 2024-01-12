@@ -11,9 +11,9 @@ import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import styled from "styled-components";
-import { userRegister } from "../../api/user";
+import { userRegister } from "../../request/user";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { replyCreate } from "../../api/reply";
+import { replyCreate } from "../../request/reply";
 
 const Input = styled.div``;
 

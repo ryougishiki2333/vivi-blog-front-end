@@ -15,12 +15,10 @@ import TextField from "@mui/material/TextField";
 import ForumIcon from "@mui/icons-material/Forum";
 import { ICommentUnit } from "src/types/reactType";
 import moment from "moment";
-import { replyCreate } from "../../api/reply";
-import { findUserById } from "../../api/user";
-import { replyFindReplyByArticleId } from "../../api/reply";
+import { replyCreate } from "../../request/reply";
+import { findUserById } from "../../request/user";
+import { replyFindReplyByArticleId } from "../../request/reply";
 import { useParams } from "react-router-dom";
-import { articleFindAll } from "../../api/article";
-import { tagFindAll } from "../../api/tag";
 
 const Title = styled.div`
   ${zoneStyleTitle}

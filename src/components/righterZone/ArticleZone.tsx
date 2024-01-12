@@ -8,8 +8,8 @@ import InviteSignUpFloator from "../globalFloator/InviteSignUpFloator";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Divider, Space, Tag } from "antd";
 import { useEffect } from "react";
-import { articleFindAll } from "../../api/article";
-import { tagFindAll } from "../../api/tag";
+import { articleFindAll } from "../../request/article";
+import { tagFindAll } from "../../request/tag";
 
 const Title = styled.div`
   ${zoneStyleTitle}
@@ -59,7 +59,7 @@ const ArticleZone: React.FC = () => {
   const navigate = useNavigate();
   const tagList = () => {
     return articleItemFilter.length ? (
-      articleItemFilter[0].tag.map((item) => (
+      articleItemFilter[0].tag?.map((item) => (
         <Tags
           key={item.id}
           onClick={(e) => {

@@ -7,7 +7,6 @@ import { RootState } from "src/store/store";
 import sample from "lodash/sample";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { articleFindAll } from "../../api/article";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
 const Wrapper = styled.div`

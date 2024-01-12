@@ -58,7 +58,7 @@ const PreviewArticleCompo: React.FC<IFilter> = (props) => {
   const navigate = useNavigate();
 
   const tagList = (articleItem: IArticle) => {
-    return articleItem.tag.map((item) => (
+    return articleItem?.tag?.map((item) => (
       <Tags
         key={item.id}
         onClick={(e) => {

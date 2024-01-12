@@ -25,7 +25,7 @@ import Stack from "@mui/material/Stack";
 import { UploadOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import { Button, message, Upload } from "antd";
-import { tagCreate, tagDelete, tagFindAll } from "../../api/tag";
+import { tagCreate, tagDelete, tagFindAll } from "../../request/tag";
 
 const TagBox = styled.div`
   display: flex;

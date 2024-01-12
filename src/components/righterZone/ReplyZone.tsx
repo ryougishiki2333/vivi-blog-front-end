@@ -7,11 +7,9 @@ import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { replyCreate } from "../../api/reply";
+import { replyCreate } from "../../request/reply";
 import { useParams } from "react-router-dom";
-import { articleFindAll } from "../../api/article";
-import { tagFindAll } from "../../api/tag";
-import { replyFindReplyByArticleId } from "../../api/reply";
+import { replyFindReplyByArticleId } from "../../request/reply";
 
 const Wrapper = styled.div`
   ${zoneStyleWrapper}

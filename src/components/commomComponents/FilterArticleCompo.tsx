@@ -11,10 +11,8 @@ import { Divider, Space, Tag } from "antd";
 import ViviButtonCompo from "../commomComponents/ViviButtonCompo";
 import moment from "moment";
 import { useEffect, Suspense } from "react";
-import { articleFindAll } from "../../api/article";
-import { tagFindAll } from "../../api/tag";
-import { Spin } from "antd";
-import { replyCreate } from "../../api/reply";
+import { articleFindAll } from "../../request/article";
+import { tagFindAll } from "../../request/tag";
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -95,8 +93,7 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
         const tagList = await tagFindAll();
         dispatch({ type: `tag/getTags`, payload: tagList });
       } catch (error) {
-        dispatch({ type: `article/getArticles`, payload: [] });
-        dispatch({ type: `tag/getTags`, payload: [] });
+        console.log(error);
       }
     };
     getArticle();
@@ -114,7 +111,7 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
   const navigate = useNavigate();
 
   const tagList = (articleItem: IArticle) => {
-    return articleItem.tag.map((item) => (
+    return articleItem?.tag?.map((item) => (
       <Tags
         onClick={(e) => {
           e.stopPropagation();
