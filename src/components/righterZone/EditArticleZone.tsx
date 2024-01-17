@@ -129,7 +129,7 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
     if (props.id) {
       props.handleTitleChange(chooseArticle(props.id)[0].title);
       props.handleContentChange(chooseArticle(props.id)[0].content);
-      props.handleTagChange(chooseArticle(props.id)[0].tag);
+      props.handleTagChange(chooseArticle(props.id)[0].tags);
       props.handleSynopsisChange(chooseArticle(props.id)[0].synopsis);
     } else {
       props.handleTitleChange("");

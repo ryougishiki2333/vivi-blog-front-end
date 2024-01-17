@@ -14,8 +14,6 @@ export const articleReducer = createSlice({
   reducers: {
     getArticles:(state, action) =>{
       state.value = action.payload
-      console.log(state.value, "article");
-      
     },
 
 
@@ -31,7 +29,7 @@ export const articleReducer = createSlice({
           if (action.payload.id === item.id) {
             item.content = action.payload.content;
             item.title = action.payload.title;
-            item.tag = action.payload.tag;
+            item.tags = action.payload.tag;
           }
         });
       }
@@ -47,7 +45,7 @@ export const articleReducer = createSlice({
           if (action.payload.id === item.id) {
             item.content = action.payload.content;
             item.title = action.payload.title;
-            item.tag = action.payload.tag;
+            item.tags = action.payload.tag;
             item.articleState = 1;
           }
         });
@@ -60,7 +58,7 @@ export const articleReducer = createSlice({
         if (action.payload.id === item.id) {
           item.content = action.payload.content;
           item.title = action.payload.title;
-          item.tag = action.payload.tag;
+          item.tags = action.payload.tag;
           item.articleState = 2;
         }
       });
@@ -71,7 +69,7 @@ export const articleReducer = createSlice({
         if (action.payload.id === item.id) {
           item.content = action.payload.content;
           item.title = action.payload.title;
-          item.tag = action.payload.tag;
+          item.tags = action.payload.tag;
           item.articleState = 3;
         }
       });

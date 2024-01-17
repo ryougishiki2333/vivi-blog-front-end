@@ -102,7 +102,7 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
   const articleItem = useAppSelector((state) => state.article.value);
   const articleItemPublish = articleItem.filter((item) => {
     if (props.tag) {
-      return item.articleState === 1 && find(item.tag, ["name", props.tag]);
+      return item.articleState === 1 && find(item.tags, ["name", props.tag]);
     } else {
       return item.articleState === 1;
     }
@@ -111,7 +111,7 @@ const FilterArticleCompo: React.FC<IFilter> = (props) => {
   const navigate = useNavigate();
 
   const tagList = (articleItem: IArticle) => {
-    return articleItem?.tag?.map((item) => (
+    return articleItem?.tags?.map((item) => (
       <Tags
         onClick={(e) => {
           e.stopPropagation();

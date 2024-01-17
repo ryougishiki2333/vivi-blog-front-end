@@ -23,7 +23,7 @@ const ArticlePage: React.FC = () => {
         </LefterWrapper>
         <RighterWrapper>
           <Outlet />
-        </RighterWrapper>s
+        </RighterWrapper>
       </ContentWrapper>
       <ScrollRestoration />
     </>

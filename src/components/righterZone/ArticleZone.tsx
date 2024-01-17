@@ -59,7 +59,7 @@ const ArticleZone: React.FC = () => {
   const navigate = useNavigate();
   const tagList = () => {
     return articleItemFilter.length ? (
-      articleItemFilter[0].tag?.map((item) => (
+      articleItemFilter[0].tags?.map((item) => (
         <Tags
           key={item.id}
           onClick={(e) => {

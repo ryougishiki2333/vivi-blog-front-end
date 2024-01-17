@@ -6,7 +6,7 @@ type articleCreateRes = {
   title:string;
   content:string;
   synopsis: string
-  tag:Array<ITag>
+  tags:Array<ITag>
 }
 
 const token = window.localStorage.getItem('token')

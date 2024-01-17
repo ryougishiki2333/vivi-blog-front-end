@@ -11,7 +11,6 @@ export const tagReducer = createSlice({
   reducers: {
     getTags:(state, action) =>{
       state.value = action.payload
-      console.log(state.value, "tag");
     },
     addTag: (state, action) => {},
     deleteTag: (state, action) => {},

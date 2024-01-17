@@ -38,7 +38,7 @@ export type IScore = {
 export type IArticle = {
   title: string;
   content: string;
-  tag: Array<ITag>;
+  tags: Array<ITag>;
   articleState: IArticleState; 
   id: number;
   // coverPicture:string;

@@ -25,7 +25,7 @@ const WritePage: React.FC = () => {
   // 数据保存
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [tag, setTag] = useState<Array<ITag>>([]);
+  const [tags, setTag] = useState<Array<ITag>>([]);
   const [synopsis, setSynopsis] = useState("");
   const [checkSaveOpen, setCheckSaveOpen] = useState(false);
   const [id, setId] = useState(0);
@@ -91,7 +91,7 @@ const WritePage: React.FC = () => {
           title: title,
           content: content,
           synopsis: synopsis,
-          tag: tag,
+          tags: tags,
         });
       } else {
         await articleUpdate(
@@ -99,7 +99,7 @@ const WritePage: React.FC = () => {
             title: title,
             content: content,
             synopsis: synopsis,
-            tag: tag,
+            tags: tags,
           },
           id
         );
@@ -144,7 +144,7 @@ const WritePage: React.FC = () => {
         <RighterWrapper>
           {id || isNewArticle ? (
             <EditArticleZone
-              articleTag={tag}
+              articleTag={tags}
               content={content}
               title={title}
               id={id}
