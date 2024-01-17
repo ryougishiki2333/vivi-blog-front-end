@@ -198,7 +198,8 @@ const EditArticleZone: React.FC<IEditArticleZoneProp> = (props) => {
           limitTags={2}
           id="multiple-limit-tags"
           options={tag}
-          value={[...props.articleTag]}
+          value={props.articleTag}
+          isOptionEqualToValue={(option, value) => option.id === value.id}
           getOptionLabel={(option) => option.name}
           renderInput={(params) => <TextField {...params} />}
           onChange={(event, value) => props.handleTagChange(value)}
