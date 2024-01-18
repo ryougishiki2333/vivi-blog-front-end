@@ -8,7 +8,7 @@ import { sendRequest, baseURL } from "./request";
 export const tagCreate = async (
   name:string
 ): Promise<any> => {
-  const response = await sendRequest("api/tag", {
+  const response = await sendRequest("api/tag/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

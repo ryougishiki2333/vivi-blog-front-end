@@ -1,21 +1,19 @@
-import { defineConfig } from 'vite';
-import simpleHtmlPlugin from 'vite-plugin-simple-html';
+import { defineConfig } from "vite";
+import simpleHtmlPlugin from "vite-plugin-simple-html";
 
 export default defineConfig({
-  root: './src',
+  root: "./src",
   build: {
-    outDir: './dist',
+    outDir: "./dist",
   },
-  plugins: [
-
-  ],
+  plugins: [],
   server: {
     port: 3000, // 设置端口为 3000
     proxy: {
-        "/api": {
-            target: "http://localhost:4000/", 
-            changeOrigin: true, 
-          },
+      "/api": {
+        target: "http://localhost:4000",
+        // changeOrigin: true,
+      },
     },
   },
 });

@@ -21,7 +21,7 @@ export const sendRequest = async (url: string, options: FetchOptions = {}): Prom
     method: options.method || 'GET',
     headers: {
       "Content-Type": "application/json",
-      "token": `Bearer ${token}`
+      // "token": `Bearer ${token}`
     },
     body: options.body || undefined,
     mode: options.mode || 'cors',
