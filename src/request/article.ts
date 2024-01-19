@@ -14,7 +14,7 @@ const token = window.localStorage.getItem('token')
 export const articleCreate = async (
   article:articleCreateRes
 ): Promise<any> => {
-  const response = await sendRequest("api/article", {
+  const response = await sendRequest("api/article/create", {
     method: "POST",
     body: JSON.stringify(article),
   });
