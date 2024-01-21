@@ -31,7 +31,7 @@ const ArticlePageDetail: React.FC = () => {
 
   const handleSubmitInfomation = async () => {
     try {
-      const loginResult = await userRegister(username, "password", email);
+      const loginResult = await userRegister(username, "password");
       dispatch({
         type: `user/logIn`,
         payload: {

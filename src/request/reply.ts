@@ -12,7 +12,7 @@ type reply = {
 export const replyCreate = async (
   reply:reply
 ): Promise<any> => {
-  const response = await sendRequest("api/reply", {
+  const response = await sendRequest("api/reply/add", {
     method: "POST",
     body: JSON.stringify(reply),
   });

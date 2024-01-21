@@ -7,6 +7,13 @@ type loginRes = {
   };
 };
 
+type registerRes = {
+  id: number;
+  username:string;
+  email:string;
+
+};
+
 export const findUserById = async (
   id: number
 ): Promise<any> => {
@@ -17,22 +24,21 @@ export const findUserById = async (
 };
 
 export const userLogin = async (
-  username: string,
-  password: string
+  username: string
 ): Promise<any> => {
   const response = await sendRequest("api/user/login", {
     method: "POST",
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({username}),
   });
   return response.json();
 };
 
-export const userRegister = async (username: string, password: string, email:string) => {
+export const userRegister = async (username: string, email:string) :Promise<registerRes>=> {
   const response = await sendRequest(
-    "api/user/register",
+    "api/visitor/register",
     {
       method: "POST",
-      body: JSON.stringify({ username, password, email }),
+      body: JSON.stringify({ username, email }),
     }
   );
 

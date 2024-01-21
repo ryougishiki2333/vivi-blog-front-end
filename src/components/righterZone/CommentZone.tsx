@@ -136,7 +136,9 @@ const CommentUnit: React.FC<ICommentUnit> = (props) => {
           <Name>{props.username}</Name>
           <Email>{props.email ? props.email : ""}</Email>
           <UpdatedAt>
-            {moment(props.updatedAt.valueOf()).format("YYYY/MM/DD hh:mm:ss")}
+            {props.updatedAt
+              ? moment(props.updatedAt.valueOf()).format("YYYY/MM/DD hh:mm:ss")
+              : ""}
           </UpdatedAt>
         </InfoTopWrapper>
         <InfoTopWrapper>

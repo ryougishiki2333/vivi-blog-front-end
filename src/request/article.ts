@@ -1,18 +1,26 @@
-
 import { sendRequest, baseURL } from "./request";
 import { ITag } from "src/types/dataType";
 
 type articleCreateRes = {
-  title:string;
-  content:string;
-  synopsis: string
-  tags:Array<ITag>
-}
+  title: string;
+  content: string;
+  synopsis: string;
+  tags: Array<ITag>;
+};
 
-const token = window.localStorage.getItem('token')
+type articleUpdateRes = {
+  id: number;
+  articleState: number;
+  title: string;
+  content: string;
+  synopsis: string;
+  tags: Array<ITag>;
+};
+
+const token = window.localStorage.getItem("token");
 
 export const articleCreate = async (
-  article:articleCreateRes
+  article: articleCreateRes
 ): Promise<any> => {
   const response = await sendRequest("api/article/create", {
     method: "POST",
@@ -22,9 +30,9 @@ export const articleCreate = async (
 };
 
 export const articleUpdate = async (
-  article:articleCreateRes, id:number
+  article: articleUpdateRes
 ): Promise<any> => {
-  const response = await sendRequest(`api/article?id=`+(id.toString()), {
+  const response = await sendRequest(`api/article/update`, {
     method: "PUT",
     body: JSON.stringify(article),
   });
@@ -32,11 +40,7 @@ export const articleUpdate = async (
 };
 
 export const articleFindAll = async () => {
-  const response = await sendRequest(
-    "api/article/get/all"
-  );
+  const response = await sendRequest("api/article/get/all");
 
   return response.json();
 };
-
-

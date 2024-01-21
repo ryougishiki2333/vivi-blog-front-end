@@ -94,15 +94,14 @@ const WritePage: React.FC = () => {
           tags: tags,
         });
       } else {
-        await articleUpdate(
-          {
-            title: title,
-            content: content,
-            synopsis: synopsis,
-            tags: tags,
-          },
-          id
-        );
+        await articleUpdate({
+          title: title,
+          content: content,
+          synopsis: synopsis,
+          tags: tags,
+          id: id,
+          articleState: 1,
+        });
       }
     } catch (error) {
     } finally {
