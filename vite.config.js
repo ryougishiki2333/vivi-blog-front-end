@@ -3,9 +3,9 @@ import simpleHtmlPlugin from "vite-plugin-simple-html";
 
 export default defineConfig({
   root: "./src",
-  build: {
-    outDir: "./dist",
-  },
+  // build: {
+  //   outDir: "./dist",
+  // },
   plugins: [],
   server: {
     port: 3000, // 设置端口为 3000
