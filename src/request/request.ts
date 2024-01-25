@@ -12,7 +12,6 @@ interface FetchOptions {
 }
 
 export const baseURL = "/";
-// export const baseURL = 'http://65.49.195.65:4000/'
 
 const token = window.localStorage.getItem("token");
 

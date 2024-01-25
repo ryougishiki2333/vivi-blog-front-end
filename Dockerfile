@@ -16,22 +16,18 @@ COPY . .
 # 构建应用程序
 RUN npm run build
 
+RUN ls -l /app
+
 # 第二阶段：设置 Nginx
 FROM nginx:alpine
 
-# 设置工作目录
-WORKDIR /usr/share/nginx/html
 
-# 从构建阶段复制构建好的文件到 Nginx 镜像
-COPY --from=builder /app/dist/ .
+COPY --from=builder /app/src/dist/ /usr/share/nginx/html
 
-# 可选：如果需要移除默认的 Nginx 配置，取消以下注释
-# RUN rm /etc/nginx/conf.d/default.conf
 
-# 复制 Nginx 配置文件
-COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./default.conf.template /etc/nginx/conf.d/
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY default.conf.template /etc/nginx/conf.d/
 
-# 启动命令
-CMD /bin/sh -c "envsubst '80' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
+
+CMD ["nginx", "-g", "daemon off;"]
 
